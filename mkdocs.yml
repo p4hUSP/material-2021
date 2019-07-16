@@ -1,0 +1,39 @@
+# Project information
+site_name: 'P4H - Material'
+site_description: 'Material para cursos de programação e análise de dados'
+site_author: 'P4H'
+site_url: 'https://p4husp.github.io/material-bio/'
+
+# Repository
+repo_name: 'p4husp/material-bio'
+repo_url: 'https://github.com/p4hUSP/material-bio'
+# Copyright
+copyright: 'Copyright &copy; 2019 Programação para Humanidades'
+
+# Configuration
+theme:
+  name: 'material'
+  language: 'pt'
+  palette:
+    primary: 'indigo'
+    accent: 'indigo'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+
+extra:
+  search:
+    language: 'en, pt'
+  social:
+    - type: 'github'
+      link: 'https://github.com/p4husp'
+    - type: 'facebook'
+      link: 'https://facebook.com/p4husp'
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
