@@ -509,6 +509,9 @@ arquivos:
     CSV](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_virgula.csv)
 
 -   [Candidatos -
+    CSV2](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_pontovigula.csv)
+
+-   [Candidatos -
     TAB](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_tab.csv)
 
 -   [Candidatos -
@@ -516,6 +519,9 @@ arquivos:
 
 -   [Candidatos -
     Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_excel.xlsx)
+
+-   [Candidatos -
+    Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_stata.dta)
 
 Às vezes, o navegador não irá fazer o download automaticamente e lhe
 mostrará uma tela repleta de caracteres. Calma! Clique com o botão
@@ -528,17 +534,68 @@ Para importar um CSV para o R, utilize a função `read_csv()` do pacote
 
 !!! warning " Fique atento com o lugar que você salvou os arquivos! "
 
+    Neste exemplo, os arquivos estão salvos dentro da pasta __data__.
+
 <br/>
 
     library(readr)
 
     banco_virgula <- read_csv('data/candidatos_sp_virgula.csv')
 
-e faça o download do banco de candidatos. O arquivo baixado vem no
-formato **zip** e contém os candidatos separados por Unidade Federativa.
+Se tudo tiver dado certo, agora você terá um `banco_virgula` no seu
+ambiente de variáveis. Mas nem sempre um banco de dados é separado por
+vírgula e mesmo assim ele pode ter a extenção `.csv`.
 
-No caso, vamos nos ater ao `consulta_cand_2018_SP.csv` com os candidatos
-de São Paulo
+-   Bancos separados por ponto e vírgula `;`.
+
+<!-- -->
+
+    banco_pontovirgula <- read_csv2('data/candidatos_sp_pontovirgula.csv')
+
+-   Banco separados por tabs `\t`.
+
+<!-- -->
+
+    banco_tab <- read_tsv('data/candidatos_sp_tab.csv')
+
+-   Banco separados por `@` ou qualquer outro `caractere`.
+
+<!-- -->
+
+
+    banco_arroba <- read_delim('data/candidatos_sp_arroba.csv', delim = '@')
+
+-   Banco Excel.
+
+<!-- -->
+
+    library(readxl)
+
+    banco_excel <- read_excel('data/candidatos_sp_excel.xlsx')
+
+!!! warning " Repare que o número de linhas do banco Excel é menor! "
+
+<br/>
+
+Por que isso aconteceu?
+
+-   Banco Excel - Abas
+
+<!-- -->
+
+    library(readxl)
+
+    banco_excel_1 <- read_excel('data/candidatos_sp_excel.xlsx', sheet = 1)
+
+    banco_excel_1 <- read_excel('data/candidatos_sp_excel.xlsx', sheet = 2)
+
+-   Banco Stata
+
+<!-- -->
+
+    library(haven)
+
+    banco_stata <- read_stata('data/candidatos_sp_stata.dta')
 
 5. Exercício - Parte 2
 ----------------------
@@ -546,16 +603,27 @@ de São Paulo
 ### 5.1. DataFrames
 
 1.  Crie um dataframe com o nome, idade e filme preferido dos seus
-    colegas de turma. Faça um script que documente o passo a passo da
-    criação do dta frame
+    colegas de turma.
 
-2.  Crie uma lista composta por 3 elementos. Faça um script que
-    documente o passo a passo da criação do dta frame Como podemos saber
-    o conteúdo do segundo elemento da lista. Utilze a indexação
+!!! question " Como criar um dataframe? "
 
-3.  No R temos, bancos para fins didáticos. Para utilizá-los basta usar
+    Lembre-se que para criar um dataframe utilizamos a função `data.frame()` e que essa função recebe vetores 
+    como parâmetros para cada coluna que desejamos criar. Por exemplo, se você quiser criar uma dataframe com
+    uma lista de números basta executar `data.frame(lista_numeros = c(1,2,3,4,5,6,7))`
+
+1.  Crie uma lista composta por 3 elementos.
+
+    -   Faça um script que documente o passo a passo da criação do
+        dataframe.
+
+    -   Como podemos saber o conteúdo do segundo elemento da lista?
+        Utilze a **indexação**.
+
+2.  No R temos, bancos para fins didáticos. Para utilizá-los basta usar
     a função data. Para esse exercícios utilizaremos o banco mtcars.
-    Execute `data(mtcars)`.
+    Execute `data(mtcars)`. Repare que agora você pode acessar o banco
+    `mtcars` da mesma maneira que fizemos anteriormente com outros
+    dataframes.
 
     -   Visualize o banco. Do que se trata?
 
@@ -872,6 +940,17 @@ apertar “Esc”
 
 ### Exercicio 5 - Importação de Dados
 
+1.  Escolha um dos bancos abaixo ou qualquer outro de seu interesse.
+    Baixe o banco, utilize as funções para explorar as variáveis, retire
+    algum resumo de uma variável (média, contagem, etc.).
+
+!!! question " Relembrando as funções "
+
+    Você pode utilizar `View()`, `head()`, `str()`, `names()`, entre outras para ter uma ideia geral do banco de dados.
+    Para extrair estatísticas, você pode utilizar `mean()`, `sd()`, `median()`, etc.
+
+    Lembre-se que o Google é o seu melhor amigo! Pesquisa outros comandos que sejam do seu interesse!
+
 <center>
 <table>
 <thead>
@@ -882,8 +961,8 @@ apertar “Esc”
 </thead>
 <tbody>
 <tr class="odd">
-<td>Candidatos das Eleições de 2018</td>
-<td><a href="http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2018.zip">Download</a></td>
+<td>Banco Eleições</td>
+<td><a href="http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">Download</a></td>
 </tr>
 <tr class="even">
 <td>Preço Médio de Combustíveis no Brasil</td>
@@ -901,3 +980,22 @@ apertar “Esc”
 </table>
 
 </center>
+### Exercicio 6 - Desafio
+
+Com o banco de dados do exercício anterior tente levantar algumas
+hipóteses sobre as relações de variáveis. Por exemplo, “eu acho que X
+causa Y”. Anote todas essas hipóteses.
+
+Uma vez feito isso, tente:
+
+1.  Criar um gráfico que ressalte a relação entre essas variáveis.
+
+2.  Procure rodar um teste estatístico que pronha à prova a sua hipótese
+    (Teste t, ANOVA, regressão linear, regressão logística, etc.).
+
+!!! question " Por onde começar? "
+
+    Existe um pacote de visualização de dados muito famoso para o R chamado `ggplot2`. 
+    Quanto ao teste estatístico, o R possuí todos os testes citados implementados, ou seja, você não 
+    precisa baixar um pacote para aplicá-los. Tente procurar na _internet_. Existem referências tanto
+    em português quanto em inglês.
