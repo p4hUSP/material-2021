@@ -1,6 +1,5 @@
-# Material de Biologia
+# Material
 
- 
 ## Quem somos?
 
 A P4H é um grupo formado por alunos de ciências sociais com o objetivo de aproximar alunos e profissionais da área de tecnologia, programação e análise de dados.
@@ -13,6 +12,4 @@ Programação __não__ se aprende apenas lendo livros e assistindo aulas. É fun
 
 Uma das maiores diferenças não diz respeito ao lado técnico. Analisar dados em Python ou em R é grátis! Isso mesmo, você não precisa gastar um centavo para ter acesso a bibliotecas de análise de dados desenvolvidas pelo Google, Amazon, Projeto Apache, entre outras tantas.
 
-No que diz respeito ao lado mais técnico, importa para a gente que a linguamge de programação, ao contrário do Excel, o Stata e o SPSS, lhe dá liberdade para resolver problemas por meio de __algorítmos__. Ou seja, se você é capaz de descrever um passo-a-passo de como resolver um problema, provavelmente você também é capaz de traduzir essa lógica para uma linguagem de programação e deixar que o computador faça o resto
-
-## Instalando o R
+Além disso, ao contrário do Excel, do Stata e do SPSS, o R lhe dá liberdade para resolver problemas mediante __algorítmos__. Ou seja, se você é capaz de descrever um passo-a-passo, uma receita, de como obter um resultado a partir de determinadas entradas, podemos escrever um programa e deixar que o computador faça o resto.

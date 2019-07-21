@@ -1,0 +1,75 @@
+---
+title: "Estruturar"
+author: "P4H"
+output: md_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12,
+                      fig.height=8,
+                      warning=FALSE,
+                      message=FALSE,
+                      eval=FALSE)
+```
+
+## tidyr
+
+O `tidyr` é o pacote utilizado para estruturar os nossos bancos de dados. Em geral, ele pode ser utilizado para __unir__ (`unite`) e __separar__ (`separate`) colunas ou para __derreter__ (`gather`) e __esticar__ (`spread`) as colunas. As duas primeiras operações são mais simples. Então, iremos começar por elas.
+
+### separate
+
+Digamos que sejá útil para a gente, obter o dia, o mês e o ano de nascimento de cada observação em colunas separadas ao invés de em uma única. Nesse caso, a função `separate` pode nos ajudar bastante. Como ela funciona? O (1) primeiro parâmetro é o nosso __banco de dados__, (2) o segundo é o __nome da coluna__ que desejamos separar, (3) o terceiro é o __nome das novas variáveis__ e, por fim, (4) o quarto é o __separador__.
+
+```{r}
+candidatos <- separate(candidatos, DT_NASCIMENTO,into = c("DT_NASCIMENTO_DIA","DT_NASCIMENTO_MES","DT_NASCIMENTO_ANO"),seo = ",")
+```
+
+```{r}
+select(candidatos, DT_NASCIMENTO_DIA, DT_NASCIMENTO_MES, DT_NASCIMENTO_ANO)
+```
+
+Bem simples, não?
+  
+### unite
+  
+A função `unite` faz o oposto da `separate`. Ela __uni__ ou __concatena__ colunas.Que tal unirmos a sigla e o nome do partido? Desse jeito, teremos, ao invés de, por exemplo, "PSL" e "Parito Social Liberal" em duas variáveis distintas, uma única coluna com "PSL Partido Social Liberal". Nesse caso, podemos até adicionar um hífem entre as variáveis para obter o formato final "PSL - Partido Social Liberal".
+
+Como operar isso? A função `unite` recebe no primeiro parâmetro o banco de dados e no segundo o nome da __nova__ variável. Em seguida, podemos adicionar os nodemos de todas as colunas que queremos concatenar e, por fim, podemos escolher o separador entre as colunas.
+
+```{r}
+candidatos <- unite(candidatos, "SIGLA_NOME_PARTIDO", SG_PARTIDO, NM_PARTIDO, sep = " - ")
+```
+
+```{r}
+select(candidatos, "SIGLA_NOME_PARTIDO") # Nao precisa se preocupar com esta funcao agora, veremos mais tarde :)
+```
+
+## exemplo com gather e spread
+
+`gather()` e `spread()` realizam operações opostas.
+
+`gather()` é utilizado para derreter/agrupar as colunas dos nossos bancos. Vamos imaginar que temos um banco de dados com o a performance dos partidos (total de votos) para cada cargo nas eleições municipais de 2016.
+
+```{r}
+votos_partidos <- read_csv('data/total_votos_partidos.csv')
+
+head(votos_partidos)
+```
+
+Tendo em vista os princípios de um banco Tidy, qual o problema desse banco de dados?
+
+As colunas não contêm variáveis, mas __valores__ de variáveis. Que valores são esses? Eles correspondem ao cargo pleiteado pelos candidatos. Para ajustar isso, podemos utilizar a função `gather()`. Ela recebe, no primeiro parâmetro, o banco de dados; no segundo, fornecemos as colunas nas quais desejamos realizar a operação. No parâmetro `key`, o nome da variável dos valores, contidos nos cabeçalhos das colunas; no parâmetro `value`, o nome da variável dos valores contidas nas células das colunas. 
+
+```{r}
+votos_partidos_tidy <- gather(votos_partidos, PREFEITO:VEREADOR, key = "DESCRICAO_CARGO", value = "TOTAL_VOTOS")
+
+head(votos_partidos_tidy)
+```
+
+A função `spread()` realiza a operação inversa. Por que iríamos querer fazer isso? Às vezes, pode ser útil para algumas transformações no nosso banco, organizá-lo de uma maneira não Tidy. Além disso, a visualização de tabelas não é muito intuitiva quando o banco está Tidy.
+
+Para "esticar" um banco, utilizamos a função `spread`. Ela recebe o banco no primeiro parâmetro, o nome da variável que ocupará os cabeçalhos das colunas no segundo e, no terceiro, a variável que ocupará as células.
+
+```{r}
+spread(votos_partidos_tidy, DESCRICAO_CARGO, TOTAL_VOTOS)
+```
