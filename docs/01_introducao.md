@@ -497,38 +497,49 @@ uso dos seguintes pacotes:
 
     O R não possui todos os pacotes previamente. Em geral, utilizaremos o comando `install.packages()` 
     para instalar pacotes no R. Execute o comando `install.packages(c('readr', 'readxl', 'haven'))`.
+    Lembre-se de carregar o pacote no R com o comando `library()`. Por exemplo, `library(readr)`.
 
-Vamos
+Você sabia que o TSE (Tribunal Superior Eleitoral) libera diversos dados
+sobre as eleições no site deles?
 
-<center>
-<table>
-<thead>
-<tr class="header">
-<th>Banco</th>
-<th>Link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Candidatos das Eleições de 2018</td>
-<td><a href="http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2018.zip">Download</a></td>
-</tr>
-<tr class="even">
-<td>Preço Médio de Combustíveis no Brasil</td>
-<td><a href="https://www.kaggle.com/matheusfreitag/gas-prices-in-brazil">Download</a></td>
-</tr>
-<tr class="odd">
-<td>Banco de Pokemons</td>
-<td><a href="https://www.kaggle.com/rounakbanik/pokemon">Download</a></td>
-</tr>
-<tr class="even">
-<td>Vagas de Emprego em Nova Iorque</td>
-<td><a href="https://www.kaggle.com/new-york-city/new-york-city-current-job-postings">Download</a></td>
-</tr>
-</tbody>
-</table>
+Que tal tentar baixar o banco de candidatos? Para isso, baixe os
+arquivos:
 
-</center>
+-   [Candidatos -
+    CSV](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_virgula.csv)
+
+-   [Candidatos -
+    TAB](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_tab.csv)
+
+-   [Candidatos -
+    Arroba](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_arroba.csv)
+
+-   [Candidatos -
+    Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_excel.xlsx)
+
+Às vezes, o navegador não irá fazer o download automaticamente e lhe
+mostrará uma tela repleta de caracteres. Calma! Clique com o botão
+direito na tela e selecione a opção **Save Page As…**. Recomendamos que
+você salve os dados dentro de uma pasta chamada **data** ou **dados**
+para manter o projeto organizado.
+
+Para importar um CSV para o R, utilize a função `read_csv()` do pacote
+`readr`.
+
+!!! warning " Fique atento com o lugar que você salvou os arquivos! "
+
+<br/>
+
+    library(readr)
+
+    banco_virgula <- read_csv('data/candidatos_sp_virgula.csv')
+
+e faça o download do banco de candidatos. O arquivo baixado vem no
+formato **zip** e contém os candidatos separados por Unidade Federativa.
+
+No caso, vamos nos ater ao `consulta_cand_2018_SP.csv` com os candidatos
+de São Paulo
+
 5. Exercício - Parte 2
 ----------------------
 
@@ -860,3 +871,33 @@ apertar “Esc”
     você pode dividí-los pela **mediana** ou pela **média**.
 
 ### Exercicio 5 - Importação de Dados
+
+<center>
+<table>
+<thead>
+<tr class="header">
+<th>Banco</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Candidatos das Eleições de 2018</td>
+<td><a href="http://agencia.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2018.zip">Download</a></td>
+</tr>
+<tr class="even">
+<td>Preço Médio de Combustíveis no Brasil</td>
+<td><a href="https://www.kaggle.com/matheusfreitag/gas-prices-in-brazil">Download</a></td>
+</tr>
+<tr class="odd">
+<td>Banco de Pokemons</td>
+<td><a href="https://www.kaggle.com/rounakbanik/pokemon">Download</a></td>
+</tr>
+<tr class="even">
+<td>Vagas de Emprego em Nova Iorque</td>
+<td><a href="https://www.kaggle.com/new-york-city/new-york-city-current-job-postings">Download</a></td>
+</tr>
+</tbody>
+</table>
+
+</center>
