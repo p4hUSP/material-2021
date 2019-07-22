@@ -1,5 +1,4 @@
-Introdução ao R
-===============
+# Introdução ao R
 
 Leituras recomendadas
 ---------------------
@@ -20,40 +19,54 @@ Leituras recomendadas
 O **R** é uma linguagem de programação que vem crescendo bastante nos
 últimos anos. Apesar de inicialmente ter como público estatísticos, a
 linguagem é uma das mais utilizadas para análise de dados nas mais
-diferentes frentes. A flexibilidade trazido por uma ínumera quantidade
+diferentes frentes. A flexibilidade trazido por uma inúmera quantidade
 de pacotes permite lidar não só com tabelas estilo Excel, mas também com
 texto, imagens, etc.
 
-Quando baixamos o **R** pela primera vez nos assustamos com a sua
+Quando baixamos o **R** pela primeira vez nos assustamos com a sua
 interface, pois ela não é das mais agradáveis.
 
 ![](imgs/r_console.png)
+
+### 1.1. RStudio
 
 Para solucionar isto e adicionar outras funcionalidades que melhoram a
 experiência de quem utiliza a linguagem, foi desenvolvido uma IDE
 (Ambiente de desenvolvimento integrado) chamada *RStudio*.
 
-### 1.1. RStudio
-
-O *RStudio* nada mais é que um software, que integrado com o R, permite
-uma interação melhor com os objetos e rotinas criados com o R. O
+O *RStudio* nada mais é que um *software*, que integrado com o R,
+permite uma interação melhor com os objetos e rotinas criados com o R. O
 programa tem quatro painéis/seções:
 
 ![](imgs/rstudio_print.png)
 
-    A - Console: Local na qual temos o R prompt e que podemos executar linha por linha (chamados de inputs). Além disso, é o local no qual os resultados (chamados de outputs) irão aparecer.
+**A - Console**: Local na qual temos o R prompt e que podemos executar
+linha por linha (chamados de *inputs*). Além disso, é o local no qual os
+resultados (chamados de *outputs*) irão aparecer.
 
-    B - File/Plots/Help: Nesta seção podemos ter acesso às pastas que estamos utilizando durante as nossas rotinas no software, além de visualizar os gráficos gerados a partir das análises e verificar a documentação de funções e pacotes, que explicaremos em breve.
+**B - File/Plots/Help**: Nesta seção podemos ter acesso às pastas que
+estamos utilizando durante as nossas rotinas no *software*, além de
+visualizar os gráficos gerados a partir das análises e verificar a
+documentação de funções e pacotes, que explicaremos em breve.
 
-    C - Workspace: Os valores gerados no R, como por exemplo, variáveis e tabelas que você definiu irão aparecer aqui, sobretudo, na aba Environment. E o histórico de códigos rodados na aba History. Veremos nas próximas aulas que a aba Connections é útil caso estejamos conectados com alguma base de dados externa, como por exemplo, Access ou PostgreSQL.
+**C - Workspace**: Os valores gerados no R, como por exemplo, variáveis
+e tabelas que você definiu irão aparecer aqui, sobretudo, na aba
+*Environment.* E o histórico de códigos rodados na aba *History.*
+Veremos nas próximas aulas que a aba *Connections* é útil caso estejamos
+conectados com alguma base de dados externa, como por exemplo, Access ou
+PostgreSQL.
 
-    D - Editor: Aqui é onde os scripts são escritos. Scripts nada mais são do que uma série de comandos salvos em um arquivo. Eles são úteis para mantermos a reprodutividade do código, portanto, sempre que formos utilziar o RStudio é recomendado escrever um script.
+**D - Editor**: Aqui é onde os scripts são escritos. Scripts nada mais
+são do que uma série de comandos salvos em um arquivo. Eles são úteis
+para mantermos a reprodutividade do código, portanto, sempre que formos
+utilizar o RStudio é recomendado escrever um *script.*
 
 Podemos então começar a escrever nossas primeiras linhas de código!
+:tada: :tada: :tada:
 
 ### 1.3. Abrindo um script
 
-1- Podemos começar um novo script do zero
+1- É possível um novo script.
 
 2 - Ou podemos abrir um script que já foi trabalhado
 
@@ -62,24 +75,24 @@ File → Open file → Aula1.R
 Atenção à extensão .R
 
 Num script tem linhas de comando e também linhas de comentários. Para
-marcarmos comentários basta colocarmos \# Dessa forma, o R não executará
-o que está escrito depois das aspas
+marcarmos comentários basta colocarmos `#`. Dessa forma, o R não
+executará o que está escrito depois das aspas
 
 ### 1.4. Algumas regras de boa conduta
 
 1.  Não escreva diretamente no console. Salve o seu código **sempre** em
-    um script. Assim conseguimos salvor todas as decisões tomadas
-    durante uma análise e pertmir com que uma outra pessoa também chegue
-    nos resultados que obtivermos.
+    um script. Assim conseguimos ter acesso a todas as decisões tomadas
+    durante uma análise e permitir com que uma outra pessoa também
+    chegue nos resultados que obtivermos.
 
 2.  **Nunca** sobreponha o banco de dados. Uma vez que você tem um
     *script*, não é preciso salvar as alterações já que você será capaz
     de reproduzir os resultados no futuro.
 
-3.  Comente o seu código. Lembre-se que outras pessoas irão ler o seu
-    código e que elas não fazem ideia do que passava na sua cabeça
+3.  Comente o seu código com `#`. Lembre-se que outras pessoas irão ler
+    o seu código e que elas não fazem ideia do que passava na sua cabeça
     quando você tomou algumas decisões. Além disso, o seu eu do futuro
-    irá agredecer um código bem documentado caso seja necessário
+    irá agradecer um código bem documentado caso seja necessário
     revisitá-lo.
 
 2. Nossas primeiras linhas de código
@@ -106,7 +119,7 @@ that exists is an object. • Everything that happens is a function call.”
 
 Dados são guardados dentro de objetos.
 
--   Objetos possuem diferentes formas de estruturas os dados:
+-   Objetos possuem diferentes formas de **estruturas** os dados:
 
     -   Vetores
 
@@ -114,7 +127,7 @@ Dados são guardados dentro de objetos.
 
     -   DataFrames
 
--   Objetos podem conter diferentes tipos de dados:
+-   Objetos podem conter diferentes **tipos** de dados:
 
     -   Números
 
@@ -157,10 +170,14 @@ resultado.
 #### 2.3.1. Lidando com números
 
 De certa maneira, estamos muito acostumados com esse tipo de dados. Você
-consegue pensar em algum exemplo? Os minutos passados entre o momento
-que você saiu de casa e chegou nesta sala de aula é exemplo. Além desse,
-podemso pensar na renda mensal da sua família, na quantidade de livros
-que você possui e assim por diante.
+consegue pensar em algum exemplo?
+
+-   Os minutos passados entre o momento que você saiu de casa e chegou
+    nesta sala de aula.
+
+-   Renda mensal da sua família.
+
+-   Quantidade de livros que você possui.
 
 Tipos numéricos podem ser divididos em **inteiros** (*integers*) e
 **reais** (*float*). Diferentemente de outras linguagens de programação,
@@ -175,21 +192,23 @@ você dificilmente terá que se preocupar com isso no R.
 Outro tipo de variável muito conhecida é o texto ou *string*. Para
 declaramos um texto no R podemos utilizar aspas simples (`''`) ou aspas
 duplas (`""`), mas lembre-se não podemos intercalar as aspas, como por
-exemplo, `'olá mundo"`.
+exemplo, `'olá mundo"`. Se começar um texto com aspas simples termine
+com aspas simples.
 
     "Vargas"
 
-    'Janio Quadros'
+    'Jânio Quadros'
 
     "1945"
 
 Perceba que devido ao fato de 1945 estar entre aspas, ele não é mais um
-dado do tipo número, mas sim texto.
+dado do tipo número, mas sim texto e sim isso é totalmente diferente de
+escrever apenas `1945`.
 
 #### 2.3.3. Lidando com fatores
 
-Vamos supor que estamos trabalhando com dados de survey e em uma das
-questões temos a escala likert, em que as respostas vão do “Discordo
+Vamos supor que estamos trabalhando com dados de *survey* e em uma das
+questões temos a *escala likert*, em que as respostas vão do “Discordo
 totalmente” até o “Concordo totalmente” contabilizando um total de 6
 categorias de resposta. Ocorre que para que o **R** entenda este tipo de
 dado como algo categórico, precisamos transformá-los em fatores
@@ -202,7 +221,7 @@ transformar em categorias.
     factor(c("Discordo totalmente", "Discordo parcialmente", "Indiferente", "Concordo parcialmente", "Concordo totalmente"))
 
 Diferente de quando executamos um dado tipo texto, os dados categóricos
-apresentam os níveis das categorias (levels). Perceba que as nossas
+apresentam os níveis das categorias (`levels`). Perceba que as nossas
 categorias não estão de acordo com o que a escala likert pressupõe e
 para arrumar este problema, precisamos definir os níveis através de um
 outro parâmetro da função `factor()` chamado `levels =`.
@@ -220,16 +239,19 @@ análise em um intervalo de tempo. Porém, números e textos não são
 suficientes para entender as regras impostas pelas datas, como por
 exemplo, “01/01/2019” é mais recente que “31/12/2018”.
 
-Iremos explorar esse assunto mais pra frente, pois existem formas mais
-eficientes de trabalhar com este tipo de dado, de qualquer forma um dado
-tipo data se apresenta da seguinte forma:
-
     Sys.Date()
 
 Parece uma variável texto, não? Porém se aplicarmos a função `str()`,
-que serve para vermos qual é o tipo do dado veremos que,
+que serve para vermos qual é o tipo do dado veremos que na verdade temos
+uma variável do tipo `Date`. Nem sempre teremos que nos preocupar com
+isso, mas caso você esteja querendo *plotar* uma série temporal essa
+transformação é bem importante.
 
     str(Sys.Date())
+
+Caso você tenha ficado curiosa, por baixo a variável `Date` é do tipo
+numérico e, por convenção, nada mais é do que a quantidade de segundos
+passados desde 1 de Janeiro de 1970.
 
 #### 2.3.5. Lidando com lógicos/booleanos
 
@@ -275,9 +297,9 @@ palpite de como um texto pode ser maior do que outro?
 
 O que são *missings* e por que existe um valor especial para eles?
 
-Existem dois tipos de valores missing, o `NA` (not avaible) e o `NaN`
-(not a number), ambos tem sentidos semelhantes, porém o primeiro é mais
-genérico para cada tipo de dado. Para sabermos se um certo dado é
+Existem dois tipos de valores missing, o `NA` (*not available*) e o
+`NaN` (*not a number*), ambos tem sentidos semelhantes, porém o primeiro
+é mais genérico para cada tipo de dado. Para sabermos se um certo dado é
 missing, utilizamos a função `is.na()`.
 
     is.na(NA)
@@ -323,7 +345,7 @@ As estruturas de dados são maneiras de organizar e guardar dados dentro
 da linguagem para que possamos trabalhar de forma mais eficiente. No
 nosso cotidiano utilizaremos três destas estruturas: **vetores**,
 **listas** e **dataframes**. Essas três estruturas podem ser dividas
-entre homogêneas e heterogênas. Mas o que isso significa? Basicamente
+entre homogêneas e heterogêneas. Mas o que isso significa? Basicamente
 diz respeito a quantidade de tipos de dados que ela pode receber, isto
 é, estruturas homogêneas só podem receber um tipo de dado, enquanto as
 estruturas heterogêneas podem receber mais de um tipo de dado.
@@ -434,7 +456,7 @@ dados heterogêneas. Você saberia dizer por que?
 
 Diferentemente do Excel, não podemos selecionar uma célula e alterar um
 dado. No R, para manipular e visualizar uma tabela precisamos utilizar
-fuções. Não se estresse caso nunca tenho ouvido falar delas. Pense
+funções. Não se estresse caso nunca tenho ouvido falar delas. Pense
 apenas que elas realizam alguma **ação**.
 
 Repare nos resultados das funções a seguir:
@@ -521,7 +543,7 @@ arquivos:
     Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_excel.xlsx)
 
 -   [Candidatos -
-    Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_stata.dta)
+    Stata](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_stata.dta)
 
 Às vezes, o navegador não irá fazer o download automaticamente e lhe
 mostrará uma tela repleta de caracteres. Calma! Clique com o botão
@@ -544,7 +566,7 @@ Para importar um CSV para o R, utilize a função `read_csv()` do pacote
 
 Se tudo tiver dado certo, agora você terá um `banco_virgula` no seu
 ambiente de variáveis. Mas nem sempre um banco de dados é separado por
-vírgula e mesmo assim ele pode ter a extenção `.csv`.
+vírgula e mesmo assim ele pode ter a extensão `.csv`.
 
 -   Bancos separados por ponto e vírgula `;`.
 
@@ -644,12 +666,12 @@ função `levantar()`, `beber_aguar()` e assim por diante. No R, o
 princípio é o mesmo e precisamos utilizar funções para executar
 quaisquer comandos que precisamos que sejam operados. Por exemplo,
 quando você executou `read_csv()`, você chamou um código que abre o
-arquivo específicado e estrutura cada linha dentro de um dataframe.
+arquivo especificado e estrutura cada linha dentro de um dataframe.
 
 Mas como uma função sabe sobre onde ela precisa operar? Como
 `read_csv()` sabia que precisava abrir aquele arquivo? Para isso,
 utilizamos **parâmetros**. Parâmetros alteram o comportamento das nossas
-funções e nos permitem especifícar, por exemplo, um arquivo para a
+funções e nos permitem especificar, por exemplo, um arquivo para a
 `read_csv()` escrevendo `read_csv('arquivo.csv')`.
 
 Vamos ver isso na prática com outra função bastante importante, a
@@ -705,19 +727,20 @@ pacote com o auxilio de uma função chamada `install_github()` do pacote
     install.packages("devtools")
                                                                        
     library(devtools)
-                                                                       
-    install_github("abjur/abjutils")
-                                                                       
-    library(abjutils)
+
+!!! question " Pacotes no GitHub "
+
+    Caso o seu pacote não esteja liberado no CRAN ou caso deseje ter acesso à versão de 
+    desenvolvimento, você irá precisar utilizar a função `install_github()` do pacote `devtools`
+    que recebe como parâmetro `<dono-do-pacote>/<nome-do-pacote>`. Por exemplo, `install_github("abjur/abjutils")`.
+    Não se esqueça de habilitar o `devtools` com a função `library(devtools)`.
 
 6. Controladores de Fluxo
 -------------------------
 
 É muito comum estabelecermos uma condição para tomar uma decisão, como
 por exemplo, ‘Porcentagem de votos maior que 50% pode significar
-vitória, caso contrário, derrota’. Além disso, muitas vezes precisamos
-percorrer diversos valores, como por exemplo, para cada eleição
-verificamos se o presidente eleito teve mais de 50% dos votos.
+vitória, caso contrário, derrota’.
 
 Para que possamos fazer isso, utilizaremos o `if/else` e o `for`!
 
@@ -737,16 +760,6 @@ A estrutura do if/else é a seguinte:
 
 Podemos interpretá-la da seguinte maneira: Se a condição for verdadeira,
 execute os comandos 1 e 2, caso contrário, execute os comandos 3 e 4.
-Pensando em algo menos abstrato podemos dizer que caso o candidato para
-o pletio tenha recebido mais de 50% dos votos, ele está eleito, caso
-contrário, ele perdeu a eleição.
-
-    porcentagem_de_votos <- 55
-    if(porcentagem_de_votos > 50){
-      print("Eleito")
-    } else {
-      print("Não eleito")
-    }
 
 ### 6.2. for
 
@@ -778,7 +791,7 @@ Vamos criar o seguinte `dataframe`:
 
 Nosso objetivo:
 
-> Criar uma terceira coluna com o *pip per capta* com um `for`
+> Criar uma terceira coluna com o *PIB per capta* com um `for`
 
     for(i in 1:nrow(tabela)){
       print(tabela$pib[i])
@@ -795,7 +808,7 @@ Vamos entender algumas coisas aqui,
     tabela.
 
 -   Uma vez que o `i` assumirá os valores de 1 até 6, podemos indexar o
-    vetor `tabela$pip[i]` com o `[i]` para obter o número do pip
+    vetor `tabela$pip[i]` com o `[i]` para obter o número do PIB
     correspondente a linha `i`. Dessa maneira podemos dividir
     `tabela$pip[i]` pela `tabela$pop[i]` e obter a \_renda per capta.
 
@@ -813,9 +826,9 @@ Por fim, nós podemos misturar o `for` com o `if` para obter um
 comportamento customizável dentro do nosso *loop*.
 
 Por exemplo, vamos criar uma classificação de PIB *per capta* entre alto
-e baixo. Para isso, iremos utlizar o 20 como o discriminador entre essas
-duas classes. Nesse sentido, se `pib_capta` for maior do que 20 devemos
-classificar
+e baixo. Para isso, iremos utilizar o 20 como o discriminador entre
+essas duas classes. Nesse sentido, se `pib_capta` for maior do que 20
+devemos classificar
 
     tabela$pip_capta_class <- NA # Criando uma coluna vazia
 
@@ -838,7 +851,7 @@ classificar
 7. Exercícios
 -------------
 
-### Exercicio 1 - Tipos de dados
+### Exercício 1 - Tipos de dados
 
 Execute os códigos abaixo e verifique se são dados válidos em R. Caso
 verdadeiro, informe o tipo de dado:
@@ -864,7 +877,7 @@ apertar “Esc”
 
 9.  `False`
 
-### Exercicio 2 - Manipulando variáveis
+### Exercício 2 - Manipulando variáveis
 
 1.  Altere o valor de `v_numero` para 42
 
@@ -884,7 +897,7 @@ apertar “Esc”
 
     `v_logical <- TRUE`
 
-### Exercicio 3 - Estruturas de Dados
+### Exercício 3 - Estruturas de Dados
 
 1.  Crie dois vetores:
 
@@ -930,15 +943,15 @@ apertar “Esc”
 
     -   O desvio padrão da altura (`sd()`)
 
-### Exercicio 4 - Controladores de Fluxo
+### Exercício 4 - Controladores de Fluxo
 
 1.  Imprima todas as alturas de `tabelas_colegas` com `for` e `print()`.
 
 2.  Crie uma classificação para a altura dos seus colegas com `for` e
     `if`. Não se preocupe com o valor utilizado. Contudo, case deseje,
-    você pode dividí-los pela **mediana** ou pela **média**.
+    você pode dividi-los pela **mediana** ou pela **média**.
 
-### Exercicio 5 - Importação de Dados
+### Exercício 5 - Importação de Dados
 
 1.  Escolha um dos bancos abaixo ou qualquer outro de seu interesse.
     Baixe o banco, utilize as funções para explorar as variáveis, retire
@@ -969,7 +982,7 @@ apertar “Esc”
 <td><a href="https://www.kaggle.com/matheusfreitag/gas-prices-in-brazil">Download</a></td>
 </tr>
 <tr class="odd">
-<td>Banco de Pokemons</td>
+<td>Banco de Pokemon</td>
 <td><a href="https://www.kaggle.com/rounakbanik/pokemon">Download</a></td>
 </tr>
 <tr class="even">
@@ -980,7 +993,7 @@ apertar “Esc”
 </table>
 
 </center>
-### Exercicio 6 - Desafio
+### Exercício 6 - Desafio
 
 Com o banco de dados do exercício anterior tente levantar algumas
 hipóteses sobre as relações de variáveis. Por exemplo, “eu acho que X
@@ -990,7 +1003,7 @@ Uma vez feito isso, tente:
 
 1.  Criar um gráfico que ressalte a relação entre essas variáveis.
 
-2.  Procure rodar um teste estatístico que pronha à prova a sua hipótese
+2.  Procure rodar um teste estatístico que ponha à prova a sua hipótese
     (Teste t, ANOVA, regressão linear, regressão logística, etc.).
 
 !!! question " Por onde começar? "
