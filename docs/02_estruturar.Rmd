@@ -35,20 +35,25 @@ A diagnóstico de doença cardiáca foi feita a partir de uma angiografia. Se ho
 | ca       | Número de vasos principais coloridos por _flourosopy_
 | target   | Diagnóstico de doença cardíaca (1 = Sim, 0 = Não)
 
-Vamos começar, então? Você lembra quais funções utilizamos para abrir um banco de dados?
+Vamos começar, então?
+
+- [Download do Banco](https://github.com/p4hUSP/material-bio/raw/master/docs/data/heart.xlsx)
+
+
+O banco hoje está em formato Excel. Você sabe qual função e pacote utilizamos para abrir esse arquivo?
+
 
 ```{r}
-library(readr)
+library(<pacote>)
 
-banco <- read_csv('data/heart.csv')
+banco <- read_<nome>(<caminho_do_arquivo>)
 ```
-
 
 ## 1. tidyr
 
 O `tidyr` é o pacote utilizado para estruturar os nossos bancos de dados. Em geral, ele pode ser utilizado para __unir__ (`unite`) e __separar__ (`separate`) colunas ou para __derreter__ (`gather`) e __esticar__ (`spread`) as colunas. 
 
-Esse pacote é contruído com base no conceito de `tidy data`. Deixar o seus dados `tidy` significa transformar a __estrutura__ dos dados de tal maneira que tenhamos observações nas linhas, variáveis nas colunas e valores nas células. Em geral, esperamos também que um banco `tidy` contenha apenas uma unidade de observação, granularidade, etc.
+Esse pacote é contruído com base no conceito de `tidy data`. Deixar os seus dados `tidy` significa transformar a __estrutura__ deles de tal maneira que tenhamos observações nas linhas, variáveis nas colunas e valores nas células. Em geral, esperamos também que um banco `tidy` contenha apenas uma unidade de observação, granularidade, etc.
 
 ![](imgs/r_tidy_data.png)
 <center>
@@ -60,25 +65,13 @@ Ilustração do Tidy Data (Fonte: http://statseducation.com)
     Trata-se da unidade contida nas linhas do seu banco. Por exemplo, se montarmos um banco de dados com 
     informações sobre __pessoas__ (altura, idade, peso, etc.) em cada linha teremos __pessoas__ como unidade de 
     observação.
-    
-    Tente imaginar a unidade de observação de informações como PIP, desemprego, entre outras coisas.s
+    Qual a unidade de observação do nosso banco?
 
 ### 1.1 separate
-
-- [Download do Banco](https://github.com/p4hUSP/material-bio/raw/master/docs/data/ramen-ratings.zip)
-
-Vamos começar abrindo o nosso banco. Repare que já estamos carregando o pacote `tidyr`.
 
 !!! warning \" Instalando pacotes \"
 
     Caso você não tenha o `tidyr` no seu computador, por favor, execute o código `install.packages('tidyr')`.
-
-```{r}
-library(readr)
-library(tidyr)
-
-banco <- read_csv('data/ramen-ratings.zip')
-```
 
 `separate()` é uma função do pacote `tidyr` que tem como objetivo __separar__ valores contidos em uma coluna. Às vezes, mais de uma informação é agrupado dentro da mesma coluna. Você consegue identificar no nosso banco de dados em qual coluna isso acontece?
 
