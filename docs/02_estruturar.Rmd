@@ -12,6 +12,38 @@ knitr::opts_chunk$set(fig.width=12,
                       eval=FALSE)
 ```
 
+Hoje, vamos trabalhar com um banco de dados sobre _doenças cardíacas_. O dado está disponível [UCI - Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Heart+Disease) e no [Kaggle](https://www.kaggle.com/ronitf/heart-disease-uci/downloads/heart-disease-uci.zip/1). Os responsáveis pelo estudo foram as seguintes entidades:
+
+1. Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.
+2. University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.
+3. University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.
+4. V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D. 
+
+A diagnóstico de doença cardiáca foi feita a partir de uma angiografia. Se houvesse estreitamento maior do que 50% para pelo menos um vaso sanguíneo principal, o paciente foi classificado como portador de doença cardiáca. Caso contrário, o paciente não foi diagnosticado com a doença. 
+
+| Variável | Descrição
+| -------- | ---------
+| age      | Idade
+| sex      | Sexo
+| cp       | Tipo de dor no peito
+| trestbps | Pressão sanguínea (mm Hg) em descanso
+| chol     | Colesterol (mg/dl)
+| fbs      | Açúcar no sangue em jejum maior do que 120mg/dl (1 = Sim, 0 = Não)
+| restecg  | Resultados eletrocardiográficos em repouso
+| thalach  | Maior rítmo cardíaco atingido
+| exang    | Angina induzida por exercício
+| ca       | Número de vasos principais coloridos por _flourosopy_
+| target   | Diagnóstico de doença cardíaca (1 = Sim, 0 = Não)
+
+Vamos começar, então? Você lembra quais funções utilizamos para abrir um banco de dados?
+
+```{r}
+library(readr)
+
+banco <- read_csv('data/heart.csv')
+```
+
+
 ## 1. tidyr
 
 O `tidyr` é o pacote utilizado para estruturar os nossos bancos de dados. Em geral, ele pode ser utilizado para __unir__ (`unite`) e __separar__ (`separate`) colunas ou para __derreter__ (`gather`) e __esticar__ (`spread`) as colunas. 
