@@ -31,12 +31,6 @@ jobs:
       - name: Install Ubuntu Dependencies
         run: sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev
 
-      - name: Install R Dependencies
-        run: |
-          install.packages(c("remotes", "tidyverse", "rmarkdown"))
-          remotes::install_deps(dependencies = TRUE)
-        shell: Rscript {0}
-
       - name: Install Mkdocs Dependencies
         uses: actions/checkout@v2
       - uses: actions/setup-python@v2
