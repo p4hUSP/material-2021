@@ -1,6 +1,6 @@
 
-if (!require('rmarkdown')) {
-  install.packages('rmarkdown')
+if (!require('rmarkdown') || !require('tidyverse')) {
+  install.packages(c('rmarkdown', 'tidyverse'))
 }
 
 files = list.files('docs', pattern = '*.Rmd', full.names = TRUE)
