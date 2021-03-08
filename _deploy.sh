@@ -3,5 +3,5 @@
 set -e
 
 Rscript create_markdowns.R
-mkdocs gh-deploy
+mkdocs gh-deploy --force
 rm -f docs/*.md
