@@ -1,55 +1,38 @@
 # Project information
-site_name: 'P4H - Material'
-site_description: 'Material para cursos de programação e análise de dados'
-site_author: 'P4H'
-site_url: 'https://p4husp.github.io/material-bio/'
+site_name: P4H - Material
+site_description: Material para cursos de programação e análise de dados
+site_author: P4H
+site_url: https://p4husp.github.io/material-2021/
 
 # Repository
-repo_name: 'p4husp/material-bio'
-repo_url: 'https://github.com/p4hUSP/material-bio'
+repo_name: p4husp/material-2021
+repo_url: https://github.com/p4hUSP/material-2021
 # Copyright
-copyright: 'Copyright &copy; 2019 Programação para Humanidades'
+copyright: Copyright &copy; 2021 Programação para Humanidades
 
 # Configuration
 theme:
-  name: 'material'
-  language: 'pt'
+  name: material
+  language: pt
   palette:
-    primary: 'indigo'
-    accent: 'indigo'
+    primary: white
+    accent: red
   font:
-    text: 'Roboto'
-    code: 'Roboto Mono'
+    text: Roboto
+    code: Roboto Mono
 
 extra:
-  search:
-    language: 'en, pt'
   social:
-    - type: 'github'
-      link: 'https://github.com/p4husp'
-    - type: 'facebook'
-      link: 'https://facebook.com/p4husp'
+    - icon: fontawesome/brands/github
+      link: https://github.com/p4husp
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/p4husp
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/p4husp
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/p4husp
 
-# Extensions
 markdown_extensions:
+  - meta
   - admonition
-  - codehilite:
-      guess_lang: true
-  - toc:
-      permalink: true
-  - pymdownx.arithmatex
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
+  - pymdownx.highlight
