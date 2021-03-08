@@ -12,20 +12,39 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           r-version: '4.0.4'
+
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
+
+      - name: Cache R packages
+        if: runner.os != 'Windows'
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
       - name: Install Ubuntu Dependencies
         run: sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Install R Dependencies
         run: |
           install.packages(c("remotes", "tidyverse", "rmarkdown"))
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
+
       - name: Install Mkdocs Dependencies
         uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
       - run: pip install mkdocs-material
-      - name: Check
+
+      - name: Deploy
         run: |
           chmod +x _deploy.sh
           ./_deploy.sh
