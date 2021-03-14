@@ -28,56 +28,72 @@ knitr::opts_chunk$set(fig.width=12,
 
 ### 1.1. Linguagem de programação R
 
-O __R__ é uma linguagem de programação que vem crescendo bastante nos últimos anos. Apesar de inicialmente ter como público estatísticos, a linguagem é uma das mais utilizadas para análise de dados nas mais diferentes frentes. A flexibilidade trazido por uma inúmera quantidade de pacotes permite lidar não só com tabelas estilo Excel, mas também com texto, imagens, etc.
+O __R__ é uma linguagem de programação que vem crescendo bastante nos últimos anos. Apesar de inicialmente ter como público estatísticos, ela é cada vez mais utilizada para análise de dados nas mais diferentes áreas. A flexibilidade trazido por uma inúmera quantidade de pacotes permite lidar não só com tabelas estilo Excel, mas também com texto, imagens, etc.
 
-Quando baixamos o __R__ pela primeira vez nos assustamos com a sua interface, pois ela não é das mais agradáveis.
+Porém, podemos nos sentir intimidados quando vemos o __R__ pela primeira vez. Quando baixamos o __R__ pela primeira vez nos assustamos com a sua interface.
 
 ![](imgs/r_console.png)
 
-### 1.1. RStudio
+### 1.2. RStudio
 
-Para solucionar isto e adicionar outras funcionalidades que melhoram a experiência de quem utiliza a linguagem, foi desenvolvido uma IDE (Ambiente de desenvolvimento integrado) chamada _RStudio_.
-
-O _RStudio_ nada mais é que um _software_, que integrado com o R, permite uma interação melhor com os objetos e rotinas criados com o R. O programa tem quatro painéis/seções:
+Contudo, não se assuste. No geral, utilizamos o __RStudio__ para criar os nossos
+_scripts_ de R, que contêm o passo-a-passo das nossas análises. RStudio é conhecido como
+uma IDE (Ambiente de Desenvolvimento Integrado) e facilita a gestão de projetos escritos
+em R, com seções específicas para cada funcionalidade.
 
 ![](imgs/rstudio_print.png)
 
-
-__A - Console__: Local na qual temos o R prompt e que podemos executar linha por linha (chamados de _inputs_). Além disso, é o local no qual os resultados (chamados de _outputs_) irão aparecer.
+__A - Console__: Local na qual temos o console do R. No console, podemos executar
+os comandos que iremos ver logo a frente. Além disso, é o local no qual os resultados 
+de nossos comandos irão aparecer.
     
-__B - File/Plots/Help__: Nesta seção podemos ter acesso às pastas que estamos utilizando durante as nossas rotinas no _software_, além de visualizar os gráficos gerados a partir das análises e verificar a documentação de funções e pacotes, que explicaremos em breve.
+__B - File/Plots/Help__: Nesta seção podemos ter acesso às pastas que estamos utilizando durante as nossas rotinas no R, além de visualizar os gráficos gerados a partir das análises e verificar a documentação de funções e pacotes, que explicaremos em breve.
     
 __C - Workspace__: Os valores gerados no R, como por exemplo, variáveis e tabelas que você definiu irão aparecer aqui, sobretudo, na aba _Environment._ E o histórico de códigos rodados na aba _History._ Veremos nas próximas aulas que a aba _Connections_ é útil caso estejamos conectados com alguma base de dados externa, como por exemplo, Access ou PostgreSQL.
     
-__D - Editor__: Aqui é onde os scripts são escritos. Scripts nada mais são do que uma série de comandos salvos em um arquivo. Eles são úteis para mantermos a reprodutividade do código, portanto, sempre que formos utilizar o RStudio é recomendado escrever um _script._
-    
-Podemos então começar a escrever nossas primeiras linhas de código! :tada: :tada: :tada:
+__D - Editor__: Seção na qual iremos passar a maior parte do nosso tempo. Nela, 
+escrevemos os nossos _scripts_. _scripts_ são arquivos de texto que contêm o nosso
+código R. 
 
-### 1.3. Abrindo um script
+Não se preocupe caso tenha achado um pouco confuso, vamos escrever algumas linhas de código
+e você irá se familiarizar com o processo conforme tentar por você mesmo!
 
-1- É possível um novo script.
+### 1.3. Nosso primeiro projeto
 
-2 - Ou podemos abrir um script que já foi trabalhado
+Recomendamos você sempre começar um projeto criando um projeto (dãã). Isso é essencial
+e nos ajuda a evitar ter vários _scripts_ espalhados pelo nosso computador. 
 
-File →  Open file  → Aula1.R       
+Clique em `File -> New Project -> New Directory -> New Project`
 
-Atenção à extensão .R
+![](imgs/r_create_project.png)
 
-Num script tem linhas de comando e também linhas de comentários.
-Para marcarmos comentários basta colocarmos `#`. 
-Dessa forma, o R não executará o que está escrito depois das aspas
+### 1.4. Nosso primeiro _script_
 
-### 1.4. Algumas regras de boa conduta
+No canto superior esquerdo, clique em `File →  Open file`. Repare que isso irá 
+criar uma aba `Untitled1`. Vamos salvá-la como `Aula1.R`. Para isso, pressione
+`Ctrl + S` e digite `Aula1.R`
 
-1. Não escreva diretamente no console. Salve o seu código __sempre__ em um script. Assim conseguimos ter acesso a todas as decisões tomadas durante uma análise e permitir com que uma outra pessoa também chegue nos resultados que obtivermos.
+### 1.5. Algumas regras de boa conduta
 
-2. __Nunca__ sobreponha o banco de dados. Uma vez que você tem um _script_, não é preciso salvar as alterações já que você será capaz de reproduzir os resultados no futuro.
+1. Não escreva diretamente no console. Salve o seu código __sempre__ em um _script_.
+Assim conseguimos ter acesso a todas as decisões tomadas durante uma análise e 
+permitir com que uma outra pessoa também chegue nos resultados que obtivermos.
 
-3. Comente o seu código com `#`. Lembre-se que outras pessoas irão ler o seu código e que elas não fazem ideia do que passava na sua cabeça quando você tomou algumas decisões. Além disso, o seu eu do futuro irá agradecer um código bem documentado caso seja necessário revisitá-lo.
+2. __Nunca__ sobreponha o banco de dados. Uma vez que você tem um _script_, 
+não é preciso salvar as alterações já que você será capaz de reproduzir os 
+resultados no futuro.
+
+3. Comente o seu código com `#`. Lembre-se que outras pessoas irão ler o seu código
+e que elas não fazem ideia do que passava na sua cabeça quando você tomou algumas decisões. 
+Além disso, o seu eu do futuro irá agradecer um código bem documentado caso seja 
+necessário revisitá-lo.
 
 ## 2. Nossas primeiras linhas de código
 
-Uma das funcionalidades mais básicas do __R__ é realização de operações matemáticas. Se estamos digitando os comandos em um _script_, basta colocarmos o cursor do mouse na linha do código e apertar `Ctrl + Enter` e o resultado sairá no Console, assim como já havíamos mencionado.
+Uma das funcionalidades mais básicas do __R__ é realização de operações matemáticas. 
+Se estamos digitando os comandos em um _script_, basta colocarmos o cursor do mouse 
+na linha do código e apertar `Ctrl + Enter` e o resultado sairá no Console, assim
+como já havíamos mencionado.
 
 ```{r}
 3 + 1 # Soma
@@ -89,16 +105,20 @@ Uma das funcionalidades mais básicas do __R__ é realização de operações ma
 5 / 2 # Divisão
 ```
 
-### 2.1. Objetos e atribuições I
+### 2.1. Objetos e Atribuições
+!!! cite \"\"
 
-“To understand computations in R, two slogans are helpful:
-• Everything that exists is an object.
-• Everything that happens is a function call."
-— John Chambers
+    "To understand computations in R, two slogans are helpful:
+    
+    • Everything that exists is an object.
+    
+    • Everything that happens is a function call."
+    
+    — John Chambers
 
 Dados são guardados dentro de objetos.
 
-- Objetos possuem diferentes formas de __estruturas__ os dados:
+- Objetos possuem diferentes formas de __estruturar__ os dados:
 
   + Vetores
 
@@ -119,20 +139,23 @@ Dados são guardados dentro de objetos.
 Quando fizemos as operações matemáticas, não salvamos os nossos resultados. Logo, caso quiséssemos acessar novamente, por exemplo, o resultado de `3 + 1`, seria necessário digitar novamente `3 + 1` e efetuar a operação. Contudo, é possível salvar os resultados em variáveis e, ao fazer referência a essas variáveis, obter outro resultado.
 
 ```{r}
-
 3 + 1
 
 a <- 3 + 1
 
-a * 2
+c <- a * 2
 
-b <- ("Hello, world")
+# Qual o valor de C?
+
+b <- c("Olá mundo!")
 
 b
 
-dado <- c(1,2,3,4,5,6)
+# Qual o valor de B?
 
-dado
+vetor <- c(1, 2, 3, 4, 5, 6)
+
+vetor
 ```
 
 ### 2.3. Tipos de dados
@@ -144,7 +167,7 @@ dado
 *Tipos de Dados no R (Fonte: https://www.wikitechy.com)*
 </center>
 
-#### 2.3.1. Lidando com números
+#### 2.3.1. Variáveis do tipo numérico
 
 De certa maneira, estamos muito acostumados com esse tipo de dados. Você consegue pensar em algum exemplo? 
 
@@ -154,7 +177,7 @@ De certa maneira, estamos muito acostumados com esse tipo de dados. Você conseg
 
 - Quantidade de livros que você possui.
 
-Tipos numéricos podem ser divididos em __inteiros__ (_integers_) e __reais__ (_float_). Diferentemente de outras linguagens de programação, você dificilmente terá que se preocupar com isso no R. 
+Pras pessoas curiosas, tipos numéricos podem ser divididos em __inteiros__ (_integers_) e __reais__ (_float_). Diferentemente de outras linguagens de programação, você dificilmente terá que se preocupar com isso no R. 
 
 ```{r}
 3 # numero inteiro
@@ -162,9 +185,13 @@ Tipos numéricos podem ser divididos em __inteiros__ (_integers_) e __reais__ (_
 55.4 # numero real
 ```
 
-#### 2.3.2. Lidando com texto
+#### 2.3.2. Lidando com variáveis do tipo `string` (texto)
 
-Outro tipo de variável muito conhecida é o texto ou _string_. Para declaramos um texto no R podemos utilizar aspas simples (`''`) ou aspas duplas (`""`), mas lembre-se não podemos intercalar as aspas, como por exemplo, `'olá mundo"`. Se começar um texto com aspas simples termine com aspas simples.
+!!! note \"\"
+
+    No R, não há diferença entre variável do tipo `char` e do tipo `string`. Todos são conhecidos como variáveis do tipo `character`.
+
+Outro tipo de variável muito conhecida é o texto ou _string_. Para declaramos um texto no R podemos utilizar aspas simples (`''`) ou aspas duplas (`""`), mas lembre-se __não__ podemos intercalar as aspas, como por exemplo, `'olá mundo"`. Se começar um texto com aspas simples termine com aspas simples.
 
 ```{r}
 "Vargas"
@@ -180,7 +207,7 @@ Outro tipo de variável muito conhecida é o texto ou _string_. Para declaramos 
 
 Perceba que devido ao fato de 1945 estar entre aspas, ele não é mais um dado do tipo número, mas sim texto e sim isso é totalmente diferente de escrever apenas `1945`.
 
-#### 2.3.3. Lidando com fatores
+#### 2.3.3. Lidando com variáveis do tipo `factor` (variáveis categóricas)
 
 Vamos supor que estamos trabalhando com dados de _survey_ e em uma das questões temos a _escala likert_, em que as respostas vão do "Discordo totalmente" até o "Concordo totalmente" contabilizando um total de 6 categorias de resposta. Ocorre que para que o __R__ entenda este tipo de dado como algo categórico, precisamos transformá-los em fatores (_factors_).
 
@@ -190,7 +217,7 @@ Para fazer essa transformação, utilizaremos uma função chamada `factor()` qu
 factor(c("Discordo totalmente", "Discordo parcialmente", "Indiferente", "Concordo parcialmente", "Concordo totalmente"))
 ```
 
-Diferente de quando executamos um dado tipo texto, os dados categóricos apresentam os níveis das categorias (`levels`). Perceba que as nossas categorias não estão de acordo com o que a escala likert pressupõe e para arrumar este problema, precisamos definir os níveis através de um outro parâmetro da função `factor()` chamado `levels = `.
+Diferente de quando executamos um dado tipo texto, os dados categóricos apresentam os níveis das categorias (`levels`). Perceba que as nossas categorias não estão de acordo com o que a escala _likert_ pressupõe e para arrumar este problema, precisamos definir os níveis através de um outro parâmetro da função `factor()` chamado `levels = `.
 
 ```{r}
 factor(c("Discordo totalmente", "Discordo parcialmente", "Indiferente", "Concordo parcialmente", "Concordo totalmente"),
@@ -207,13 +234,15 @@ Muitas vezes precisamos lidar com data, como por exemplo, filtrar nossa análise
 Sys.Date()
 ```
 
-Parece uma variável texto, não? Porém se aplicarmos a função `str()`, que serve para vermos qual é o tipo do dado veremos que na verdade temos uma variável do tipo `Date`. Nem sempre teremos que nos preocupar com isso, mas caso você esteja querendo _plotar_ uma série temporal essa transformação é bem importante.
+Parece uma variável texto, não? Porém se aplicarmos a função `class()`, que serve para verificarmos o tipo de uma variável, podemos ver que se trata de uma variável do tipo `Date`. Nem sempre teremos que nos preocupar com isso, mas caso você esteja querendo _plotar_ uma série temporal essa transformação é bem importante.
 
 ```{r}
-str(Sys.Date())
+class(Sys.Date())
 ```
 
-Caso você tenha ficado curiosa, por baixo a variável `Date` é do tipo numérico e, por convenção, nada mais é do que a quantidade de segundos passados desde 1 de Janeiro de 1970.
+
+!!! note \"Curiosidade\"
+    Caso você tenha ficado curiosa, por baixo a variável `Date` é do tipo numérico e, por convenção, nada mais é do que a quantidade de segundos passados desde 1 de Janeiro de 1970.
 
 #### 2.3.5. Lidando com lógicos/booleanos
 
@@ -254,13 +283,22 @@ Outras variações utilizadas são o maior ou igual (`>=`) e o menor ou igual (`
 "FFLCH" == "ICB"
 ```
 
-Não iremos introduzir essa ideia aqui, mas caso seja de interesse também podemos utilizar as noções de maior e menor para textos. Você teria um palpite de como um texto pode ser maior do que outro?
+!!! question \"Qual texto é maior?\"
+    Na sua opinião, qual é o resultado de `"Acre" > "São Paulo"`?
+    
+Na prática, podemos utilizar essas operações para filtrar o nosso banco de dados. Imagine, por exemplo, que você possui um banco de dados das eleições municipais realizadas no Brasil em 2020, mas que quisesse apenas o resultado do Rio de Janeiro. 
+Mediante uma operação booleana, podemos fazer algo como `cidade == "Rio de Janeiro"` e selecionar apenas o resultado dessa cidade.
 
-#### 2.3.6. Valores ausentes/ missings
+#### 2.3.6. Valores Ausentes ou Missing
 
-O que são _missings_ e por que existe um valor especial para eles?
+O que são _missing_ e por que existe um valor especial para eles? _Missing_ representam valores desconhecidos. Imagine que, durante uma pesquisa sobre preferência política, a pessoa entrevistada se recusa a responder a pergunta "Você votou na última eleição?". O fato dela se recusar não significa que ela não tenha votada. Nós simplesmente não sabemos e precisamos representar isso nos nossos dados para tratarmos esses casos eventualmente.
 
-Existem dois tipos de valores missing, o `NA` (_not available_) e o `NaN` (_not a number_), ambos tem sentidos semelhantes, porém o primeiro é mais genérico para cada tipo de dado. Para sabermos se um certo dado é missing, utilizamos a função `is.na()`.
+!!! note \"Tipos de _missing_\"
+
+    Existem dois tipos de valores missing, o `NA` (_not available_) e o `NaN` (_not a number_), ambos 
+    tem sentidos semelhantes, porém o primeiro é mais genérico para cada tipo de dado. 
+
+Para sabermos se um certo dado é _missing_, utilizamos a função `is.na()`.
 
 ```{r}
 is.na(NA)
@@ -278,38 +316,47 @@ NA == NA
 
 ### 3.1. Tipos de Dados
 
-Marque verdadeiro ou falso. Caso verdadeiro, informe o tipo de dado:
+Quais os tipos de cada variável apresentada abaixo?
 
-Obs: Caso apareça "+" no seu console ao testar as afirmações, basta apertar "Esc"
+!!! warning ""
+    Caso apareça "+" no seu console ao testar as afirmações, basta apertar "Esc"
 
-1. `33,5`
+1. `33.5`
 
-2. `"Olá mundo"`
+2. `20`
 
-3. `"O 'R' é uma linguagem legal"`
+2. `"Olá mundo!"`
 
-4. `"O 'R é uma linguagem legal"`
+3. `factor("oi", levels = c("oi", "tchau"))`
 
-5. `"O 'R é uma linguagem legal'`
+4. `TRUE`
 
-6. `400e+10`
+5. `FALSE`
 
-7. `factor("oi", levels = c("oi", "tchau"))`
+### 3.2. Encontre o erro
 
-8. `TRUE`
+Verifique se as expressões abaixo são válidas ou não. Caso não sejam, reescreva-as de maneira que sejam válidas.
 
-9. `FALSE`
+!!! warning ""
+    Caso apareça "+" no seu console ao testar as afirmações, basta apertar "Esc"
 
+1. `22,2`
 
-## 4. Estrutura de dados
+2. `'O 'R' é uma linguagem legal"`
 
-As estruturas de dados são maneiras de organizar e guardar dados dentro da linguagem para que possamos trabalhar de forma mais eficiente. No nosso cotidiano utilizaremos três destas estruturas: __vetores__, __listas__ e __dataframes__. Essas três estruturas podem ser dividas entre homogêneas e heterogêneas. Mas o que isso significa? Basicamente diz respeito a quantidade de tipos de dados que ela pode receber, isto é, estruturas homogêneas só podem receber um tipo de dado, enquanto as estruturas heterogêneas podem receber mais de um tipo de dado.
+3. `"O 'R é uma linguagem legal"`
+
+4. `"O 'R é uma linguagem legal'`
+
+## 4. Estruturas de dados
+
+As estruturas de dados são maneiras de organizar e guardar dados dentro da linguagem para que possamos trabalhar de forma mais eficiente. No nosso cotidiano utilizaremos três destas estruturas: __vetores__ e __dataframes__.
 
 ![](imgs/r_data_structures.png)
 
 ### 4.1. Vetores (atômicos)
 
-Um vetor atômico é a estrutura mais básica no R; é um vetor de dados homogêneo com apenas uma dimensão. Imagine o vetor como um três em que os valores estão ordenados em posições (primeiro, segundo, terceiro) e que todos os valores contidos por ele precisam ser do mesmo tipo.
+Um vetor atômico é a estrutura mais básica no R; é um vetor de dados homogêneo com apenas uma dimensão. Imagine o vetor como um trem cujos valores estão ordenados e são __obrigatoriamente__ do mesmo tipo (`numeric`).
 
 <br/>
 
@@ -334,12 +381,15 @@ Perceba então que para construir um vetor basta colocarmos os valores dentro de
 
 #### 4.1.1. Indexando vetores
 
-Dado que criamos objetos, podemos acessar os valores específicos a partir da posição dentro do vetor. No exemplo anterior, você poderia ter pedido para o R lhe responder quem está na segunda posição. Como fazer isso? basta salvar o vetor em uma variável e color `[2]`
+!!! warning ""
+    Se você tem experiência com programação, o R é diferentão dentro desse mundo. Todas as estruturas são indexadas a partir do valor `1`, ou seja, para acessar o primeiro valor de um vetor, você executará algo como `vetor[1]`.
+
+Podemos acessar os valores específicos de um vetor a partir da posição dele nessa estrutura. No exemplo anterior, você poderia ter pedido para o R lhe retornasse quem está na segunda posição. Para isso, basta utilizar `trem[2]` como no exemplo a seguir.
 
 ```{r}
 trem <- c(120, 29, 191, 18, 39)
 
-trem[1]
+trem[2]
 ```
 
 Para indexarmos mais de um elemento podemos indexar de duas formas. Logo se quiséssemos o número de pessoas no terceiro e quarto vagão:
@@ -352,53 +402,21 @@ trem[3:4]
 
 O que acontece se você utilizar `[3:5]`?
 
-```{r}
+```r
 trem[3:5]
 ```
 
-### 4.2. Listas
+### 4.2. Dataframes
 
-Em geral, dificilmente utilizamos as listas de maneira pura. Contudo, entender o funcionamento dela é essencial para pegar os fundamentos de uma outra estrutura de dados.
-
-Vamos montar um guarda-roupa com três gavetas:
-
-- Primeira gaveta: 3 meias
-
-- Segunda gaveta: 5 camisetas com logotipo que vai de 1 até 5
-
-- Terceira gaveta: uma caixa com dois relógios
-
-Uma forma de representar este guarda-roupa é por meio de uma lista!
-
-```{r}
-lista <- list(c("Meia 1", "Meia 2", " Meia 3"), c(1, 2, 3, 4, 5), list(c("Relogio 1", "Relogio 2")))
-```
-
-Listas são parecidas com vetores atômicos, porém elas podem conter vetores de qualquer tipo (numéricos, lógicos, texto) e até mesmo outras listas.
-
-#### 4.2.1. Indexando
-
-Apesar de parecido com um vetor atômico, a indexação tem alguns aspectos diferentes! Quando indexamos um vetor, obtemos o elemento a partir de `[]` em que dentro colocamos a posição de interesse, porém, se fizermos o mesmo com a lista é como se abríssemos apenas a gaveta, mas não acessamos o que está dentro dela. Ou seja, para acessar o elemento da lista precisamos utilizar `[[]]`.
-
-```{r}
-lista[1] # Obtendo a posicao da lista
-
-lista[[1]] # Obtendo os elementos da lista
-
-lista[[1]][1]
-
-lista[[3]][[1]] # Obtendo o elemento da lista dentro de outra lista
-```
-
-### 4.3. Dataframes
-
-Se você já utilizou uma planilha de Excel o DataFrame não possui quase nada de diferente. Assim como as listas, data frames são estruturas de dados heterogêneas. Você saberia dizer por que?
+O __dataframe__ é semelhante a uma planilha de Excel ou Google Sheets. Ela é uma representação feita dentro do R 
+para estruturas que possuem linhas e colunas. As colunas, no geral, serão as nossas variáveis, as informações sobre uma determinada unidade observacional (pessoas, estados, países, etc.), enquanto cada linha representa uma observação. Por exemplo, caso fizéssemos um __dataframe__ com informações sobre os países do mundo, cada linha seria um país e cada coluna uma informação sobre esse ele.
 
 ```{r}
 tabela <- data.frame(ano = c(2014, 2014, 2015, 2015, 2016, 2016),
                      pais = c('Brasil', 'China', 'Brasil', 'China', 'Brasil', 'China'),
                      pib = c(100,130, 110, 140, 160, 170),
                      pop = c(3, 8, 4, 9, 6, 14))
+
 tabela
 ```
 
@@ -424,7 +442,7 @@ dim(tabela) # dimensões
 
 #### 4.3.1. Indexando 
 
-Assim como data frames, a indexação também tem mais de uma dimensão, isto é, primeiro indexamos a linha e depois a coluna, como por exemplo:
+Para indexar __dataframes__, você precisa levar em conta a característica bidimensional dessa estrutura de dados. Uma `tabela` será indexada com `tabela[linha, coluna]`.
 
 ```{r}
 tabela[1, 2] # Primeira linha, segunda coluna
@@ -440,15 +458,17 @@ tabela[1:3,] # Linhas de 1 até 3, todas as colunas
 tabela[,2:4] # todas as linhas, colunas de 2 até 4
 ```
 
-Como estamos lidando com tabelas também podemos indexar com o nome das colunas
+Como __dataframes__ possuem colunas e as colunas, nomes, podemos utilizar o nome das colunas para selecioná-las.
 
 ```{r}
-tabela[,"pais"]
+tabela[,"pais"] # Todas as linhas da coluna "pais"
 
-tabela[2,"pais"]
+tabela[2,"pais"] # O valor da segunda linha e da coluna "pais"
+
+tabela[, c("pais", "pib")] # Todas as linhas das colunas "pais" e "pib"
 ```
 
-Por fim também podemos indexar utilizando o operador `$` seguido do nome da coluna.
+Por fim, também podemos indexar utilizando o operador `$` seguido do nome da coluna.
 
 ```{r}
 tabela$pib
@@ -476,19 +496,19 @@ Você sabia que o TSE (Tribunal Superior Eleitoral) libera diversos dados sobre 
 
 Que tal tentar baixar o banco de candidatos? Para isso, baixe os arquivos:
 
-- [Candidatos - CSV](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_virgula.csv) 
+- [Candidatos - CSV](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_virgula.csv) 
 
-- [Candidatos - CSV2](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_pontovigula.csv) 
+- [Candidatos - CSV2](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_pontovigula.csv) 
 
-- [Candidatos - TAB](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_tab.csv) 
+- [Candidatos - TAB](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_tab.csv) 
 
-- [Candidatos - Arroba](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_arroba.csv) 
+- [Candidatos - Arroba](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_arroba.csv) 
 
-- [Candidatos - Excel](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_excel.xlsx) 
+- [Candidatos - Excel](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_excel.xlsx) 
 
-- [Candidatos - Stata](https://github.com/p4hUSP/material-bio/raw/master/docs/data/candidatos_sp_stata.dta) 
+- [Candidatos - Stata](https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_stata.dta) 
 
-Às vezes, o navegador não irá fazer o download automaticamente e lhe mostrará uma tela repleta de caracteres. Calma! Clique com o botão direito na tela e selecione a opção __Save Page As...__. Recomendamos que você salve os dados dentro de uma pasta chamada __data__ ou __dados__ para manter o projeto organizado.
+Às vezes, o navegador não irá fazer o download automaticamente (normalmente isso ocorre no Firefox) e lhe mostrará uma tela repleta de caracteres. Calma! Clique com o botão direito na tela e selecione a opção __Save Page As...__. Recomendamos que você salve os dados dentro de uma pasta chamada __data__ ou __dados__ para manter o projeto organizado.
 
 Para importar um CSV para o R, utilize a função `read_csv()` do pacote `readr`.
 
@@ -559,7 +579,7 @@ banco_stata <- read_stata('data/candidatos_sp_stata.dta')
 
 ### 5.1. DataFrames
 
-1. Crie um dataframe com o nome, idade e filme preferido dos seus colegas de turma.
+1. Crie um dataframe com o "nome", "idade" e "filme" preferido dos seus colegas de turma.
 
 !!! question \" Como criar um dataframe? \"
     
@@ -567,13 +587,7 @@ banco_stata <- read_stata('data/candidatos_sp_stata.dta')
     como parâmetros para cada coluna que desejamos criar. Por exemplo, se você quiser criar uma dataframe com
     uma lista de números basta executar `data.frame(lista_numeros = c(1,2,3,4,5,6,7))`
 
-2. Crie uma lista composta por 3 elementos.
-
-    - Faça um script que documente o passo a passo da criação do dataframe.
-
-    - Como podemos saber o conteúdo do segundo elemento da lista? Utilze a __indexação__.
-
-3. No R temos, bancos para fins didáticos. Para utilizá-los basta usar a função data. Para esse exercícios utilizaremos o banco mtcars. Execute `data(mtcars)`. Repare que agora você pode acessar o banco `mtcars` da mesma maneira que fizemos anteriormente com outros dataframes.
+2. No R temos, bancos para fins didáticos. Para utilizá-los basta usar a função data. Para esse exercícios utilizaremos o banco mtcars. Execute `data(mtcars)`. Repare que agora você pode acessar o banco `mtcars` da mesma maneira que fizemos anteriormente com outros dataframes.
 
     - Visualize o banco. Do que se trata?
 
@@ -867,7 +881,6 @@ tabela_colegas <- data.frame(nome = <completar>,
 
 </center>
 
-
 ### Exercício 6 - Desafio
 
 Com o banco de dados do exercício anterior tente levantar algumas hipóteses sobre as relações de variáveis. Por exemplo, "eu acho que X causa Y". Anote todas essas hipóteses.
@@ -883,5 +896,6 @@ Uma vez feito isso, tente:
     Existe um pacote de visualização de dados muito famoso para o R chamado `ggplot2`. 
     Quanto ao teste estatístico, o R possuí todos os testes citados implementados, ou seja, você não 
     precisa baixar um pacote para aplicá-los. Tente procurar na _internet_. Existem referências tanto
-    em português quanto em inglês.
+    em [português](https://paternogbc.github.io/guia_ggplot2/grafico-de-barras.html) quanto em
+    [inglês](https://r4ds.had.co.nz/data-visualisation.html).
 
