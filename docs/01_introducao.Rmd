@@ -318,7 +318,7 @@ NA == NA
 
 Quais os tipos de cada variável apresentada abaixo?
 
-!!! warning ""
+!!! warning \"\"
     Caso apareça "+" no seu console ao testar as afirmações, basta apertar "Esc"
 
 1. `33.5`
@@ -337,7 +337,7 @@ Quais os tipos de cada variável apresentada abaixo?
 
 Verifique se as expressões abaixo são válidas ou não. Caso não sejam, reescreva-as de maneira que sejam válidas.
 
-!!! warning ""
+!!! warning \"\"
     Caso apareça "+" no seu console ao testar as afirmações, basta apertar "Esc"
 
 1. `22,2`
@@ -759,7 +759,7 @@ print(tabela)
 ```
 
 
-!!! highlight \"    __PARABÉNS!!!__ :tada: :tada: :tada: \"
+!!! highlight \" __PARABÉNS!!!__ :tada: :tada: :tada: \"
 
     Enfim, após esse breve resumos de conceitos básicos de programação você será capaz de interagir com
     pacotes com uma vasta variedade de pacotes, além de conseguir desenvolver as próprias soluções
@@ -898,4 +898,3 @@ Uma vez feito isso, tente:
     precisa baixar um pacote para aplicá-los. Tente procurar na _internet_. Existem referências tanto
     em [português](https://paternogbc.github.io/guia_ggplot2/grafico-de-barras.html) quanto em
     [inglês](https://r4ds.had.co.nz/data-visualisation.html).
-
