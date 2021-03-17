@@ -187,9 +187,9 @@ Pras pessoas curiosas, tipos numéricos podem ser divididos em __inteiros__ (_in
 
 #### 2.3.2. Lidando com variáveis do tipo `string` (texto)
 
-!!! note \"\"
-
-    No R, não há diferença entre variável do tipo `char` e do tipo `string`. Todos são conhecidos como variáveis do tipo `character`.
+!!! note \"Variável `char`no R\"
+    No R, não há diferença entre variável do tipo `char` e do tipo `string`. 
+    são conhecidos como variáveis do tipo `character`.
 
 Outro tipo de variável muito conhecida é o texto ou _string_. Para declaramos um texto no R podemos utilizar aspas simples (`''`) ou aspas duplas (`""`), mas lembre-se __não__ podemos intercalar as aspas, como por exemplo, `'olá mundo"`. Se começar um texto com aspas simples termine com aspas simples.
 
