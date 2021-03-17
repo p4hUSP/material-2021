@@ -354,7 +354,7 @@ As estruturas de dados são maneiras de organizar e guardar dados dentro da ling
 
 ![](imgs/r_data_structures.png)
 
-### 4.1. Vetores (atômicos)
+### 4.1. Vetores
 
 Um vetor atômico é a estrutura mais básica no R; é um vetor de dados homogêneo com apenas uma dimensão. Imagine o vetor como um trem cujos valores estão ordenados e são __obrigatoriamente__ do mesmo tipo (`numeric`).
 
@@ -381,7 +381,7 @@ Perceba então que para construir um vetor basta colocarmos os valores dentro de
 
 #### 4.1.1. Indexando vetores
 
-!!! warning ""
+!!! warning \"\"
     Se você tem experiência com programação, o R é diferentão dentro desse mundo. Todas as estruturas são indexadas a partir do valor `1`, ou seja, para acessar o primeiro valor de um vetor, você executará algo como `vetor[1]`.
 
 Podemos acessar os valores específicos de um vetor a partir da posição dele nessa estrutura. No exemplo anterior, você poderia ter pedido para o R lhe retornasse quem está na segunda posição. Para isso, basta utilizar `trem[2]` como no exemplo a seguir.

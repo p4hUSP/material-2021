@@ -14,32 +14,40 @@ knitr::opts_chunk$set(fig.width=12,
 
 As visualizações gráficas são muito importantes para transmitir informações. Podemos dizer até que ela é fundamental para análise de dados, nos ajudando a responder questões, tomar decisões, contar histórias e até mesmo inspirar. Veremos não só como fazer estas visualizações, mas também a entender quando elas podem ser necessárias.
 
-Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas porém utilizando um banco de dados sobre diabetes no povo Pima, nativos dos EUA e que vivem na parte sul do estado de Arizona. Para ter mais contexto do dado que iremos trabalhar, o povo Pima foram foco de estudos devido à alta presença de diabetes tipo 2, causado sobretudo, pela mudança da agricultura tradicional para comidas processadas.
+Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas utilizando informações do SAT, um teste utilizado nos EUA para admissão em universidades. Para ter mais contexto, queremos entender quais distritos tiveram as melhores e piores notas para enviar pesquisadores para entenderem os motivos pelos quais estas notas foram boas/ruins.
 
-O banco de dados possuí 768 mulheres com 8 variáveis:
+O banco de dados possuí 411 entradas com 15 variáveis:
 
-| Variável                  | Descrição
-| ------------------------- | ---------
-| Pregnancies               | Número de gravidezes
-| Glucose                   | Concetração de plasma glucose
-| BloodPressure             | Pressão Sanguínea (mm Hg)
-| SkinThickness             | Espessura da dobra da pele do tríceps (mm)
-| Insulin                   | Insulina (mu U/ml)
-| BMI                       | Indíce de Massa corpórea (IMC)
-| DiabetesPedigreeFunction  | Diabetes pedigree function
-| Age                       | Idade (anos)
-| Outcome                   | Variável que indica de a pessoa tem ou não diabetes (1 = Sim, 0 = Não)
+| Variável                         | Descrição
+| -------------------------------- | -------------------------------------------
+| dbn                              | Código de identificação da escola
+| school_name                      | Nome da Escola
+| num_of_sat_test_takers           | Número de testes realizados 
+| critical_reading_mean            | Nota média em Leitura critica
+| math_mean                        | Nota média em matemática
+| writing_mean                     | Nota média em escrita
+| location_name                    | Localização
+| location_code                    | Código de localização
+| address                          | Endereço
+| geographical_district_code       | Código geográfico do distrito
+| postcode                         | Código postal
+| latitude                         | Latitude
+| longitude                        | Longitude
 
 Vamos aprender a fazer visualizacões?
 
-- [Download do Banco](https://github.com/p4hUSP/material-bio/raw/master/docs/data/diabetes2.csv)
+- [Download do Banco]()
 
-Sempre é bom recaptular. Para abrir este banco vamos precisar usar qual pacote?
+Sempre é bom recaptular. Para abrir este banco de dados podemos utilizar qual pacote?
 
 ```{r}
 library(<pacote>)
-
 banco <- read_<nome>(<caminho_do_arquivo>)
+```
+
+```{r}
+library(readr)
+banco <- read_csv2("data/schools_sat.csv")
 ```
 
 ## 1. ggplot2 
@@ -48,16 +56,14 @@ Antes de irmos diretamente para as visualizações vamos habilitar alguns pacote
 
 ```{r}
 library(dplyr)
-
 library(ggplot2)
-
-#install.packages("corrplot")
-library(corrplot)
+# install.packages("Amelia")
+library(Amelia)
 ```
 
-Habilitamos dois pacotes novos, o `ggplot2` e o `corrplot`. O primeiro deles é o principal pacote para visualizações no R, possibilitando criar gráficos exatamente da forma que você quiser, sobretudo, porque ele funciona em um esquema de layers.
+Habilitamos dois pacotes novos, o `ggplot2` e o `Amelia`. O primeiro deles é o principal pacote para visualizações no R, possibilitando criar gráficos exatamente da forma que você quiser, sobretudo, porque ele funciona em um esquema de layers.
 
-O segundo pacote é feito para visualizarmos correlações entre variáveis. Apesar dele não fazer parte do `ggplot2`, é uma otíma alternativa para matrizes de correlação.
+O segundo pacote é feito para visualizarmos valores ausentes entre variáveis, também chamado de `NA`. Apesar dele não fazer parte do `ggplot2`, é uma otíma alternativa identificarmos valores ausentes.
 
 Mas antes vamos tratar de entender a nossa base de dados e fazer algumas manipulações nela.
 
@@ -67,43 +73,62 @@ A primeira coisa que iremos fazer é aplicar a função `glimpse()` do `dplyr`. 
 glimpse(banco)
 ```
 
-Pode-se notar que todas as variáveis parecem ok, apenas uma que precisa ser alterada, qual seria?
+Pode-se notar que todas as variáveis parecem ok! Será mesmo?
 
 <br/>
 
-Se você pensou em Outcome, esta correta(o)! Temos que transformar esta variável em fator (categórica), vamos lá?
+Se você notou temos uma variável que não deveria estar aí, a X15. Além disso, vamos investigar se nosso dado possui valores ausentes? 
 
 ### Exercício
 
-1. Transforme a variável `Outcome` em fator.
+1. Remova a variável X15.
 
 ```{r}
 banco <- banco %>% 
-  mutate(Outcome = factor(Outcome, levels = c(0, 1), labels = c("Nao", "Sim")))
+  select(-X15)
 ```
 
-Vamos agora criar uma variável que categoriza as idades em grupos? E que tal também categorizar o BMI?
+Vamos verificar os valores ausentes do nosso banco?
 
 ```{r}
-banco <- banco %>% 
-  mutate(categoria_idade = case_when(Age %in% c(21:34) ~ "21-34",
-                                     Age %in% c(35:49) ~ "35-49",
-                                     Age >= 50 ~ "50 ou mais"),
-         categoria_bmi = case_when(BMI < 18.5 ~ "Underweight",
-                                   BMI >= 18.5 & BMI < 25 ~ "Normal weight",
-                                   BMI >= 25 & BMI < 30 ~ "Overweight",
-                                   BMI >= 30 & BMI < 35 ~ "Obesity Class 1",
-                                   BMI >= 35 & BMI < 40  ~ "Obesity Class 2",
-                                   BMI >= 40 ~ "Extreme Obesity Class 3"),
-         categoria_idade = factor(categoria_idade, levels = c("21-34", "35-49", "50 ou mais")),
-         categoria_bmi = factor(categoria_bmi, levels = c("Underweight", "Normal weight", "Overweight", "Obesity Class 1",
-                                "Obesity Class 2", "Extreme Obesity Class 3")))
+Amelia::missmap(banco)
 ```
 
-!!! warning \" Instalando pacotes \"
+AHA! Temos valores ausentes em três variáveis, sendo elas, `math_mean`, `writing_mean` e `num_sat_test_takers`. Vamos então remover estas entradas!
 
-    Preste atenção se você escreveu corretamente e não esqueceu da vírgula.
+2. Filtre apenas por valores que não possuem NA
+
+```{r}
+banco <- banco %>% filter(is.na(math_mean) == FALSE, is.na(writing_mean) == FALSE, is.na(num_of_sat_test_takers) == FALSE)
+
+Amelia::missmap(banco)
+```
     
+3. Calcule a média por escola (media_escola) a partir das notas de matemática, escrita e leitura critíca. E partir disso, classifique se a media_escola é MAIOR ou MENOR que a media_global (transforme o resultado em fator)
+
+```{r}
+media_global <- mean(c(banco$math_mean, banco$writing_mean, banco$critical_reading_mean))
+
+banco <- banco %>% 
+  group_by(dbn) %>% 
+  mutate(media_escola = mean(c(math_mean, writing_mean, critical_reading_mean)),
+         categorizacao_media = case_when(media_escola >= media_global ~ "MAIOR",
+                                         media_escola < media_global ~ "MENOR"),
+         categorizacao_media = factor(categorizacao_media, levels = c("MAIOR", "MENOR"))) %>% 
+  ungroup()
+```
+
+4. Por fim, temos 32 distritos na nossa base de dados, vamos agregar estes dados em quatro distritos agregados. Isto é, do distrito um até o oito, teremos o distrito 1 e assim por diante. (Transforme o resultado em fator)
+
+```{r}
+banco <- banco %>% 
+  mutate(macro_distrito = case_when(geographical_district_code %in% c(1:8) ~ "distrito_1",
+                                    geographical_district_code %in% c(9:16) ~ "distrito_2",
+                                    geographical_district_code %in% c(17:24) ~ "distrito_3",
+                                    geographical_district_code %in% c(25:32) ~ "distrito_4"),
+         macro_distrito = factor(macro_distrito, levels = c("distrito_1", "distrito_2", "distrito_3", "distrito_4")))
+```
+
 Agora que alteramos e criamos algumas variáveis vamos conhecer o `ggplot2`.
 
 ## ggplot2
@@ -156,13 +181,13 @@ ggplot()
 Depois, nós precisamos decidir que dados iremos utilizar e quam vai ser o eixo x e o eixo y.
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = BMI, y = DiabetesPedigreeFunction))
+ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola))
 ```
  
 Em seguida, escolhemos qual é melhor forma /estrutura para visualizar os dados.
  
 ```{r}
-ggplot(data = banco, mapping = aes(x = BMI, y = DiabetesPedigreeFunction)) + 
+ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola)) + 
   geom_point()
 ```
  
@@ -173,7 +198,7 @@ ggplot(data = banco, mapping = aes(x = BMI, y = DiabetesPedigreeFunction)) +
 Simples, não? Apesar disso, precisamos entender alguns conceitos que vimos ao montar este gráfico, como por exemplo, colocamos os eixos x e y dentro de uma função chamada `aes()`. Ela é uma função responsável pela propriedade visual dos objetos no gráfico, em outras palavras, ela faz o "mapeamento" das variáveis do nosso banco de dados para que eles possam fazer parte dos elementos visuais do gráfico.
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = BMI, y = DiabetesPedigreeFunction, color = categoria_idade)) + 
+ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola, color = macro_distrito)) + 
   geom_point()
 ```
 
@@ -183,27 +208,26 @@ Vamos ver outros `geom_`?
 
 ### geom_col()
 
-Para fazer este geom, eu vou manipular a base de dados para contar quantos são aqueles que possuem diabetes. Além disso, vou chamar essa nova tabela de `tab1`
+Para fazer este geom, eu vou manipular a base de dados para contar quantas escolas estão em cada macro distrito. Além disso, vou chamar essa nova tabela de `tab1`
 
 ```{r}
 # chame esta tabela de banco para que possamos fazer outras manipulações
 tab1 <- banco %>% 
-  group_by(Outcome) %>% 
+  group_by(categorizacao_media) %>% 
   summarise(n = n())
-
 tab1
 ```
 
 Vamos para o geom_col()
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = Outcome, y = n)) + geom_col()
+ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n)) + geom_col()
 ```
 
 Vamos brincar um pouco com os argumentos estéticos que o ggplot2 permite?
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = Outcome, y = n)) + geom_col(fill = "red", width = 0.5)
+ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n)) + geom_col(fill = "red", width = 0.5)
 ```
 
 #### Exercício
@@ -211,33 +235,33 @@ ggplot(data = tab1, mapping = aes(x = Outcome, y = n)) + geom_col(fill = "red", 
 1. Aplique os parâmetros para mudar a cor (color), o tamanho (size) e o formato (shape) dos pontos do gráfico abaixo:
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = Age, y = BloodPressure)) + geom_point()
+ggplot(data = banco, mapping = aes(x = math_mean, y = writing_mean)) + geom_point()
 ```
 
 ### geom_histogram()
 
-Se quisermos ver a distribuição de uma variável quantitativa, podemos utilizar o `geom_histogram()`! Qual será a distribuição da variável SkinThickness?
+Se quisermos ver a distribuição de uma variável quantitativa, podemos utilizar o `geom_histogram()`! Qual será a distribuição da variável critical_reading_mean?
 
 ```{r}
-ggplot(banco, aes(x = SkinThickness)) + geom_histogram(bins = 20)
+ggplot(banco, aes(x = critical_reading_mean)) + geom_histogram(bins = 20)
 ```
 
 Lembre-se que também podemos colocar outros atribuitos estéticos!
 
 ```{r}
-ggplot(banco, aes(x = SkinThickness)) + geom_histogram(bins = 20, color = "blue", fill = "green")
+ggplot(banco, aes(x = critical_reading_mean)) + geom_histogram(bins = 20, color = "blue", fill = "green")
 ```
 
 ### geom_boxplot() e geom_violin()
 
-Se nós tivermos uma variável quantitativa e qualitativa, podemos utilizar o `geom_boxplot` e o `geom_violin`! Qual a distribuição do speechiness por album?
+Se nós tivermos uma variável quantitativa e qualitativa, podemos utilizar o `geom_boxplot` e o `geom_violin`! Qual a distribuição da média de nota por macro distrito?
 
 ```{r}
-ggplot(banco, aes(x = categoria_bmi, y = Glucose)) + geom_boxplot(fill = "#444054", color = "#cc3f0c")
+ggplot(banco, aes(x = macro_distrito, y = media_escola)) + geom_boxplot(fill = "#444054", color = "#cc3f0c")
 ```
 
 ```{r}
-ggplot(banco, aes(x = categoria_bmi, y = Glucose)) + geom_violin(fill = "#8c1c13", alpha = 1/2)
+ggplot(banco, aes(x = categorizacao_media, y = num_of_sat_test_takers)) + geom_violin(fill = "#8c1c13", alpha = 1/2)
 ```
 
 ### geom_line()
@@ -246,19 +270,19 @@ Para esses exemplo vamos criar a tabela abaixo primeiro:
 
 ```{r}
 tab2 <- banco %>% 
-  group_by(categoria_idade) %>% 
-  summarise(media_gravidez = mean(Pregnancies))
+  group_by(geographical_district_code) %>% 
+  summarise(media_test_takers = mean(num_of_sat_test_takers))
 ```
 
-Apesar de mais utilizado para séries temporais, podemos utilizar um gráfico de linhas para pensar na diferença presente nas idades quanto a média de gravidez.
+Apesar de mais utilizado para séries temporais, podemos utilizar um gráfico de linhas para pensar na diferença presente nos micro distritos quanto a média de alunos fazendo o teste
 
 ```{r}
-ggplot(data = tab2, mapping = aes(x = categoria_idade, y = media_gravidez)) + geom_line(group = 1)
+ggplot(data = tab2, mapping = aes(x = geographical_district_code, y = media_test_takers)) + geom_line(group = 1)
 ```
 
 #### Exercício
 
-1. Incluia um geom_point() no gráfico acima e altere sua cor de acordo com cada categorização de idade.
+1. Incluia um geom_point() no gráfico acima e altere sua cor de acordo com cada categorização de macro distritos.
 
 E se quisermos mudar a cor da categorização para algo que gostamos mais? Para fazer isso vamos incluir mais uma camada no nosso gráfico, a camada de scale.
 
@@ -267,13 +291,17 @@ E se quisermos mudar a cor da categorização para algo que gostamos mais? Para 
     Se você tem dúvida de qual cor pode combinar melhor com outra, tem um [site](https://coolors.co/app) bem bacana que pode te ajudar nisso.
 
 ```{r}
-ggplot(data = tab2, mapping = aes(x = categoria_idade, y = media_gravidez)) + geom_line(group = 1) + geom_point(aes(color = categoria_idade), size = 10) + scale_color_manual(values = c("#ff1053", "#6c6ea0", "#66c7f4"))
+tab3 <- banco %>% 
+  group_by(macro_distrito) %>% 
+  summarise(media_test_takers = mean(num_of_sat_test_takers))
+
+ggplot(data = tab3, mapping = aes(x = macro_distrito, y = media_test_takers)) + geom_line(group = 1) + geom_point(aes(color = macro_distrito), size = 10) + scale_color_manual(values = c("#ff1053", "#6c6ea0", "#66c7f4", "#3299a8"))
 ```
 
 Neste caso utilizamos o `scale_color_manual` pois queriamos preencher as cores de acordo com o que colocamos no paramêtro `color`. Se tivessemos escolhido o `fill` teriamos que utilizar `scale_fill_manual`.
 
 ```{r}
-ggplot(banco, aes(x = categoria_bmi, y = Glucose, fill = categoria_bmi)) + geom_boxplot(color = "#cc3f0c") + scale_fill_manual(values = c("#ff1053", "#6c6ea0", "#66c7f4", "#3a606e", "#7b4b94", "#8a1c7c", "#5bc0eb"))
+ggplot(banco, aes(x = categorizacao_media, y = num_of_sat_test_takers, fill = categorizacao_media)) + geom_boxplot(color = "#cc3f0c") + scale_fill_manual(values = c("#ff1053","#66c7f4"))
 ```
 
 O `ggplot2` também possibilita a utilização de outros sistemas de coordenadas, como por exemplo:
@@ -281,57 +309,28 @@ O `ggplot2` também possibilita a utilização de outros sistemas de coordenadas
 - `coord_flip`
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = Outcome, y = n, fill = Outcome)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip()
+ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n, fill = categorizacao_media)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip()
 ```
 
 - `coord_polar`
 
 ```{r}
 tab3 <- banco %>% 
-  group_by(Outcome) %>% 
+  group_by(macro_distrito) %>% 
   summarise(n = n()) %>% 
   mutate(p = n/sum(n))
-
-ggplot(data = tab3, mapping = aes(x = factor(1), y = p, fill = Outcome)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_polar(theta = 'y')
+ggplot(data = tab3, mapping = aes(x = factor(1), y = p, fill = macro_distrito)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0", "#10f7ff", "#ff8810")) + coord_polar(theta = 'y')
 ```
 
 Dica: Tome cuidado com o `coord_polar`! Ás vezes, para não dizer sempre, eles podem dificultar a visualização dos dados, sobretudo, aqueles com muitas categorias.
 
-Antes de vermos gráficos de correlação, vamos dar um título para nosso gráfico?
+Vamos dar um título para nosso gráfico?
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = Outcome, y = n, fill = Outcome)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip() +
-  labs(title = "Aproximadamente 1 a cada 3 tem diabetes",
-       x = "Quantidade", 
-       y = "Diabetes",
-       caption = "Pima Diabetes")
+ggplot(data = tab3, mapping = aes(x = factor(1), y = p, fill = macro_distrito)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0", "#10f7ff", "#ff8810")) + coord_polar(theta = 'y') +
+  labs(title = "Distribuição de Macro Distritos",
+       x = "EIXO X", 
+       y = "EIXO Y",
+       caption = "SAT DATA") +
+  theme_bw()
 ```
-
-## 2. corrplot
-
-Muitas vezes precisamos analisar a correlação entre as variáveis e um dos melhores pacotes para isso é o `corrplot`. Vamos começar selecionando apenas as variáveis quantitativas.
-
-```{r}
-tab4 <- banco %>% 
-  select(-Outcome, -categoria_idade, -categoria_bmi)
-```
-
-Vamos primeiro criar uma matriz de correlação e após isto podemos começar a criar nossos gráficos.
-
-```{r}
-matriz_correlacao <- cor(tab4)
-
-corrplot(matriz_correlacao, method = 'circle')
-
-corrplot(matriz_correlacao, method = 'square')
-
-corrplot(matriz_correlacao, method = 'number')
-
-corrplot(matriz_correlacao, method = 'square', type = "upper")
-
-corrplot(matriz_correlacao, method = 'square', type = "lower")
-
-corrplot.mixed(matriz_correlacao)
-```
-
-
