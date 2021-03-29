@@ -1,0 +1,366 @@
+---
+title: "Visualizacao"
+author: "P4H"
+output: md_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12,
+                      fig.height=8,
+                      warning=FALSE,
+                      message=FALSE,
+                      eval=FALSE)
+```
+
+As visualizações gráficas são muito importantes para transmitir informações. Podemos dizer até que ela é fundamental para análise de dados, nos ajudando a responder questões, tomar decisões, contar histórias e até mesmo inspirar. Veremos não só como fazer estas visualizações, mas também a entender quando elas podem ser necessárias.
+
+Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas utilizando informações de corridas de taxi em NYC. *Para ter mais contexto, estamos desenvolvendo uma nova feature/solução de incentivo para os usuários*. Para isso precisamos entender quais grupos utilizam mais a nossa plataforma.
+
+O banco de dados possuí 166.355 entradas com 18 variáveis:
+
+| Variável                         | Descrição
+| -------------------------------- | -------------------------------------------
+|  id                              | Identificação da corrida
+|  date_pickup                     | Data de entrada no veículo
+|  hour_pickup                     | Hora de entrada no veículo
+|  dayweek_pickup                  | Dia da semana de entrada no veículo
+|  date_dropoff                    | Data de saida do veículo
+|  hour_dropoff                    | Hora de saida do veículo
+|  dayweek_dropoff                 | Dia da semana de saida do veículo
+|  passenger_count                 | Quantos passageiros estavam no carro
+|  pickup_latitude                 | Latitude de entrada no carro
+|  pickup_longitude                | Longitude de entrada no carro
+|  dropoff_latitude                | Latitude de saida do carro
+|  dropoff_longitude               | Longitude de saida do carro
+|  duration                        | Duração da corrida (em segundos)
+|  distance                        | Distância da corrida (em milhas)
+|  rating                          | Nota da corrida
+|  age                             | Idade do passageiro que pediu a corrida
+|  price                           | Preço final da corrida
+|  comments                        | Comentários ao final da corrida
+
+Vamos aprender a fazer visualizacões?
+
+- [Download do Banco]()
+
+Sempre é bom recaptular. Para abrir este banco de dados podemos utilizar qual pacote?
+
+```{r}
+library(<pacote>)
+banco <- read_<nome>(<caminho_do_arquivo>)
+```
+
+```{r}
+library(readr)
+banco <- read_csv("taxirides_sample.csv")
+```
+
+## 1. ggplot2 
+
+Antes de irmos diretamente para as visualizações vamos habilitar alguns pacotes:
+
+```{r}
+library(tidyverse)
+#install.packages("Amelia")
+library(Amelia)
+```
+
+Habilitamos dois pacotes novos, o `ggplot2` e o `Amelia`. O primeiro deles é o principal pacote para visualizações no R, possibilitando criar gráficos exatamente da forma que você quiser, sobretudo, porque ele funciona em um esquema de layers.
+
+O segundo pacote é feito para visualizarmos valores ausentes entre variáveis, também chamado de `NA`. Apesar dele não fazer parte do `ggplot2`, é uma otíma alternativa identificarmos valores ausentes.
+
+Mas antes vamos tratar de entender a nossa base de dados e fazer algumas manipulações nela.
+
+A primeira coisa que iremos fazer é aplicar a função `glimpse()` do `dplyr`. Elas nos possibilita ver as nossas variáveis sem precisar abrir o banco inteiro.
+
+```{r}
+glimpse(banco)
+```
+
+Pode-se notar que todas as variáveis parecem ok! Será mesmo?
+
+<br/>
+
+Se você notou temos duas variável que não deveria estar aí, a X14 e a X15. Além disso, vamos investigar se nosso dado possui valores ausentes? 
+
+### Exercício
+
+1. Remova as variáveis X14 e X15. Depois filtre: para uma duração menor ou igual a 1000 segundos; e distancia menor do que 100 milhas. Este filtro é para restringirmos mais a nossa análise dado a quantidade de dados.
+
+```{r}
+banco <- banco %>% 
+  select(-X14,-X15) %>% 
+  filter(duration <= 1000, 
+         distance <= 100)
+```
+
+Vamos verificar os valores ausentes do nosso banco?
+
+```{r}
+Amelia::missmap(banco)
+```
+
+AHA! Temos valores ausentes na coluna `comments`. Vamos removê-la!
+
+2. Filtre apenas por valores que não possuem NA
+
+```{r}
+banco <- banco %>% select(-comments)
+
+Amelia::missmap(banco)
+```
+    
+3. Calcule a média do preço (media_global) das corridas. E partir disso, classifique se o preço de cada corrida é Maior ou Menor que a media_global (transforme o resultado em fator)
+
+```{r}
+media_global <- mean(banco$price)
+
+banco <- banco %>% 
+  mutate(categoria_preco = ifelse(price >= media_global, "Maior", "Menor"),
+         categoria_preco = factor(categoria_preco, levels = c("Maior", "Menor"))) 
+
+head(banco)
+```
+
+4. Por fim, temos uma variável chamada `age`. Transforme ela em conjunto de categorias utilizando a função `case_when()` e depois transforme o resultado em fator
+
+```{r}
+banco %>% 
+  summarise(min = min(age),
+            max = max(age))
+  
+
+banco <- banco %>% 
+  mutate(categoria_idade = case_when(age %in% c(18:24) ~ "18_24",
+                                   age %in% c(25:34) ~ "25_34",
+                                   age %in% c(35:44) ~ "35_44",
+                                   age %in% c(45:54) ~ "45_54",
+                                   age %in% c(55:65) ~ "55_65"),
+         categoria_idade = factor(categoria_idade, levels = c("18_24", "25_34", "35_44", "45_54", "55_65")))
+
+banco %>% 
+  count(categoria_idade)
+```
+
+Agora que alteramos e criamos algumas variáveis vamos conhecer o `ggplot2`.
+
+## ggplot2
+
+O ggplot2 é um pacote baseado no que se chamou Grammar of Graphics (por isso gg antes do plot2), que nada mais é do que uma estrutura (framework) para realização de gráficos, que nós também chamamos de "plot". Além disso, o Grammar of Graphics tem o seguinte principio:
+
+!!! question \" Layers \"
+
+    Gráficos são construídos com diferentes **layers**
+
+Mas o que são **layers**? Layers são elementos (ou componentes) gramáticais utilizados para fazer um plot. Estes componentes são importantes para determinar a representação dos dados. Como o Hadley Wickham apontou em um artigo chamado "A layered grammar of graphics" (2010), a associação destes layers com uma certa grámatica auxilia o usuário em atualizar e contruir gráficos com uma facilidade maior.
+
+Os elementos gramáticais que temos no `ggplot2` são:
+
+a. Data - O dado que será plotado, mapeando as variáveis de interesse.
+
+b. Aesthetics - A escala em que o dado será plotado, sinalizando os eixos x e y, cor, tamanho, preenchimento e etc.
+
+c. Geom - Estrutura que será utilizada nos seus dados, como por exemplo, gráfico de dispersão, linha, boxplot e etc.
+
+d. Facets - plotar multiplos grupos
+
+e. Stats - Transformações estatísticas
+
+f. Coordinates System - O espaço no qual o dado sera plotado, como por exemplo, espaço cartesiano, polar e entre outros.
+
+g. Theme - Controle e modificação de aparência de tudo que não diz respeito ao dado utilizado.
+
+h. Scales - Para cada Aesthetics, descreve como a característica visual é convertida em valores, como por exemplo, escala por tamanho, cor e etc.
+
+É muito importante destacar que __as camadas (layers) podem aparecer em qualquer sequencia ao fazermos um gráfico e que a única camada necessária para começar um gráfico é a partir da função ggplot()__.
+
+![](https://raw.githubusercontent.com/p4hUSP/workshops_2018.2/master/imgs/w3_03.png)
+<center>
+Os layers do ggplot2 (Fonte: DataCamp)
+</center>
+
+## Como fazer um gráfico no `ggplot2`
+
+Vamos fazer um exercício de imaginação? Como nós faríamos um gráfico sem o R? Que tal um papel? Qual o passo a passo que poderíamos fazer?
+
+<br/>
+
+No R é semelhante. Primeiro precisamos de um papel:
+
+```{r}
+ggplot()
+```
+
+Depois, nós precisamos decidir que dados iremos utilizar e quam vai ser o eixo x e o eixo y.
+
+```{r}
+ggplot(data = banco, mapping = aes(x = duration , y = distance))
+```
+ 
+Em seguida, escolhemos qual é melhor forma /estrutura para visualizar os dados.
+ 
+```{r}
+ggplot(data = banco, mapping = aes(x = duration , y = distance)) + 
+  geom_point()
+```
+ 
+!!! question \" Qual é a diferença do + para o %>%  \"
+
+    Como vimos o pipe serve para deixarmos a linguagem mais linear, servindo como um conector entre as funções, porém isso não funciona com o `ggplot2`. O motivo pode ser pensado até de forma mais intuitiva: No ggplot2 estamos adicionando camadas com o sinal de mais enquanto com o `%>%` estamos dando uma sequência de ações, isto é, funções.
+    
+Simples, não? Apesar disso, precisamos entender alguns conceitos que vimos ao montar este gráfico, como por exemplo, colocamos os eixos x e y dentro de uma função chamada `aes()`. Ela é uma função responsável pela propriedade visual dos objetos no gráfico, em outras palavras, ela faz o "mapeamento" das variáveis do nosso banco de dados para que eles possam fazer parte dos elementos visuais do gráfico.
+
+```{r}
+ggplot(data = banco, mapping = aes(x = duration , y = distance, color = categoria_idade)) + 
+  geom_point()
+```
+
+Perceba que o `color = categoria_idade` afeta o `geom` que utilizamos de acordo com a variável de interesse, mas veremos adiante que também podemos alterar tanto um `geom` especificamente, quanto a cor do gráfico.
+
+    Antes de explorarmos outros geoms, que hipóteses podemos levantar desse gráfico?
+
+Vamos ver outros `geom_`?
+
+### geom_col()
+
+Para fazer este geom, eu vou manipular a base de dados para contar corridas tiveram um preço menor e maior do que a média. Além disso, vou chamar essa nova tabela de `tab1`
+
+```{r}
+# chame esta tabela de banco para que possamos fazer outras manipulações
+tab1 <- banco %>% 
+  group_by(categoria_preco) %>% 
+  summarise(n = n())
+tab1
+```
+
+Vamos para o geom_col()
+
+```{r}
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + geom_col()
+```
+
+Vamos brincar um pouco com os argumentos estéticos que o ggplot2 permite?
+
+```{r}
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + 
+  geom_col(fill = "red", width = 0.5)
+```
+
+#### Exercício
+
+1. Aplique os parâmetros para mudar a cor (color), o tamanho (size) e o formato (shape) dos pontos do gráfico abaixo:
+
+```{r}
+ggplot(data = banco, mapping = aes(x = duration, y = price)) + geom_point()
+```
+
+### geom_histogram() e geom_density()
+
+Se quisermos ver a distribuição de uma variável quantitativa, podemos utilizar o `geom_histogram()`! Qual será a distribuição da variável price?
+
+```{r}
+ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20)
+```
+
+Lembre-se que também podemos colocar outros atribuitos estéticos!
+
+```{r}
+ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20, color = "blue", fill = "green")
+```
+
+Além do `geom_histogram()`, o R também nos permite aplicar o `geom_density()` em variáveis continúas! Vamos ver como ficam os casos acima:
+
+```{r}
+ggplot(banco, aes(x = duration)) + geom_density(color = "blue", fill = "green", alpha = 0.5)
+```
+
+E se eu quiser comparar a distribuição da duração pelo preço (categoria_preço)?
+
+```{r}
+ggplot(banco, aes(x = duration, fill = categoria_preco)) + geom_density(color = "blue", alpha = 0.5)
+```
+
+### geom_boxplot() e geom_violin()
+
+Se nós tivermos uma variável quantitativa e qualitativa, podemos utilizar o `geom_boxplot` e o `geom_violin`! Qual a distribuição da média de nota por macro distrito?
+
+```{r}
+ggplot(banco, aes(x = categoria_idade, y = price)) + geom_boxplot(fill = "#444054", color = "#cc3f0c")
+```
+
+```{r}
+ggplot(banco, aes(x = categoria_idade, y = price)) + geom_violin(fill = "#8c1c13", alpha = 1/2)
+```
+
+### geom_line()
+
+Para esses exemplo vamos criar a tabela abaixo primeiro:
+
+```{r}
+tab2 <- banco %>% 
+  group_by(hour_pickup) %>% 
+  summarise(price_hour_pickup = mean(price))
+```
+
+Apesar de mais utilizado para séries temporais, podemos utilizar um gráfico de linhas para pensar na variação do preço ao longo do dia.
+
+```{r}
+ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1)
+```
+
+#### Exercício
+
+1. Incluia um geom_point() no gráfico acima e altere sua cor.
+
+E se quisermos mudar a cor da categorização para algo que gostamos mais? Para fazer isso vamos incluir mais uma camada no nosso gráfico, a camada de scale.
+
+!!! question \" Combinando cores \"
+
+    Se você tem dúvida de qual cor pode combinar melhor com outra, tem um [site](https://coolors.co/app) bem bacana que pode te ajudar nisso.
+
+```{r}
+tab3 <- banco %>% 
+  group_by(hour_pickup) %>% 
+  summarise(price_hour_pickup = mean(price))
+
+ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1, color = "#8093F1", size = 1) +
+ geom_point(size = 2, color = "#ff1053") 
+```
+
+Podemos utilizar o `scale_color_manual` para preencher as cores de acordo com o paramêtro `color`. Se você quiser escolher o `fill` teriamos que utilizar `scale_fill_manual`.
+
+```{r}
+ggplot(banco, aes(x = categoria_idade, y = price, fill = categoria_idade)) + geom_boxplot(color = "#023047", alpha = 0.7) + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557"))
+```
+
+O `ggplot2` também possibilita a utilização de outros sistemas de coordenadas, como por exemplo:
+
+- `coord_flip`
+
+```{r}
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n, fill = categoria_preco)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip()
+```
+
+- `coord_polar`
+
+```{r}
+tab4 <- banco %>% 
+  group_by(categoria_idade) %>% 
+  summarise(n = n()) %>% 
+  mutate(p = n/sum(n))
+
+ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557")) + coord_polar(theta = 'y')
+```
+
+Dica: Tome cuidado com o `coord_polar`! Ás vezes, para não dizer sempre, eles podem dificultar a visualização dos dados, sobretudo, aqueles com muitas categorias.
+
+Vamos dar um título para nosso gráfico?
+
+```{r}
+ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557")) + coord_polar(theta = 'y') +
+  labs(title = "As idades não possuem diferenças\nnotáveis quando em comparação",
+       x = "EIXO X", 
+       y = "EIXO Y",
+       caption = "TAXI DATA") +
+  theme_bw()
+```
