@@ -14,25 +14,30 @@ knitr::opts_chunk$set(fig.width=12,
 
 As visualizações gráficas são muito importantes para transmitir informações. Podemos dizer até que ela é fundamental para análise de dados, nos ajudando a responder questões, tomar decisões, contar histórias e até mesmo inspirar. Veremos não só como fazer estas visualizações, mas também a entender quando elas podem ser necessárias.
 
-Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas utilizando informações do SAT, um teste utilizado nos EUA para admissão em universidades. Para ter mais contexto, queremos entender quais distritos tiveram as melhores e piores notas para enviar pesquisadores para entenderem os motivos pelos quais estas notas foram boas/ruins.
+Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas utilizando informações de corridas de taxi em NYC. *Para ter mais contexto, estamos desenvolvendo uma nova feature/solução de incentivo para os usuários*. Para isso precisamos entender quais grupos utilizam mais a nossa plataforma.
 
-O banco de dados possuí 411 entradas com 15 variáveis:
+O banco de dados possuí 166.355 entradas com 18 variáveis:
 
 | Variável                         | Descrição
 | -------------------------------- | -------------------------------------------
-| dbn                              | Código de identificação da escola
-| school_name                      | Nome da Escola
-| num_of_sat_test_takers           | Número de testes realizados 
-| critical_reading_mean            | Nota média em Leitura critica
-| math_mean                        | Nota média em matemática
-| writing_mean                     | Nota média em escrita
-| location_name                    | Localização
-| location_code                    | Código de localização
-| address                          | Endereço
-| geographical_district_code       | Código geográfico do distrito
-| postcode                         | Código postal
-| latitude                         | Latitude
-| longitude                        | Longitude
+|  id                              | Identificação da corrida
+|  date_pickup                     | Data de entrada no veículo
+|  hour_pickup                     | Hora de entrada no veículo
+|  dayweek_pickup                  | Dia da semana de entrada no veículo
+|  date_dropoff                    | Data de saida do veículo
+|  hour_dropoff                    | Hora de saida do veículo
+|  dayweek_dropoff                 | Dia da semana de saida do veículo
+|  passenger_count                 | Quantos passageiros estavam no carro
+|  pickup_latitude                 | Latitude de entrada no carro
+|  pickup_longitude                | Longitude de entrada no carro
+|  dropoff_latitude                | Latitude de saida do carro
+|  dropoff_longitude               | Longitude de saida do carro
+|  duration                        | Duração da corrida (em segundos)
+|  distance                        | Distância da corrida (em milhas)
+|  rating                          | Nota da corrida
+|  age                             | Idade do passageiro que pediu a corrida
+|  price                           | Preço final da corrida
+|  comments                        | Comentários ao final da corrida
 
 Vamos aprender a fazer visualizacões?
 
@@ -47,7 +52,7 @@ banco <- read_<nome>(<caminho_do_arquivo>)
 
 ```{r}
 library(readr)
-banco <- read_csv2("data/schools_sat.csv")
+banco <- read_csv("taxirides_sample.csv")
 ```
 
 ## 1. ggplot2 
@@ -55,9 +60,8 @@ banco <- read_csv2("data/schools_sat.csv")
 Antes de irmos diretamente para as visualizações vamos habilitar alguns pacotes:
 
 ```{r}
-library(dplyr)
-library(ggplot2)
-# install.packages("Amelia")
+library(tidyverse)
+#install.packages("Amelia")
 library(Amelia)
 ```
 
@@ -77,15 +81,17 @@ Pode-se notar que todas as variáveis parecem ok! Será mesmo?
 
 <br/>
 
-Se você notou temos uma variável que não deveria estar aí, a X15. Além disso, vamos investigar se nosso dado possui valores ausentes? 
+Se você notou temos duas variável que não deveria estar aí, a X14 e a X15. Além disso, vamos investigar se nosso dado possui valores ausentes? 
 
 ### Exercício
 
-1. Remova a variável X15.
+1. Remova as variáveis X14 e X15. Depois filtre: para uma duração menor ou igual a 1000 segundos; e distancia menor do que 100 milhas. Este filtro é para restringirmos mais a nossa análise dado a quantidade de dados.
 
 ```{r}
 banco <- banco %>% 
-  select(-X15)
+  select(-X14,-X15) %>% 
+  filter(duration <= 1000, 
+         distance <= 100)
 ```
 
 Vamos verificar os valores ausentes do nosso banco?
@@ -94,39 +100,46 @@ Vamos verificar os valores ausentes do nosso banco?
 Amelia::missmap(banco)
 ```
 
-AHA! Temos valores ausentes em três variáveis, sendo elas, `math_mean`, `writing_mean` e `num_sat_test_takers`. Vamos então remover estas entradas!
+AHA! Temos valores ausentes na coluna `comments`. Vamos removê-la!
 
 2. Filtre apenas por valores que não possuem NA
 
 ```{r}
-banco <- banco %>% filter(is.na(math_mean) == FALSE, is.na(writing_mean) == FALSE, is.na(num_of_sat_test_takers) == FALSE)
+banco <- banco %>% select(-comments)
 
 Amelia::missmap(banco)
 ```
     
-3. Calcule a média por escola (media_escola) a partir das notas de matemática, escrita e leitura critíca. E partir disso, classifique se a media_escola é MAIOR ou MENOR que a media_global (transforme o resultado em fator)
+3. Calcule a média do preço (media_global) das corridas. E partir disso, classifique se o preço de cada corrida é Maior ou Menor que a media_global (transforme o resultado em fator)
 
 ```{r}
-media_global <- mean(c(banco$math_mean, banco$writing_mean, banco$critical_reading_mean))
+media_global <- mean(banco$price)
 
 banco <- banco %>% 
-  group_by(dbn) %>% 
-  mutate(media_escola = mean(c(math_mean, writing_mean, critical_reading_mean)),
-         categorizacao_media = case_when(media_escola >= media_global ~ "MAIOR",
-                                         media_escola < media_global ~ "MENOR"),
-         categorizacao_media = factor(categorizacao_media, levels = c("MAIOR", "MENOR"))) %>% 
-  ungroup()
+  mutate(categoria_preco = ifelse(price >= media_global, "Maior", "Menor"),
+         categoria_preco = factor(categoria_preco, levels = c("Maior", "Menor"))) 
+
+head(banco)
 ```
 
-4. Por fim, temos 32 distritos na nossa base de dados, vamos agregar estes dados em quatro distritos agregados. Isto é, do distrito um até o oito, teremos o distrito 1 e assim por diante. (Transforme o resultado em fator)
+4. Por fim, temos uma variável chamada `age`. Transforme ela em conjunto de categorias utilizando a função `case_when()` e depois transforme o resultado em fator
 
 ```{r}
+banco %>% 
+  summarise(min = min(age),
+            max = max(age))
+  
+
 banco <- banco %>% 
-  mutate(macro_distrito = case_when(geographical_district_code %in% c(1:8) ~ "distrito_1",
-                                    geographical_district_code %in% c(9:16) ~ "distrito_2",
-                                    geographical_district_code %in% c(17:24) ~ "distrito_3",
-                                    geographical_district_code %in% c(25:32) ~ "distrito_4"),
-         macro_distrito = factor(macro_distrito, levels = c("distrito_1", "distrito_2", "distrito_3", "distrito_4")))
+  mutate(categoria_idade = case_when(age %in% c(18:24) ~ "18_24",
+                                   age %in% c(25:34) ~ "25_34",
+                                   age %in% c(35:44) ~ "35_44",
+                                   age %in% c(45:54) ~ "45_54",
+                                   age %in% c(55:65) ~ "55_65"),
+         categoria_idade = factor(categoria_idade, levels = c("18_24", "25_34", "35_44", "45_54", "55_65")))
+
+banco %>% 
+  count(categoria_idade)
 ```
 
 Agora que alteramos e criamos algumas variáveis vamos conhecer o `ggplot2`.
@@ -181,13 +194,13 @@ ggplot()
 Depois, nós precisamos decidir que dados iremos utilizar e quam vai ser o eixo x e o eixo y.
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola))
+ggplot(data = banco, mapping = aes(x = duration , y = distance))
 ```
  
 Em seguida, escolhemos qual é melhor forma /estrutura para visualizar os dados.
  
 ```{r}
-ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola)) + 
+ggplot(data = banco, mapping = aes(x = duration , y = distance)) + 
   geom_point()
 ```
  
@@ -198,22 +211,24 @@ ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola
 Simples, não? Apesar disso, precisamos entender alguns conceitos que vimos ao montar este gráfico, como por exemplo, colocamos os eixos x e y dentro de uma função chamada `aes()`. Ela é uma função responsável pela propriedade visual dos objetos no gráfico, em outras palavras, ela faz o "mapeamento" das variáveis do nosso banco de dados para que eles possam fazer parte dos elementos visuais do gráfico.
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = num_of_sat_test_takers , y = media_escola, color = macro_distrito)) + 
+ggplot(data = banco, mapping = aes(x = duration , y = distance, color = categoria_idade)) + 
   geom_point()
 ```
 
 Perceba que o `color = categoria_idade` afeta o `geom` que utilizamos de acordo com a variável de interesse, mas veremos adiante que também podemos alterar tanto um `geom` especificamente, quanto a cor do gráfico.
 
+    Antes de explorarmos outros geoms, que hipóteses podemos levantar desse gráfico?
+
 Vamos ver outros `geom_`?
 
 ### geom_col()
 
-Para fazer este geom, eu vou manipular a base de dados para contar quantas escolas estão em cada macro distrito. Além disso, vou chamar essa nova tabela de `tab1`
+Para fazer este geom, eu vou manipular a base de dados para contar corridas tiveram um preço menor e maior do que a média. Além disso, vou chamar essa nova tabela de `tab1`
 
 ```{r}
 # chame esta tabela de banco para que possamos fazer outras manipulações
 tab1 <- banco %>% 
-  group_by(categorizacao_media) %>% 
+  group_by(categoria_preco) %>% 
   summarise(n = n())
 tab1
 ```
@@ -221,13 +236,14 @@ tab1
 Vamos para o geom_col()
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n)) + geom_col()
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + geom_col()
 ```
 
 Vamos brincar um pouco com os argumentos estéticos que o ggplot2 permite?
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n)) + geom_col(fill = "red", width = 0.5)
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + 
+  geom_col(fill = "red", width = 0.5)
 ```
 
 #### Exercício
@@ -235,21 +251,33 @@ ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n)) + geom_col(fi
 1. Aplique os parâmetros para mudar a cor (color), o tamanho (size) e o formato (shape) dos pontos do gráfico abaixo:
 
 ```{r}
-ggplot(data = banco, mapping = aes(x = math_mean, y = writing_mean)) + geom_point()
+ggplot(data = banco, mapping = aes(x = duration, y = price)) + geom_point()
 ```
 
-### geom_histogram()
+### geom_histogram() e geom_density()
 
-Se quisermos ver a distribuição de uma variável quantitativa, podemos utilizar o `geom_histogram()`! Qual será a distribuição da variável critical_reading_mean?
+Se quisermos ver a distribuição de uma variável quantitativa, podemos utilizar o `geom_histogram()`! Qual será a distribuição da variável price?
 
 ```{r}
-ggplot(banco, aes(x = critical_reading_mean)) + geom_histogram(bins = 20)
+ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20)
 ```
 
 Lembre-se que também podemos colocar outros atribuitos estéticos!
 
 ```{r}
-ggplot(banco, aes(x = critical_reading_mean)) + geom_histogram(bins = 20, color = "blue", fill = "green")
+ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20, color = "blue", fill = "green")
+```
+
+Além do `geom_histogram()`, o R também nos permite aplicar o `geom_density()` em variáveis continúas! Vamos ver como ficam os casos acima:
+
+```{r}
+ggplot(banco, aes(x = duration)) + geom_density(color = "blue", fill = "green", alpha = 0.5)
+```
+
+E se eu quiser comparar a distribuição da duração pelo preço (categoria_preço)?
+
+```{r}
+ggplot(banco, aes(x = duration, fill = categoria_preco)) + geom_density(color = "blue", alpha = 0.5)
 ```
 
 ### geom_boxplot() e geom_violin()
@@ -257,11 +285,11 @@ ggplot(banco, aes(x = critical_reading_mean)) + geom_histogram(bins = 20, color 
 Se nós tivermos uma variável quantitativa e qualitativa, podemos utilizar o `geom_boxplot` e o `geom_violin`! Qual a distribuição da média de nota por macro distrito?
 
 ```{r}
-ggplot(banco, aes(x = macro_distrito, y = media_escola)) + geom_boxplot(fill = "#444054", color = "#cc3f0c")
+ggplot(banco, aes(x = categoria_idade, y = price)) + geom_boxplot(fill = "#444054", color = "#cc3f0c")
 ```
 
 ```{r}
-ggplot(banco, aes(x = categorizacao_media, y = num_of_sat_test_takers)) + geom_violin(fill = "#8c1c13", alpha = 1/2)
+ggplot(banco, aes(x = categoria_idade, y = price)) + geom_violin(fill = "#8c1c13", alpha = 1/2)
 ```
 
 ### geom_line()
@@ -270,19 +298,19 @@ Para esses exemplo vamos criar a tabela abaixo primeiro:
 
 ```{r}
 tab2 <- banco %>% 
-  group_by(geographical_district_code) %>% 
-  summarise(media_test_takers = mean(num_of_sat_test_takers))
+  group_by(hour_pickup) %>% 
+  summarise(price_hour_pickup = mean(price))
 ```
 
-Apesar de mais utilizado para séries temporais, podemos utilizar um gráfico de linhas para pensar na diferença presente nos micro distritos quanto a média de alunos fazendo o teste
+Apesar de mais utilizado para séries temporais, podemos utilizar um gráfico de linhas para pensar na variação do preço ao longo do dia.
 
 ```{r}
-ggplot(data = tab2, mapping = aes(x = geographical_district_code, y = media_test_takers)) + geom_line(group = 1)
+ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1)
 ```
 
 #### Exercício
 
-1. Incluia um geom_point() no gráfico acima e altere sua cor de acordo com cada categorização de macro distritos.
+1. Incluia um geom_point() no gráfico acima e altere sua cor.
 
 E se quisermos mudar a cor da categorização para algo que gostamos mais? Para fazer isso vamos incluir mais uma camada no nosso gráfico, a camada de scale.
 
@@ -292,16 +320,17 @@ E se quisermos mudar a cor da categorização para algo que gostamos mais? Para 
 
 ```{r}
 tab3 <- banco %>% 
-  group_by(macro_distrito) %>% 
-  summarise(media_test_takers = mean(num_of_sat_test_takers))
+  group_by(hour_pickup) %>% 
+  summarise(price_hour_pickup = mean(price))
 
-ggplot(data = tab3, mapping = aes(x = macro_distrito, y = media_test_takers)) + geom_line(group = 1) + geom_point(aes(color = macro_distrito), size = 10) + scale_color_manual(values = c("#ff1053", "#6c6ea0", "#66c7f4", "#3299a8"))
+ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1, color = "#8093F1", size = 1) +
+ geom_point(size = 2, color = "#ff1053") 
 ```
 
-Neste caso utilizamos o `scale_color_manual` pois queriamos preencher as cores de acordo com o que colocamos no paramêtro `color`. Se tivessemos escolhido o `fill` teriamos que utilizar `scale_fill_manual`.
+Podemos utilizar o `scale_color_manual` para preencher as cores de acordo com o paramêtro `color`. Se você quiser escolher o `fill` teriamos que utilizar `scale_fill_manual`.
 
 ```{r}
-ggplot(banco, aes(x = categorizacao_media, y = num_of_sat_test_takers, fill = categorizacao_media)) + geom_boxplot(color = "#cc3f0c") + scale_fill_manual(values = c("#ff1053","#66c7f4"))
+ggplot(banco, aes(x = categoria_idade, y = price, fill = categoria_idade)) + geom_boxplot(color = "#023047", alpha = 0.7) + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557"))
 ```
 
 O `ggplot2` também possibilita a utilização de outros sistemas de coordenadas, como por exemplo:
@@ -309,17 +338,18 @@ O `ggplot2` também possibilita a utilização de outros sistemas de coordenadas
 - `coord_flip`
 
 ```{r}
-ggplot(data = tab1, mapping = aes(x = categorizacao_media, y = n, fill = categorizacao_media)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip()
+ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n, fill = categoria_preco)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0")) + coord_flip()
 ```
 
 - `coord_polar`
 
 ```{r}
-tab3 <- banco %>% 
-  group_by(macro_distrito) %>% 
+tab4 <- banco %>% 
+  group_by(categoria_idade) %>% 
   summarise(n = n()) %>% 
   mutate(p = n/sum(n))
-ggplot(data = tab3, mapping = aes(x = factor(1), y = p, fill = macro_distrito)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0", "#10f7ff", "#ff8810")) + coord_polar(theta = 'y')
+
+ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557")) + coord_polar(theta = 'y')
 ```
 
 Dica: Tome cuidado com o `coord_polar`! Ás vezes, para não dizer sempre, eles podem dificultar a visualização dos dados, sobretudo, aqueles com muitas categorias.
@@ -327,10 +357,10 @@ Dica: Tome cuidado com o `coord_polar`! Ás vezes, para não dizer sempre, eles 
 Vamos dar um título para nosso gráfico?
 
 ```{r}
-ggplot(data = tab3, mapping = aes(x = factor(1), y = p, fill = macro_distrito)) + geom_col() + scale_fill_manual(values = c("#ff1053", "#6c6ea0", "#10f7ff", "#ff8810")) + coord_polar(theta = 'y') +
-  labs(title = "Distribuição de Macro Distritos",
+ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c("#e63946","#f1faee", "#a8dadc", "#457b9d", "#1d3557")) + coord_polar(theta = 'y') +
+  labs(title = "As idades não possuem diferenças\nnotáveis quando em comparação",
        x = "EIXO X", 
        y = "EIXO Y",
-       caption = "SAT DATA") +
+       caption = "TAXI DATA") +
   theme_bw()
 ```
