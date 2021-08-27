@@ -1,0 +1,212 @@
+---
+title: "Lidando com Banco de dados"
+author: "P4H"
+output: md_document
+---
+
+# Lidando com Banco de dados
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12,
+                      fig.height=8,
+                      warning=FALSE,
+                      message=FALSE,
+                      eval=FALSE)
+```
+
+
+
+O `tidyverse` é um pacote do R, mas pode também ser considerado como uma coleção de pacotes. Uma vez instalando o `tidyverse`, você tem acesso ao conteúdo de uma série de outros pacotes (que também podem ser instalados individualmente).
+
+![](imgs/tidyverse.png)
+
+
+1. `readr`: importação de dados;
+
+2. `dplyr`: manipulação de dados;
+
+3. `tidyr`: transformação do data frame;
+
+4. `tibble`: auxilia na visualização de dados;
+
+5. `stringr`: manipulaçãode strings;
+    
+6. `ggplot2`: criação de gráficos;
+
+7. `purr`: programação funcional;
+
+8. `forcats`: manipulação fatores.
+
+
+## . `dplyr`
+
+Dentre os pacotes mais importantes do `tidyverse`, o `dplyr` se destaca. Ele traz uma biblioteca pode rasa de funções que nos permitem transformar dados. Essa é a tarefa que você provavelmente passará mais tempo fazendo já que nem sempre os dados estão limpos. Muitas vezes teremos que criar variáveis ou extrair parte da informação presente em uma antes de rodarmos um modelo.
+
+Quais são os verbos do `dplyr`? Obviamente, o pacote é extenso e possui uma quantidade razoável de funções, mas queremos que você se atente, agora, a três funções: `select()`, `filter()`, `mutate()`.
+
+dplyr e suas funções
+====================
+
+Para tornar a manipulação de dados mais eficiente, foi criado um pacote
+chamado de dplyr que possui uma série de ferramentas para filtrar,
+selecionar e sumarizar informações, como veremos a seguir.
+
+Funções
+-------
+
+As principais funções do dplyr são:
+
+1.  `filter`: filtra as linhas de um banco de dados de acordo com uma
+    regra lógica.
+
+2.  `select`: seleciona as colunas de interesse.
+
+3.  `mutate`: modifica ou cria colunas de acordo com valores fornecidos.
+
+4.  `count`: conta os valores de uma variável.
+
+-   Especialmente útil para variáveis categóricas.
+
+1.  `rename`: altera o nome das variáveis (colunas).
+
+2.  `group_by` e `summarise`: são funções normalmente utilizadas em
+    conjunto. Elas permitem realizar operações de agregações com o banco
+    de dados e, assim, alterar a nossa unidade de análise.
+
+Porém, não ficaremos apenas nestas funções, veremos também algumas de
+suas variações e conheceremos o famoso `%>%` (pipe).
+
+Como vimos, o dplyr é um pacote essencial para manipulação de dados e
+uma das suas vantagens é que a forma como aplicamos suas funções segue o
+seguinte padrão:
+
+`funcao_dplyr(banco_de_dados, argumentos_especificos)`
+
+Ou seja, o primeiro argumento de qualquer uma das funções é o banco de
+dados, seguido de argumentos específicos de cada função, como por
+exemplo, qual variável criar ou filtrar.
+
+
+### `rename()`
+
+Se quisermos renomear o nome das variáveis temos que utilizar o
+`rename()` que tem o seguinte padrão:
+
+`rename(bando_de_dados, nome_novo = nome_antigo)`
+
+    sat <- rename(sat,  geo_location_code = dbn)
+
+    sat
+
+### `select()`
+
+Em muitas situações nós não trabalhamos com todas as variáveis do banco
+de dados; para removermos aquelas colunas que não iremos utilizar,
+adotamos a função `select()`. Vamos selecionar apenas a idade e a
+pressão sanguínea.
+
+    select(sat, nome_escola, media_leitura, media_redacao)
+
+Percebeu o padrão dessa função? Basicamente é o banco de dados e as
+variáveis que queremos selecionar. Mas e se quisermos visualizar todas
+as variáveis com exceção de algumas?
+
+    select(sat, nome_escola, -media_mat)
+
+No exemplo acima estamos retirando as variáveis target e restecg
+colocando um `-` na frente dessas variáveis.
+
+Para darmos continuidade às outras funções vamos retirar algumas
+variáveis
+
+    amostra1 <- select(amostra1, -slope, -ca, -thal)
+
+
+
+### `filter()` e um pouco de operadores lógicos
+
+Quando estamos fazendo algumas análises, é comum encontrarmos
+observações que não nos interessam, como por exemplo, ao analisar as notas dos alunos que prestaram o sat, posso estar apenas interessada nas observações de uma determinada escola.
+
+Neste caso, utilizamos o sinal ==, o que simboliza igual à.
+
+  filter(sat, nome_escola == "ABRAHAM LINCOLN HIGH SCHOOL")
+
+Caso queriamos retirar determinadas observações, usamos o != que simboliza a operação diferente de:
+  
+  filter(sat, codigo_distrito_geo != 21)
+
+Quando usamos filtro, podemos realizar mais de uma operação (mais de um filtro) de uma vez. Na linha abaixo, a vírgula significa E. Ou seja, filtramos os distritos cujo código é maior que 21, e o número de alunos que realizaram a prova é maior que 100.
+  
+  filter(sat, codigo_distrito_geo == 21, n_alunos > 100)
+
+Essa operação pode ser realizada também com o operador &.
+
+  filter(sat, codigo_distrito_geo == 21 & n_alunos > 100)
+
+Além do E, temos também o OU que é simbolizado por uma barra. Aqui selecionados ou as linhas que contém o distrito 21 ou as linhas com número de alunos que realizaram a prova é maior que 100.
+
+  filter(sat, codigo_distrito_geo == 21 | n_alunos > 100)
+
+De acordo com nossos propósitos, faz sentido usar o operador OU no lugar do operador E?
+
+Podemos também filtrar mais de um distrito de uma vez
+
+  filter(sat, codigo_distrito_geo %in% c(21, 10))
+
+amostra1 <- filter(sat, codigo_distrito_geo %in% c(21, 10), n_alunos > 100)
+
+
+### `mutate()`
+
+Caso tenhamos interesse em alterar ou criar uma variável, podemos
+utilizar o `mutate()`. A função tem o seguinte formato:
+`mutate(bando_de_dados, coluna_nova|coluna_existente = valor)`.
+
+Vamos aproveitar e criar uma nova a variável que mostra o ano que o exame foi realizado
+
+  amostra2 <- mutate(sat,
+                   ano = 2018)
+
+Com o `mutate` podemos também criar uma variável a partir de uma já existente
+
+  amostra3 <- mutate(amostra2,
+                   ano_caracter = ano)
+
+  amostra3 <- mutate(amostra3,
+                   ano_caracter = as.character(ano_caracter))
+
+Ou podemos essas operações em um só comando:
+
+amostra4 <- mutate(sat,
+                   ano_caracter = as.character(2018))
+                   
+Simples não? Além disso, podemos criar variáveis categóricas, como por
+exemplo, uma variável que identifica se a escola possui muitos ou poucos alunos prestando o SAT.
+
+    amostra5 <- mutate(sat,
+                   categoria_escola = ifelse(n_alunos > 111, "grande", "pequena"))
+
+    amostra5
+
+Perceba que para criar essa variável utilizamos uma função chamada
+`ifelse()`. Basicamente esta função é um if em que o primeiro parâmetro
+é a condição lógica, o segundo é a ação em caso de a condição ser
+verdadeira e o terceiro é a ação no caso de a condição ser falsa. Assim,
+no caso acima ele pergunta: Se o valor da variável número de alunos por escola for
+maior que 111, classificamos como “Grande”, caso negativo, “Pequena”.
+
+Agora que criamos a variável “categoria_escola”, quantas pessoas são
+idosas neste experimento? Para respondermos isso podemos utilizar a
+função `count()`
+
+### `count()`
+
+Em uma tradução literal, o `count()` irá contar as categorias de uma
+variável.
+
+    tabela_cat_escola <- count(amostra5, categoria_escola)
+
+    tabela_cat_escola
+
+Portanto, podemos notar que existem mais adultos em nossa amostra.

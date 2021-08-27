@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://p4husp.github.io/material-2021/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://p4husp.github.io/material-2021/01_introducao/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://p4husp.github.io/material-2021/02_estruturar/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://p4husp.github.io/material-2021/03_transformar/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://p4husp.github.io/material-2021/04_visualizacao/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://p4husp.github.io/material-2021/lidando_com_bancodados_parte1/</loc>
+         <lastmod>2021-08-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

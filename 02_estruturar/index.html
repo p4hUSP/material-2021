@@ -1,0 +1,1488 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material para cursos de programação e análise de dados">
+      
+      
+      
+        <meta name="author" content="P4H">
+      
+      
+        <link rel="canonical" href="https://p4husp.github.io/material-2021/02_estruturar/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
+    
+    
+      
+        <title>Estruturar - P4H - Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.be71726b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-tidyr" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="P4H - Material" class="md-header__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            P4H - Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Estruturar
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="P4H - Material" class="md-nav__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    P4H - Material
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Material
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introducao/" class="md-nav__link">
+        Introdução
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Estruturar
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Estruturar
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tidyr" class="md-nav__link">
+    1. tidyr
+  </a>
+  
+    <nav class="md-nav" aria-label="1. tidyr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-separate" class="md-nav__link">
+    1.1 separate()
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 separate()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-aplicando-no-nosso-banco" class="md-nav__link">
+    1.1.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-unite" class="md-nav__link">
+    1.2. unite
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. unite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-aplicando-no-nosso-banco" class="md-nav__link">
+    1.2.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exercicios-parte-1" class="md-nav__link">
+    2. Exercícios - Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Exercícios - Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-exercicio-exemplos-de-unite-e-separate" class="md-nav__link">
+    2.1. Exercício - Exemplos de unite e separate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gather-e-spread" class="md-nav__link">
+    3. Gather e Spread
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Gather e Spread">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-gather" class="md-nav__link">
+    3.1. gather()
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. gather()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-aplicando" class="md-nav__link">
+    3.1.1. Aplicando
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-spread" class="md-nav__link">
+    3.2. spread()
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. spread()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-aplicando-no-nosso-banco" class="md-nav__link">
+    3.2.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-exercicios-parte-2" class="md-nav__link">
+    4. Exercícios - Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Exercícios - Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-exercicio-spread" class="md-nav__link">
+    4.1. Exercício - spread()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exercicio-gather" class="md-nav__link">
+    4.2. Exercício - gather()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dplyr" class="md-nav__link">
+    4. dplyr
+  </a>
+  
+    <nav class="md-nav" aria-label="4. dplyr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-select" class="md-nav__link">
+    4.1. select()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-filter" class="md-nav__link">
+    4.2. filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-mutate" class="md-nav__link">
+    4.3. mutate()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_transformar/" class="md-nav__link">
+        Transformando Dados
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_visualizacao/" class="md-nav__link">
+        Visualizacao
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidando_com_bancodados_parte1/" class="md-nav__link">
+        Lidando com Banco de dados
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-tidyr" class="md-nav__link">
+    1. tidyr
+  </a>
+  
+    <nav class="md-nav" aria-label="1. tidyr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-separate" class="md-nav__link">
+    1.1 separate()
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 separate()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-aplicando-no-nosso-banco" class="md-nav__link">
+    1.1.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-unite" class="md-nav__link">
+    1.2. unite
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2. unite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-aplicando-no-nosso-banco" class="md-nav__link">
+    1.2.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exercicios-parte-1" class="md-nav__link">
+    2. Exercícios - Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Exercícios - Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-exercicio-exemplos-de-unite-e-separate" class="md-nav__link">
+    2.1. Exercício - Exemplos de unite e separate
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-gather-e-spread" class="md-nav__link">
+    3. Gather e Spread
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Gather e Spread">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-gather" class="md-nav__link">
+    3.1. gather()
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1. gather()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-aplicando" class="md-nav__link">
+    3.1.1. Aplicando
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-spread" class="md-nav__link">
+    3.2. spread()
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2. spread()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-aplicando-no-nosso-banco" class="md-nav__link">
+    3.2.1. Aplicando no nosso banco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-exercicios-parte-2" class="md-nav__link">
+    4. Exercícios - Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Exercícios - Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-exercicio-spread" class="md-nav__link">
+    4.1. Exercício - spread()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exercicio-gather" class="md-nav__link">
+    4.2. Exercício - gather()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dplyr" class="md-nav__link">
+    4. dplyr
+  </a>
+  
+    <nav class="md-nav" aria-label="4. dplyr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-select" class="md-nav__link">
+    4.1. select()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-filter" class="md-nav__link">
+    4.2. filter()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-mutate" class="md-nav__link">
+    4.3. mutate()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/p4hUSP/material-2021/edit/master/docs/02_estruturar.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Estruturar</h1>
+                
+                <p>Hoje, vamos trabalhar com um banco de dados sobre <em>doenças cardíacas</em>. O
+dado está disponível <a href="https://archive.ics.uci.edu/ml/datasets/Heart+Disease">UCI - Machine Learning
+Repository</a> e no
+<a href="https://www.kaggle.com/ronitf/heart-disease-uci/downloads/heart-disease-uci.zip/1">Kaggle</a>.
+Os responsáveis pelo estudo foram as seguintes entidades:</p>
+<ol>
+<li>Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.</li>
+<li>University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.</li>
+<li>University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.</li>
+<li>V.A. Medical Center, Long Beach and Cleveland Clinic Foundation:
+    Robert Detrano, M.D., Ph.D. </li>
+</ol>
+<p>A diagnóstico de doença cardíaca foi feita a partir de uma angiografia.
+Se houvesse estreitamento maior do que 50% para pelo menos um vaso
+sanguíneo principal, o paciente foi classificado como portador de doença
+cardíaca. Caso contrário, o paciente não foi diagnosticado com a doença.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>age_sex</td>
+<td>Idade - Sexo</td>
+</tr>
+<tr class="even">
+<td>cp</td>
+<td>Tipo de dor no peito</td>
+</tr>
+<tr class="odd">
+<td>trestbps</td>
+<td>Pressão sanguínea (mm Hg) em descanso</td>
+</tr>
+<tr class="even">
+<td>chol</td>
+<td>Colesterol (mg/dl)</td>
+</tr>
+<tr class="odd">
+<td>fbs</td>
+<td>Açúcar no sangue em jejum maior do que 120mg/dl (1 = Sim, 0 = Não)</td>
+</tr>
+<tr class="even">
+<td>restecg</td>
+<td>Resultados eletrocardiográficos em repouso</td>
+</tr>
+<tr class="odd">
+<td>thalach</td>
+<td>Maior ritmo cardíaco atingido</td>
+</tr>
+<tr class="even">
+<td>exang</td>
+<td>Angina induzida por exercício</td>
+</tr>
+<tr class="odd">
+<td>ca</td>
+<td>Número de vasos principais coloridos por <em>flourosopy</em></td>
+</tr>
+<tr class="even">
+<td>target</td>
+<td>Diagnóstico de doença cardíaca (1 = Sim, 0 = Não)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Vamos começar, então?</p>
+<ul>
+<li><a href="https://github.com/p4hUSP/material-bio/raw/master/docs/data/heart_modificado.xlsx">Download do
+    Banco</a></li>
+</ul>
+<p>O banco hoje está em formato Excel. Você sabe qual função e pacote
+utilizamos para abrir esse arquivo?</p>
+<div class="highlight"><pre><span></span><code>library(&lt;pacote&gt;)
+
+banco &lt;- &lt;funcao&gt;(&lt;caminho_do_arquivo&gt;)
+</code></pre></div>
+<h2 id="1-tidyr">1. tidyr</h2>
+<p>O <code>tidyr</code> é o pacote utilizado para estruturar os nossos bancos de
+dados. Em geral, ele pode ser utilizado para <strong>unir</strong> (<code>unite</code>) e
+<strong>separar</strong> (<code>separate</code>) colunas ou para <strong>derreter</strong> (<code>gather</code>) e
+<strong>esticar</strong> (<code>spread</code>) as colunas.</p>
+<p>Esse pacote é construído com base no conceito de <code>tidy data</code>. Deixar os
+seus dados <code>tidy</code> significa transformar a <strong>estrutura</strong> deles de tal
+maneira que tenhamos observações nas linhas, variáveis nas colunas e
+valores nas células. Em geral, esperamos também que um banco <code>tidy</code>
+contenha apenas uma unidade de observação, granularidade, etc.</p>
+<p><img alt="" src="../imgs/r_tidy_data.png" />
+<center>
+Ilustração do Tidy Data (Fonte:
+<a href="http://statseducation.com" class="uri">http://statseducation.com</a>)
+</center></p>
+<div class="admonition question">
+<p class="admonition-title"> O que é unidade de observação / granularidade? </p>
+<p>Trata-se da unidade contida nas linhas do seu banco. Por exemplo, se montarmos um banco de dados com 
+informações sobre <strong>pessoas</strong> (altura, idade, peso, etc.) em cada linha teremos <strong>pessoas</strong> como unidade de 
+observação.
+Qual a unidade de observação do nosso banco?</p>
+</div>
+<h3 id="11-separate">1.1 separate()</h3>
+<div class="admonition warning">
+<p class="admonition-title"> Instalando pacotes </p>
+<p>Caso você não tenha o <code>tidyr</code> ou o <code>tibble</code>no seu computador, por favor, execute o código <code>install.packages(c('tidyr', 'tibble'))</code>.</p>
+</div>
+<p><code>separate()</code> é uma função do pacote <code>tidyr</code> que tem como objetivo
+<strong>separar</strong> valores contidos em uma coluna. Às vezes, mais de uma
+informação é agrupado dentro da mesma variável. Repare no exemplo
+abaixo.</p>
+<div class="highlight"><pre><span></span><code>exemplo_separete &lt;- tibble::tribble(
+  ~ CIDADE , ~MORTALIDADE,
+  &#39;São José dos Campos - SP&#39;, 80,
+  &#39;Porto Alegre - RS&#39;, 100,
+  &#39;Brasília - DF&#39;, 81
+)
+
+exemplo_separete
+</code></pre></div>
+<p>Qual variável contém mais de uma informação? Por mais que talvez você
+tenha o costume de agrupar a sua cidade à unidade federativa dela, esses
+dois valores dizem respeito a qualidades diferentes da nossa obervação.
+Imagine que o banco se estendesse para todas as cidades brasileiras.
+Como faríamos para identificar as unidades federativas com maior média
+de mortalidade?</p>
+<p>Como aplicar a função <code>separate()</code>? Antes de tudo, tente executar o
+comando <code>?separate</code>. A documentação do <code>tidyr</code> tende a ser muito boa e
+normalmente teremos uma boa explicação de como a função opera e de quais
+parâmetros precisamos utilizar nela.</p>
+<p>No caso, o <code>separate()</code> recebe (1) no primeiro parâmetro o banco de
+dados, (2) no segundo, a coluna que desejamos separar, (3) na terceira o
+nome das colunas que desejamos criar a partir da coluna informada no
+segundo parâmetro, (4) o separador, ou seja, o padrão de caracteres que
+serão utilizados para separar a coluna do segundo parâmetro nas colunas
+especificadas no terceiro parâmetro. Isso pode parecer complicado, mas é
+bem simples.</p>
+<div class="highlight"><pre><span></span><code>separate(&lt;dataframe&gt;, &lt;coluna_que_desejamos_separar&gt;, &lt;vetor_com_as_colunas_a_serem_criadas&gt;, &lt;separador&gt;)
+</code></pre></div>
+<p>Tente fazer sozinho.</p>
+<p><br/></p>
+<p><br/></p>
+<ul>
+<li><strong>Reposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>separate(exemplo_separete, &#39;CIDADE&#39;, c(&#39;CIDADE&#39;, &#39;UF&#39;), &#39;-&#39;)
+</code></pre></div>
+<h4 id="111-aplicando-no-nosso-banco">1.1.1. Aplicando no nosso banco</h4>
+<p>Você consegue descobrir qual variável no nosso banco tem esse problema?</p>
+<div class="admonition question">
+<p class="admonition-title"> Funções para explorar dataframes </p>
+<p>Tente utilizar funções para explorar o seu dataframe. Por exemplo, com <code>head()</code> conseguimos obter facilmente
+as primeiras linhas do nosso banco.</p>
+</div>
+<p>Você percebeu alguma coisa de estranho na variável <code>age_sex</code>? O que?</p>
+<p><code>age_sex</code> contém dois tipos de informações diferentes. De um lado, temos
+a idade da pessoa. Do outro, temos o sexo dessa pessoa. Novamente,
+precisamos separar essas <strong>duas</strong> informações em <strong>duas</strong> variáveis para
+que possamos prosseguir com a nossa análise.</p>
+<p>Vamos lá? Agora é a sua vez. Como precisamos fazer para separar as duas
+variáveis? 💪</p>
+<p>PS: Não se preocupe com o <code>remove = FALSE</code>. Utilizamos esse parâmetro
+apenas para manter a variável antiga e sermos capazes de validar o nosso
+resultado.</p>
+<div class="highlight"><pre><span></span><code>separate(&lt;banco&gt;, &lt;variavel&gt;, &lt;vetor&gt;, &lt;sep&gt;, remove = FALSE)
+</code></pre></div>
+<p>Que tal dar um <code>View()</code> no seu banco agora?</p>
+<div class="highlight"><pre><span></span><code>View(banco)
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"> Salvando alterações </p>
+<p>Nunca se esqueça de que o R não sabe que você deseja sobrescrever uma variável. Ao contrário do Stata, por exemplo, as alterações devem ser escritas sobre uma variável com <code>&lt;-</code>. Caso contrário, o R irá apenas imprimir no console o resultado.</p>
+</div>
+<p><br/></p>
+<p>Agora, podemos utilizar o <code>View()</code> ou o <code>head()</code> para verificar se deu
+tudo certo.</p>
+<h3 id="12-unite">1.2. <code>unite</code></h3>
+<p>A função <code>unite()</code> tem o comportamento inverso <code>separate()</code>. Nós a
+utilizamos para unir valores que fazem mais sentido juntos do que
+separados. Repare no exemplo abaixo. O que você faria para obter em uma
+única variável uma informação mais precisa?</p>
+<div class="highlight"><pre><span></span><code>exemplo_unite &lt;- tibble::tribble(
+  ~ID,~DIA, ~MES, ~ANO, ~DOSE_REMEDIO, ~RESULTADO,
+  1, 14, 8, 2018, 1, 0,
+  1, 15, 8, 2018, 2, 0,
+  2, 9, 7, 2018, 1 ,0,
+  2, 10, 7, 2018, 2, 0,
+  2, 11, 7, 2018, 3, 1
+)
+
+exemplo_unite
+</code></pre></div>
+<p>Após executar o código acima, vamos prosseguir com a função <code>unite()</code>.
+Ela recebe (1) no primeiro parâmetro o banco de dados e (2) no segundo o
+nome da <strong>nova</strong> variável. Em seguida, (3) adicionamos todas as colunas
+que queremos concatenar (4) e, por fim, podemos escolher o separador
+entre as colunas.</p>
+<div class="highlight"><pre><span></span><code>unite(&lt;banco&gt;, &lt;nome_da_nova_variavel&gt;, sep = &#39;&lt;separador&gt;&#39;)
+</code></pre></div>
+<p>Vamos tentar sozinho primeiro?</p>
+<p><br/></p>
+<p><br/></p>
+<ul>
+<li><strong>Resposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco &lt;- unite(exemplo_unite, &quot;DATA&quot;, ANO, MES, DIA, sep = &quot;-&quot;)
+</code></pre></div>
+<p>Verifique o resultado com a função <code>head()</code>.</p>
+<h4 id="121-aplicando-no-nosso-banco">1.2.1. Aplicando no nosso banco</h4>
+<p>Que tal arrumar, agora, o nosso banco de dados também? Lembre-se que é
+possível utilizar a as funções <code>head()</code>, <code>str()</code>, entre outras para ter
+uma ideia geral da estrutura do nosso <code>dataframe</code>.</p>
+<p>Provavelmente, você reparou que existem três variáveis que, na verdade,
+fornam uma única: <code>birth_day</code>, <code>birth_month</code> e <code>birth_year</code>. Que tal
+tentar uni-las com a função <code>separate()</code>?</p>
+<h2 id="2-exercicios-parte-1">2. Exercícios - Parte 1</h2>
+<p>Nós acabamos de aprender a <strong>estruturar</strong> o nosso banco no que diz
+respeito a <strong>unir</strong> e <strong>separar</strong> variáveis. Vamos praticar mais um
+pouco?</p>
+<h3 id="21-exercicio-exemplos-de-unite-e-separate">2.1. Exercício - Exemplos de <code>unite</code> e <code>separate</code></h3>
+<p>Para cada tabela abaixo (1) diga se é necessário realizar um <code>unite()</code>
+ou um <code>separate()</code> e (2) escreva o código que corrija esse problema.</p>
+<ul>
+<li><strong>Item I</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex2_1_1 &lt;- tibble::tribble(
+  ~ANO, ~RAZAO_DE_HOMICIDIO,
+  2014, &#39;1200293 / 102000000&#39;,
+  2015, &#39;201992 / 102929222&#39;,
+  2016, &#39;203918 / 175999271&#39;,
+  2017, &#39;2901827 / 228191900&#39;,
+  2018, &#39;201928 / 201928238&#39;, 
+)
+</code></pre></div>
+<ul>
+<li><strong>Item II</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_2_1_2 &lt;- tibble::tribble(
+  ~NOME, ~LOGRADOUR, ~NUMERO, ~COMPLEMENTO,
+  &#39;Lyandra&#39;, &#39;Rua Ademar de Barros&#39;, 20, &#39;APT 28&#39;,
+  &#39;Monica&#39;, &#39;Avenida São Pedro&#39;, 30, &#39;BLOCO A&#39;,
+  &#39;Luis&#39;, &#39;Rua do Lago&#39;, 22, &#39;Portão do lado esquerdo&#39;,
+  &#39;Isaac&#39;, &#39;Avenida Paulista&#39;, 22, &#39;APT 102&#39;,
+  &#39;Sônia&#39;, &#39;Rua Brigadeiro&#39;, 982, &#39;APT 283&#39;
+)
+</code></pre></div>
+<ul>
+<li><strong>Item III</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_2_1_3 &lt;- tibble::tribble(
+  ~ID, ~DIA, ~MES, ~ANO, ~ALTURA_PESO,
+  1, 10, 2, 1998, &#39;180 - 340&#39;,
+  2, 11, 2, 1998, &#39;190 - 200&#39;,
+  3, 20, 3, 1998, &#39;188 - 176&#39;,
+  2, 30, 5, 1998, &#39;192 - 180&#39;
+)
+</code></pre></div>
+<p>Parabéns! :tada: :tada: :tada:</p>
+<h2 id="3-gather-e-spread">3. Gather e Spread</h2>
+<p>Você já ouviu falar em bancos no formato <code>wide</code> e <code>long</code>?</p>
+<p><center></p>
+<p><strong>Mortalidade na China e no Brasil - Wide</strong></p>
+<p></center>
+<center></p>
+<table>
+<thead>
+<tr class="header">
+<th>País</th>
+<th>2015</th>
+<th>2016</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Brasil</td>
+<td>12</td>
+<td>12.2</td>
+</tr>
+<tr class="even">
+<td>China</td>
+<td>20</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+
+<p></center>
+<center></p>
+<p><strong>Mortalidade na China e no Brasil - Long</strong></p>
+<p></center>
+<center></p>
+<table>
+<thead>
+<tr class="header">
+<th>País</th>
+<th>Ano</th>
+<th>Mortalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Brasil</td>
+<td>2015</td>
+<td>12</td>
+</tr>
+<tr class="even">
+<td>Brasil</td>
+<td>2016</td>
+<td>12.2</td>
+</tr>
+<tr class="odd">
+<td>China</td>
+<td>2015</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>China</td>
+<td>2016</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+
+<p></center></p>
+<p>Qual a diferença entre os dois bancos? Quais deles está no formato
+<code>tidy</code>? Se possível escreva ou tente explicar em voz alta.</p>
+<p><br/></p>
+<p>Como o primeiro banco não contém apenas uma obervação por linha, ele
+<strong>não</strong> é <code>tidy</code>. Você concorda que as tomadas de dados sobre
+mortalidade sobre dois anos não podem ocorrer simultaneamente no mesmo
+ano? Além disso, <code>2015</code> e <code>2016</code> estão ocupando a posição de variáveis,
+mas elas na verdade são valores de uma outra variável? Você sabe dizer
+qual?</p>
+<p>O exemplo de banco <code>tidy</code> é o segundo. Nele, temos as variáveis
+claramente denominadas no cabeçalho do nosso banco. <code>País</code> é uma
+variável, assim como <code>Ano</code> e <code>Mortalidade</code>. E cada linha possui uma
+única observação.</p>
+<p>Que fique bem claro: <code>tidy</code> não é uma definição de qualidade do banco.
+Apenas tentamos <em>estruturar</em> a nossa tabela nesse formato porque isso
+torna mais fácil a interação com outras funções (ex. <code>dplyr</code>, <code>ggplot</code>,
+etc.).</p>
+<h3 id="31-gather">3.1. <code>gather()</code></h3>
+<p><code>gather()</code> é utilizado para derreter/agrupar as colunas dos nossos
+bancos. Pensando no exemplo anterior, essa função transforma o nosso
+banco <em>wide</em> em um banco <em>long</em>.</p>
+<div class="highlight"><pre><span></span><code>tabela_wide &lt;- tibble::tribble(
+  ~País , ~`2015`, ~`2016`,
+  &#39;Brasil&#39; , 10.2 , 11.2,
+  &#39;China&#39; , 14.3 , 18.4,
+)
+
+tabela_wide
+</code></pre></div>
+<p><code>gather()</code> recebe (1) o banco de dados, (2) o nome da variável (<code>key</code>)
+que está como nome das colunas, (3) o nome da variável que está nas
+células, (4) os nomes das colunas em que iremos realizar a operação
+<strong>sem aspas</strong>.</p>
+<div class="highlight"><pre><span></span><code>gather(&lt;banco&gt;, &lt;key&gt;, &lt;value&gt;, &lt;VAR1&gt;, &lt;VAR2&gt;, &lt;VARn&gt;)
+</code></pre></div>
+<p>Dado isso, qual código devemos utilizar para realizar a transformação em
+<code>tabela_wide</code>.</p>
+<p><br/></p>
+<ul>
+<li><strong>Resposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>gather(tabela_wide, key = &#39;ano&#39;, value = &#39;mortalidade&#39; ,`2015`, `2016`)
+</code></pre></div>
+<h4 id="311-aplicando">3.1.1. Aplicando</h4>
+<p>Como o nosso banco não possui esse problema, vamos fingir que decidimos
+realizar uma segunda coleta de dados e queremos avaliar a evolução de
+doenças cardíacas nossos pacientes após 1 ano. Porém, o seu estagiário
+era preguiçoso e ao invés de estruturar o seu banco no formato <code>tidy</code>
+ele (1) alterou o nome da coluna <code>target</code> para <code>target2018</code> e (2) criou
+uma coluna <code>target2019</code> para os novos resultados</p>
+<div class="highlight"><pre><span></span><code>ex3_1_1 &lt;- tibble::tribble(
+  ~ID, ~target2018, ~target2019,
+  1, 0, 0,
+  2, 1, 1,
+  3, 1, 1,
+  4, 1, 1,
+  5, 1, 0,
+)
+
+ex3_1_1
+</code></pre></div>
+<p>Qual código seria utilizado para deixar essa tabela <code>tidy</code>?</p>
+<h3 id="32-spread">3.2. <code>spread()</code></h3>
+<p><code>spread()</code> realiza a operação inversa do <code>gather()</code>. Ela estica os
+nossos dados horizontalmente. Mas isso não acaba com o formato <code>tidy</code> do
+nosso banco? Sim, mas lembre-se que apenas estruturamos os nossos dados
+de acordo com os princípios do <code>tidy data</code> porque a maior parte das
+funções esperam esse tipo de estrutura! Isso não significa que ao
+apresentar uma tabela para alguém ela deva estar no formato <code>tidy</code>. Ela
+simplesmente deve estar na maneira mais intuitiva de ler.</p>
+<div class="highlight"><pre><span></span><code>tabela_long &lt;- tibble::tribble(
+  ~pais, ~ano, ~mortalidade,
+  &#39;Brasil&#39; , 2015 , 10.2,
+  &#39;Brasil&#39; , 2016 , 11.2,
+  &#39;China&#39; , 2015 , 14.3,
+  &#39;China&#39; , 2016 , 18.4,
+)
+
+tabela_long
+</code></pre></div>
+<p>A função <code>spread()</code> recebe os seguintes parâmetros: (1) Primeiro,
+precisamos fornecer o banco de dados; (2) em segundo lugar, o nome da
+variável cujo os valores serão dispostos como colunas; (3) por fim, a
+variável que fornecerá os valores para as células. São os mesmos
+parâmetros da função <code>gather()</code>!</p>
+<div class="highlight"><pre><span></span><code>spread(&lt;banco&gt;, &lt;key&gt;, &lt;value&gt;)
+</code></pre></div>
+<p>Como você faria para deixar o país na linha e os anos no cabeçalho com
+os valores de mortalidade ocupando o centro da tabela?</p>
+<p><br/></p>
+<p><br/></p>
+<ul>
+<li><strong>Resposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>spread(tabela_long, ano, pib)
+</code></pre></div>
+<h4 id="321-aplicando-no-nosso-banco">3.2.1. Aplicando no nosso banco</h4>
+<p>Por favor, execute o código abaixo. Não se preocupe em entender como ele
+funciona. Nós veremos isso na próxima aula. Tenha apenas em mente que
+ele retorna a quantidade de observações diagnosticadas com doença
+cardíaca entre homens e mulheres.</p>
+<div class="highlight"><pre><span></span><code>ex3_1_1 &lt;- banco %&gt;% 
+  group_by(sex, target) %&gt;%
+  summarise(n = n())
+
+ex3_1_1
+</code></pre></div>
+<p>Será que essa é a melhor maneira de visualizar esse resultado? Ainda que
+você consiga extrair alguma informação, imagine se tivéssemos 3 ou 4
+categorias em cada variável. Provavelmente, não seria tão fácil. Uma
+maneira elegante de resolver esse problema é com a função <code>spread()</code>.
+Como você aplicaria essa função para que a variável <code>target</code> fique no
+cabeçalho?</p>
+<h2 id="4-exercicios-parte-2">4. Exercícios - Parte 2</h2>
+<h3 id="41-exercicio-spread">4.1. Exercício - <code>spread()</code></h3>
+<p>Apresente a tabela abaixo de tal maneira que as UFs fiquem nas linhas e
+o nível de escolaridade esteja distribuído pelas colunas.</p>
+<ul>
+<li><strong>Item I</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_4_1_1 &lt;- tibble::tribble(
+  ~UF, ~mes, ~nivel_escolaridade,
+  &#39;SP&#39;, &#39;Jan&#39;, 20.2,
+  &#39;SP&#39;, &#39;Fev&#39;, 29.2,
+  &#39;SP&#39;, &#39;Mar&#39;, 12.3,
+  &#39;SP&#39;, &#39;Abr&#39;, 14.3,
+  &#39;RJ&#39;, &#39;Jan&#39;, 28.2,
+  &#39;RJ&#39;, &#39;Fev&#39;, 19.2,
+  &#39;RJ&#39;, &#39;Mar&#39;, 9.3,
+  &#39;RJ&#39;, &#39;Abr&#39;, 30.3,
+)
+</code></pre></div>
+<ul>
+<li><strong>Item II</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_4_1_2 &lt;- tibble::tribble(
+  ~pais, ~ano, ~venda,
+  &#39;Brasil&#39;, 2014, 20.2,
+  &#39;Brasil&#39;, 2015, 29.2,
+  &#39;Brasil&#39;, 2016, 12.3,
+  &#39;Brasil&#39;, 2017, 14.3,
+  &#39;Colômbia&#39;, 2014, 28.2,
+  &#39;Colômbia&#39;, 2015, 19.2,
+  &#39;Colômbia&#39;, 2016, 9.3,
+  &#39;Colômbia&#39;, 2017, 30.3,
+)
+</code></pre></div>
+<h3 id="42-exercicio-gather">4.2. Exercício - <code>gather()</code></h3>
+<p>Transforme as próximas tabelas em <code>tidy data</code>.</p>
+<ul>
+<li><strong>Item I</strong>: Escolaridade:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_4_2_1 &lt;- tibble::tribble(
+  ~pais, ~`Jan`, ~`Fev`,
+  &#39;China&#39;, 92, 20.2,
+  &#39;EUA&#39;, 10.2, 42,
+  &#39;França&#39;, 72.2, 26,
+  &#39;Chile&#39;, 80.2, 90,
+  &#39;Japão&#39;, 19.1, 25,
+)
+</code></pre></div>
+<ul>
+<li><strong>Item II</strong>: Mortes por arma de fogo</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ex_4_2_2 &lt;- tibble::tribble(
+  ~UF, ~`2015`, ~`2016`,
+  &#39;SP&#39;, 92, 20.2,
+  &#39;RJ&#39;, 10.2, 42,
+  &#39;RS&#39;, 72.2, 26,
+  &#39;CO&#39;, 80.2, 90,
+  &#39;PE&#39;, 19.1, 25,
+)
+</code></pre></div>
+<h2 id="4-dplyr">4. <code>dplyr</code></h2>
+<p>Dentre os pacotes mais importantes do <code>tidyverse</code>, o <code>dplyr</code> se destaca.
+Ele traz uma biblioteca pode rasa de funções que nos permitem
+transformar dados. Essa é a tarefa que você provavelmente passará mais
+tempo fazendo já que nem sempre os dados estão limpos. Muitas vezes
+teremos que criar variáveis ou extrair parte da informação presente em
+uma antes de rodarmos um modelo.</p>
+<p>Quais são os verbos do <code>dplyr</code>? Obviamente, o pacote é extenso e possui
+uma quantidade razoável de funções, mas queremos que você se atente,
+agora, a três funções: <code>select()</code>, <code>filter()</code>, <code>mutate()</code>.</p>
+<h3 id="41-select">4.1. <code>select()</code></h3>
+<p>O <code>select()</code> é capaz de selecionar colunas específicas do nosso banco de
+dados. O uso dela é bem simples e precisamos apenas escrever as
+variáveis que desejamos selecionar <strong>sem aspas</strong>. Caso você deseje
+<strong>excluir</strong> uma variável, acrescente um <code>-</code> antes do no nome. Assim como
+nas funções do <code>tidyr</code> (<code>gather()</code>, <code>spread()</code>, etc.), informamos o
+banco de dados no primeiro parâmetro de nossa função.</p>
+<div class="highlight"><pre><span></span><code>select(&lt;banco&gt;, &lt;VAR1&gt;, &lt;VAR2&gt;, -&lt;VAR3&gt;)
+</code></pre></div>
+<p>Repare que antes de <code>&lt;VAR3&gt;</code> nós adicionamos um <code>-</code>. Isso significa que
+queremos excluir essa coluna no banco</p>
+<p>Imagine que após muita pesquisa, você tenha descoberto que a melhor
+variável para <em>prever</em> doenças cardíacas seja idade (<code>age</code>). Como você
+faria para selecionar apenas <code>target</code> e <code>age</code>?</p>
+<p><br/></p>
+<p><br/></p>
+<ul>
+<li><strong>Resposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>select(banco, age, target)
+</code></pre></div>
+<p>Agora, imagine que tenha sido provado que sexo é irrelevante. Como você
+faria para excluir essa variável do banco?</p>
+<p><br/></p>
+<p><br/></p>
+<div class="highlight"><pre><span></span><code>select(banco, -sex)
+</code></pre></div>
+<h3 id="42-filter">4.2. <code>filter()</code></h3>
+<p>Novamente, o nome da função já entrega o objetivo dela. <code>filter()</code>
+filtra (dãã) as <strong>observações</strong> da nossa tabela por meio de
+<code>operações booleanas</code>.</p>
+<div class="admonition question">
+<p class="admonition-title"> Operadores lógicos </p>
+<p>Nós vimos na primeira aula que operadores lógicas são operações que retornam 
+necessariamente apenas dois resultados: verdadeiro e falso. A partir de agora, começaremos a
+utilizar eles cada vez mais. Então, se não estiver se sentindo confortável com o tema, volte
+para a primeira aula e reveja os exemplos.</p>
+</div>
+<p>Como ela funciona? Simples, você apenas precisa realizar um teste de
+verdadeiro e falso a partir de uma variável do seu banco.</p>
+<div class="highlight"><pre><span></span><code>filter(&lt;banco&gt;, &lt;operacao_booleana&gt;)
+</code></pre></div>
+<p>Repare no banco abaixo. Como você faria para selecionar as observações
+de <code>SP</code>?</p>
+<div class="highlight"><pre><span></span><code>exemplo_filter &lt;- tibble::tribble(
+  ~UF, ~`2015`, ~`2016`,
+  &#39;SP&#39;, 92, 20.2,
+  &#39;RJ&#39;, 10.2, 42,
+  &#39;RS&#39;, 72.2, 26,
+  &#39;CO&#39;, 80.2, 90,
+  &#39;PE&#39;, 19.1, 25,
+)
+
+exemplo_filter
+</code></pre></div>
+<p>Qual o operador lógico que testa igualdade? Se você pensou no <code>==</code>,
+acertou! :tada: Agora, só precisamos colocá-lo dentro do <code>filter()</code> e
+deixar que mágica aconteça.</p>
+<p><br/></p>
+<p><br/></p>
+<ul>
+<li><strong>Resposta</strong>:</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>filter(exemplo_filter, UF == &#39;SP&#39;)
+</code></pre></div>
+<h3 id="43-mutate">4.3. <code>mutate()</code></h3>
+<p><code>mutate()</code> nos permite transformar e criar colunas em nossa tabela de
+maneira rápida e intuitiva. Repare na tabela abaixo.</p>
+<div class="highlight"><pre><span></span><code>exemplo_mutate &lt;- tibble::tribble(
+  ~UF, ~mes, ~total, ~homi
+  &#39;SP&#39;, &#39;Jan&#39;, 20.2, 3
+  &#39;SP&#39;, &#39;Fev&#39;, 29.2, 4
+  &#39;SP&#39;, &#39;Mar&#39;, 12.3, 6
+  &#39;SP&#39;, &#39;Abr&#39;, 14.3, 4
+  &#39;RJ&#39;, &#39;Jan&#39;, 28.2, 3
+  &#39;RJ&#39;, &#39;Fev&#39;, 19.2, 3
+  &#39;RJ&#39;, &#39;Mar&#39;, 9.3, 10
+  &#39;RJ&#39;, &#39;Abr&#39;, 30.3, 20
+)
+</code></pre></div>
+<p>Sento <code>total</code> o total de mortes registradas naquele mês e <code>homi</code> valor
+absoluto de homicídios, é possível retirar a taxa de homicídios entre
+todas as outras mortes realizando com a operação de divisão.</p>
+<div class="highlight"><pre><span></span><code>mutate(&lt;banco&gt;,
+       &lt;variavel&gt; = &lt;operacao&gt;)
+</code></pre></div>
+<p>Novamente, o banco de dados é fornecido como primeiro parâmetro. A
+diferença é que dessa vez iremos fazer referências a variáveis
+(<code>&lt;variavel&gt;</code>) dentro da função <code>mutate()</code> para alterá-las. Em
+<code>&lt;operacoes&gt;</code>, você pode fazer referência a outras variáveis do banco ou
+até mesmo de outros objetos para realizar a sua conta.</p>
+<p>Você consegue imaginar como escrever o código acima para retirar a taxa
+de homicídios?</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../01_introducao/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Introdução" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Introdução
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../03_transformar/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Transformando Dados" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Transformando Dados
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Programação para Humanidades
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/p4husp" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/p4husp" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://instagram.com/p4husp" target="_blank" rel="noopener" title="instagram.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://facebook.com/p4husp" target="_blank" rel="noopener" title="facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56a63758.min.js"></script>
+      
+    
+  </body>
+</html>

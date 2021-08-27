@@ -1,0 +1,1083 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material para cursos de programação e análise de dados">
+      
+      
+      
+        <meta name="author" content="P4H">
+      
+      
+        <link rel="canonical" href="https://p4husp.github.io/material-2021/04_visualizacao/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
+    
+    
+      
+        <title>Visualizacao - P4H - Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.be71726b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-ggplot2" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="P4H - Material" class="md-header__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            P4H - Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Visualizacao
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="P4H - Material" class="md-nav__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    P4H - Material
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Material
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introducao/" class="md-nav__link">
+        Introdução
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_estruturar/" class="md-nav__link">
+        Estruturar
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_transformar/" class="md-nav__link">
+        Transformando Dados
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Visualizacao
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Visualizacao
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ggplot2" class="md-nav__link">
+    1. ggplot2
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ggplot2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ggplot2" class="md-nav__link">
+    ggplot2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-fazer-um-grafico-no-ggplot2" class="md-nav__link">
+    Como fazer um gráfico no ggplot2
+  </a>
+  
+    <nav class="md-nav" aria-label="Como fazer um gráfico no ggplot2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geom_col" class="md-nav__link">
+    geom_col()
+  </a>
+  
+    <nav class="md-nav" aria-label="geom_col()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio_1" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_histogram-e-geom_density" class="md-nav__link">
+    geom_histogram() e geom_density()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_boxplot-e-geom_violin" class="md-nav__link">
+    geom_boxplot() e geom_violin()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_line" class="md-nav__link">
+    geom_line()
+  </a>
+  
+    <nav class="md-nav" aria-label="geom_line()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio_2" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidando_com_bancodados_parte1/" class="md-nav__link">
+        Lidando com Banco de dados
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-ggplot2" class="md-nav__link">
+    1. ggplot2
+  </a>
+  
+    <nav class="md-nav" aria-label="1. ggplot2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ggplot2" class="md-nav__link">
+    ggplot2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#como-fazer-um-grafico-no-ggplot2" class="md-nav__link">
+    Como fazer um gráfico no ggplot2
+  </a>
+  
+    <nav class="md-nav" aria-label="Como fazer um gráfico no ggplot2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geom_col" class="md-nav__link">
+    geom_col()
+  </a>
+  
+    <nav class="md-nav" aria-label="geom_col()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio_1" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_histogram-e-geom_density" class="md-nav__link">
+    geom_histogram() e geom_density()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_boxplot-e-geom_violin" class="md-nav__link">
+    geom_boxplot() e geom_violin()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geom_line" class="md-nav__link">
+    geom_line()
+  </a>
+  
+    <nav class="md-nav" aria-label="geom_line()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio_2" class="md-nav__link">
+    Exercício
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/p4hUSP/material-2021/edit/master/docs/04_visualizacao.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Visualizacao</h1>
+                
+                <p>As visualizações gráficas são muito importantes para transmitir
+informações. Podemos dizer até que ela é fundamental para análise de
+dados, nos ajudando a responder questões, tomar decisões, contar
+histórias e até mesmo inspirar. Veremos não só como fazer estas
+visualizações, mas também a entender quando elas podem ser necessárias.</p>
+<p>Além disso, vamos aproveitar para rever alguns tópicos de aulas passadas
+utilizando informações de corridas de taxi em NYC. <em>Para ter mais
+contexto, estamos desenvolvendo uma nova feature/solução de incentivo
+para os usuários</em>. Para isso precisamos entender quais grupos utilizam
+mais a nossa plataforma.</p>
+<p>O banco de dados possuí 166.355 entradas com 18 variáveis:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variável</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Identificação da corrida</td>
+</tr>
+<tr class="even">
+<td>date_pickup</td>
+<td>Data de entrada no veículo</td>
+</tr>
+<tr class="odd">
+<td>hour_pickup</td>
+<td>Hora de entrada no veículo</td>
+</tr>
+<tr class="even">
+<td>dayweek_pickup</td>
+<td>Dia da semana de entrada no veículo</td>
+</tr>
+<tr class="odd">
+<td>date_dropoff</td>
+<td>Data de saida do veículo</td>
+</tr>
+<tr class="even">
+<td>hour_dropoff</td>
+<td>Hora de saida do veículo</td>
+</tr>
+<tr class="odd">
+<td>dayweek_dropoff</td>
+<td>Dia da semana de saida do veículo</td>
+</tr>
+<tr class="even">
+<td>passenger_count</td>
+<td>Quantos passageiros estavam no carro</td>
+</tr>
+<tr class="odd">
+<td>pickup_latitude</td>
+<td>Latitude de entrada no carro</td>
+</tr>
+<tr class="even">
+<td>pickup_longitude</td>
+<td>Longitude de entrada no carro</td>
+</tr>
+<tr class="odd">
+<td>dropoff_latitude</td>
+<td>Latitude de saida do carro</td>
+</tr>
+<tr class="even">
+<td>dropoff_longitude</td>
+<td>Longitude de saida do carro</td>
+</tr>
+<tr class="odd">
+<td>duration</td>
+<td>Duração da corrida (em segundos)</td>
+</tr>
+<tr class="even">
+<td>distance</td>
+<td>Distância da corrida (em milhas)</td>
+</tr>
+<tr class="odd">
+<td>rating</td>
+<td>Nota da corrida</td>
+</tr>
+<tr class="even">
+<td>age</td>
+<td>Idade do passageiro que pediu a corrida</td>
+</tr>
+<tr class="odd">
+<td>price</td>
+<td>Preço final da corrida</td>
+</tr>
+<tr class="even">
+<td>comments</td>
+<td>Comentários ao final da corrida</td>
+</tr>
+</tbody>
+</table>
+
+<p>Vamos aprender a fazer visualizacões?</p>
+<ul>
+<li><a href="">Download do Banco</a></li>
+</ul>
+<p>Sempre é bom recaptular. Para abrir este banco de dados podemos utilizar
+qual pacote?</p>
+<div class="highlight"><pre><span></span><code>library(&lt;pacote&gt;)
+banco &lt;- read_&lt;nome&gt;(&lt;caminho_do_arquivo&gt;)
+
+library(readr)
+banco &lt;- read_csv(&quot;taxirides_sample.csv&quot;)
+</code></pre></div>
+<h2 id="1-ggplot2">1. ggplot2</h2>
+<p>Antes de irmos diretamente para as visualizações vamos habilitar alguns
+pacotes:</p>
+<div class="highlight"><pre><span></span><code>library(tidyverse)
+#install.packages(&quot;Amelia&quot;)
+library(Amelia)
+</code></pre></div>
+<p>Habilitamos dois pacotes novos, o <code>ggplot2</code> e o <code>Amelia</code>. O primeiro
+deles é o principal pacote para visualizações no R, possibilitando criar
+gráficos exatamente da forma que você quiser, sobretudo, porque ele
+funciona em um esquema de layers.</p>
+<p>O segundo pacote é feito para visualizarmos valores ausentes entre
+variáveis, também chamado de <code>NA</code>. Apesar dele não fazer parte do
+<code>ggplot2</code>, é uma otíma alternativa identificarmos valores ausentes.</p>
+<p>Mas antes vamos tratar de entender a nossa base de dados e fazer algumas
+manipulações nela.</p>
+<p>A primeira coisa que iremos fazer é aplicar a função <code>glimpse()</code> do
+<code>dplyr</code>. Elas nos possibilita ver as nossas variáveis sem precisar abrir
+o banco inteiro.</p>
+<div class="highlight"><pre><span></span><code>glimpse(banco)
+</code></pre></div>
+<p>Pode-se notar que todas as variáveis parecem ok! Será mesmo?</p>
+<p><br/></p>
+<p>Se você notou temos duas variável que não deveria estar aí, a X14 e a
+X15. Além disso, vamos investigar se nosso dado possui valores ausentes?</p>
+<h3 id="exercicio">Exercício</h3>
+<ol>
+<li>Remova as variáveis X14 e X15. Depois filtre: para uma duração menor
+    ou igual a 1000 segundos; e distancia menor do que 100 milhas. Este
+    filtro é para restringirmos mais a nossa análise dado a quantidade
+    de dados.</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco &lt;- banco %&gt;% 
+  select(-X14,-X15) %&gt;% 
+  filter(duration &lt;= 1000, 
+         distance &lt;= 100)
+</code></pre></div>
+<p>Vamos verificar os valores ausentes do nosso banco?</p>
+<div class="highlight"><pre><span></span><code>Amelia::missmap(banco)
+</code></pre></div>
+<p>AHA! Temos valores ausentes na coluna <code>comments</code>. Vamos removê-la!</p>
+<ol>
+<li>Filtre apenas por valores que não possuem NA</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco &lt;- banco %&gt;% select(-comments)
+
+Amelia::missmap(banco)
+</code></pre></div>
+<ol>
+<li>Calcule a média do preço (media_global) das corridas. E partir
+    disso, classifique se o preço de cada corrida é Maior ou Menor que a
+    media_global (transforme o resultado em fator)</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>media_global &lt;- mean(banco$price)
+
+banco &lt;- banco %&gt;% 
+  mutate(categoria_preco = ifelse(price &gt;= media_global, &quot;Maior&quot;, &quot;Menor&quot;),
+         categoria_preco = factor(categoria_preco, levels = c(&quot;Maior&quot;, &quot;Menor&quot;)))
+
+head(banco)
+</code></pre></div>
+<ol>
+<li>Por fim, temos uma variável chamada <code>age</code>. Transforme ela em
+    conjunto de categorias utilizando a função <code>case_when()</code> e depois
+    transforme o resultado em fator</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco %&gt;% 
+  summarise(min = min(age),
+            max = max(age))
+
+
+banco &lt;- banco %&gt;% 
+  mutate(categoria_idade = case_when(age %in% c(18:24) ~ &quot;18_24&quot;,
+                                   age %in% c(25:34) ~ &quot;25_34&quot;,
+                                   age %in% c(35:44) ~ &quot;35_44&quot;,
+                                   age %in% c(45:54) ~ &quot;45_54&quot;,
+                                   age %in% c(55:65) ~ &quot;55_65&quot;),
+         categoria_idade = factor(categoria_idade, levels = c(&quot;18_24&quot;, &quot;25_34&quot;, &quot;35_44&quot;, &quot;45_54&quot;, &quot;55_65&quot;)))
+
+banco %&gt;% 
+  count(categoria_idade)
+</code></pre></div>
+<p>Agora que alteramos e criamos algumas variáveis vamos conhecer o
+<code>ggplot2</code>.</p>
+<h2 id="ggplot2">ggplot2</h2>
+<p>O ggplot2 é um pacote baseado no que se chamou Grammar of Graphics (por
+isso gg antes do plot2), que nada mais é do que uma estrutura
+(framework) para realização de gráficos, que nós também chamamos de
+“plot”. Além disso, o Grammar of Graphics tem o seguinte principio:</p>
+<div class="admonition question">
+<p class="admonition-title"> Layers </p>
+<p>Gráficos são construídos com diferentes <strong>layers</strong></p>
+</div>
+<p>Mas o que são <strong>layers</strong>? Layers são elementos (ou componentes)
+gramáticais utilizados para fazer um plot. Estes componentes são
+importantes para determinar a representação dos dados. Como o Hadley
+Wickham apontou em um artigo chamado “A layered grammar of graphics”
+(2010), a associação destes layers com uma certa grámatica auxilia o
+usuário em atualizar e contruir gráficos com uma facilidade maior.</p>
+<p>Os elementos gramáticais que temos no <code>ggplot2</code> são:</p>
+<ol>
+<li>
+<p>Data - O dado que será plotado, mapeando as variáveis de interesse.</p>
+</li>
+<li>
+<p>Aesthetics - A escala em que o dado será plotado, sinalizando os
+    eixos x e y, cor, tamanho, preenchimento e etc.</p>
+</li>
+<li>
+<p>Geom - Estrutura que será utilizada nos seus dados, como por
+    exemplo, gráfico de dispersão, linha, boxplot e etc.</p>
+</li>
+<li>
+<p>Facets - plotar multiplos grupos</p>
+</li>
+<li>
+<p>Stats - Transformações estatísticas</p>
+</li>
+<li>
+<p>Coordinates System - O espaço no qual o dado sera plotado, como por
+    exemplo, espaço cartesiano, polar e entre outros.</p>
+</li>
+<li>
+<p>Theme - Controle e modificação de aparência de tudo que não diz
+    respeito ao dado utilizado.</p>
+</li>
+<li>
+<p>Scales - Para cada Aesthetics, descreve como a característica visual
+    é convertida em valores, como por exemplo, escala por tamanho, cor e
+    etc.</p>
+</li>
+</ol>
+<p>É muito importante destacar que <strong>as camadas (layers) podem aparecer em
+qualquer sequencia ao fazermos um gráfico e que a única camada
+necessária para começar um gráfico é a partir da função ggplot()</strong>.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/p4hUSP/workshops_2018.2/master/imgs/w3_03.png" />
+<center>
+Os layers do ggplot2 (Fonte: DataCamp)
+</center></p>
+<h2 id="como-fazer-um-grafico-no-ggplot2">Como fazer um gráfico no <code>ggplot2</code></h2>
+<p>Vamos fazer um exercício de imaginação? Como nós faríamos um gráfico sem
+o R? Que tal um papel? Qual o passo a passo que poderíamos fazer?</p>
+<p><br/></p>
+<p>No R é semelhante. Primeiro precisamos de um papel:</p>
+<div class="highlight"><pre><span></span><code>ggplot()
+</code></pre></div>
+<p>Depois, nós precisamos decidir que dados iremos utilizar e quam vai ser
+o eixo x e o eixo y.</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = banco, mapping = aes(x = duration , y = distance))
+</code></pre></div>
+<p>Em seguida, escolhemos qual é melhor forma /estrutura para visualizar os
+dados.</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = banco, mapping = aes(x = duration , y = distance)) + 
+  geom_point()
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title"> Qual é a diferença do + para o %&gt;% </p>
+<p>Como vimos o pipe serve para deixarmos a linguagem mais linear, servindo como um conector entre as funções, porém isso não funciona com o <code>ggplot2</code>. O motivo pode ser pensado até de forma mais intuitiva: No ggplot2 estamos adicionando camadas com o sinal de mais enquanto com o <code>%&gt;%</code> estamos dando uma sequência de ações, isto é, funções.</p>
+</div>
+<p>Simples, não? Apesar disso, precisamos entender alguns conceitos que
+vimos ao montar este gráfico, como por exemplo, colocamos os eixos x e y
+dentro de uma função chamada <code>aes()</code>. Ela é uma função responsável pela
+propriedade visual dos objetos no gráfico, em outras palavras, ela faz o
+“mapeamento” das variáveis do nosso banco de dados para que eles possam
+fazer parte dos elementos visuais do gráfico.</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = banco, mapping = aes(x = duration , y = distance, color = categoria_idade)) + 
+  geom_point()
+</code></pre></div>
+<p>Perceba que o <code>color = categoria_idade</code> afeta o <code>geom</code> que utilizamos de
+acordo com a variável de interesse, mas veremos adiante que também
+podemos alterar tanto um <code>geom</code> especificamente, quanto a cor do
+gráfico.</p>
+<div class="highlight"><pre><span></span><code>Antes de explorarmos outros geoms, que hipóteses podemos levantar desse gráfico?
+</code></pre></div>
+<p>Vamos ver outros <code>geom_</code>?</p>
+<h3 id="geom_col">geom_col()</h3>
+<p>Para fazer este geom, eu vou manipular a base de dados para contar
+corridas tiveram um preço menor e maior do que a média. Além disso, vou
+chamar essa nova tabela de <code>tab1</code></p>
+<div class="highlight"><pre><span></span><code># chame esta tabela de banco para que possamos fazer outras manipulações
+tab1 &lt;- banco %&gt;% 
+  group_by(categoria_preco) %&gt;% 
+  summarise(n = n())
+tab1
+</code></pre></div>
+<p>Vamos para o geom_col()</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + geom_col()
+</code></pre></div>
+<p>Vamos brincar um pouco com os argumentos estéticos que o ggplot2
+permite?</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n)) + 
+  geom_col(fill = &quot;red&quot;, width = 0.5)
+</code></pre></div>
+<h4 id="exercicio_1">Exercício</h4>
+<ol>
+<li>Aplique os parâmetros para mudar a cor (color), o tamanho (size) e o
+    formato (shape) dos pontos do gráfico abaixo:</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ggplot(data = banco, mapping = aes(x = duration, y = price)) + geom_point()
+</code></pre></div>
+<h3 id="geom_histogram-e-geom_density">geom_histogram() e geom_density()</h3>
+<p>Se quisermos ver a distribuição de uma variável quantitativa, podemos
+utilizar o <code>geom_histogram()</code>! Qual será a distribuição da variável
+price?</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20)
+</code></pre></div>
+<p>Lembre-se que também podemos colocar outros atribuitos estéticos!</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = duration)) + geom_histogram(bins = 20, color = &quot;blue&quot;, fill = &quot;green&quot;)
+</code></pre></div>
+<p>Além do <code>geom_histogram()</code>, o R também nos permite aplicar o
+<code>geom_density()</code> em variáveis continúas! Vamos ver como ficam os casos
+acima:</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = duration)) + geom_density(color = &quot;blue&quot;, fill = &quot;green&quot;, alpha = 0.5)
+</code></pre></div>
+<p>E se eu quiser comparar a distribuição da duração pelo preço
+(categoria_preço)?</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = duration, fill = categoria_preco)) + geom_density(color = &quot;blue&quot;, alpha = 0.5)
+</code></pre></div>
+<h3 id="geom_boxplot-e-geom_violin">geom_boxplot() e geom_violin()</h3>
+<p>Se nós tivermos uma variável quantitativa e qualitativa, podemos
+utilizar o <code>geom_boxplot</code> e o <code>geom_violin</code>! Qual a distribuição da
+média de nota por macro distrito?</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = categoria_idade, y = price)) + geom_boxplot(fill = &quot;#444054&quot;, color = &quot;#cc3f0c&quot;)
+
+ggplot(banco, aes(x = categoria_idade, y = price)) + geom_violin(fill = &quot;#8c1c13&quot;, alpha = 1/2)
+</code></pre></div>
+<h3 id="geom_line">geom_line()</h3>
+<p>Para esses exemplo vamos criar a tabela abaixo primeiro:</p>
+<div class="highlight"><pre><span></span><code>tab2 &lt;- banco %&gt;% 
+  group_by(hour_pickup) %&gt;% 
+  summarise(price_hour_pickup = mean(price))
+</code></pre></div>
+<p>Apesar de mais utilizado para séries temporais, podemos utilizar um
+gráfico de linhas para pensar na variação do preço ao longo do dia.</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1)
+</code></pre></div>
+<h4 id="exercicio_2">Exercício</h4>
+<ol>
+<li>Incluia um geom_point() no gráfico acima e altere sua cor.</li>
+</ol>
+<p>E se quisermos mudar a cor da categorização para algo que gostamos mais?
+Para fazer isso vamos incluir mais uma camada no nosso gráfico, a camada
+de scale.</p>
+<div class="admonition question">
+<p class="admonition-title"> Combinando cores </p>
+<p>Se você tem dúvida de qual cor pode combinar melhor com outra, tem um <a href="https://coolors.co/app">site</a> bem bacana que pode te ajudar nisso.</p>
+<p>tab3 &lt;- banco %&gt;% 
+  group_by(hour_pickup) %&gt;% 
+  summarise(price_hour_pickup = mean(price))</p>
+<p>ggplot(data = tab2, mapping = aes(x = hour_pickup, y = price_hour_pickup)) + geom_line(group = 1, color = "#8093F1", size = 1) +
+ geom_point(size = 2, color = "#ff1053") </p>
+</div>
+<p>Podemos utilizar o <code>scale_color_manual</code> para preencher as cores de
+acordo com o paramêtro <code>color</code>. Se você quiser escolher o <code>fill</code>
+teriamos que utilizar <code>scale_fill_manual</code>.</p>
+<div class="highlight"><pre><span></span><code>ggplot(banco, aes(x = categoria_idade, y = price, fill = categoria_idade)) + geom_boxplot(color = &quot;#023047&quot;, alpha = 0.7) + scale_fill_manual(values = c(&quot;#e63946&quot;,&quot;#f1faee&quot;, &quot;#a8dadc&quot;, &quot;#457b9d&quot;, &quot;#1d3557&quot;))
+</code></pre></div>
+<p>O <code>ggplot2</code> também possibilita a utilização de outros sistemas de
+coordenadas, como por exemplo:</p>
+<ul>
+<li><code>coord_flip</code></li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>ggplot(data = tab1, mapping = aes(x = categoria_preco, y = n, fill = categoria_preco)) + geom_col() + scale_fill_manual(values = c(&quot;#ff1053&quot;, &quot;#6c6ea0&quot;)) + coord_flip()
+</code></pre></div>
+<ul>
+<li><code>coord_polar</code></li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>tab4 &lt;- banco %&gt;% 
+  group_by(categoria_idade) %&gt;% 
+  summarise(n = n()) %&gt;% 
+  mutate(p = n/sum(n))
+
+ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c(&quot;#e63946&quot;,&quot;#f1faee&quot;, &quot;#a8dadc&quot;, &quot;#457b9d&quot;, &quot;#1d3557&quot;)) + coord_polar(theta = &#39;y&#39;)
+</code></pre></div>
+<p>Dica: Tome cuidado com o <code>coord_polar</code>! Ás vezes, para não dizer sempre,
+eles podem dificultar a visualização dos dados, sobretudo, aqueles com
+muitas categorias.</p>
+<p>Vamos dar um título para nosso gráfico?</p>
+<div class="highlight"><pre><span></span><code>ggplot(data = tab4, mapping = aes(x = factor(1), y = p, fill = categoria_idade)) + geom_col() + scale_fill_manual(values = c(&quot;#e63946&quot;,&quot;#f1faee&quot;, &quot;#a8dadc&quot;, &quot;#457b9d&quot;, &quot;#1d3557&quot;)) + coord_polar(theta = &#39;y&#39;) +
+  labs(title = &quot;As idades não possuem diferenças\nnotáveis quando em comparação&quot;,
+       x = &quot;EIXO X&quot;, 
+       y = &quot;EIXO Y&quot;,
+       caption = &quot;TAXI DATA&quot;) +
+  theme_bw()
+</code></pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href="../03_transformar/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Transformando Dados" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Transformando Dados
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../lidando_com_bancodados_parte1/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Lidando com Banco de dados" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Lidando com Banco de dados
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Programação para Humanidades
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/p4husp" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/p4husp" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://instagram.com/p4husp" target="_blank" rel="noopener" title="instagram.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://facebook.com/p4husp" target="_blank" rel="noopener" title="facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56a63758.min.js"></script>
+      
+    
+  </body>
+</html>

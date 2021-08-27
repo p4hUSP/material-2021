@@ -1,0 +1,2192 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Material para cursos de programação e análise de dados">
+      
+      
+      
+        <meta name="author" content="P4H">
+      
+      
+        <link rel="canonical" href="https://p4husp.github.io/material-2021/01_introducao/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.5">
+    
+    
+      
+        <title>Introdução - P4H - Material</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.be71726b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="white" data-md-color-accent="red">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introducao-ao-r" class="md-skip">
+          Ir para o conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="P4H - Material" class="md-header__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            P4H - Material
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introdução
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando a pesquisa
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="P4H - Material" class="md-nav__button md-logo" aria-label="P4H - Material" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    P4H - Material
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/p4hUSP/material-2021/" title="Ir ao repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    p4husp/material-2021
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Material
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introdução
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Introdução
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leituras-recomendadas" class="md-nav__link">
+    Leituras recomendadas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-o-r-e-o-rstudio" class="md-nav__link">
+    1. O que é o R e o RStudio?
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O que é o R e o RStudio?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-linguagem-de-programacao-r" class="md-nav__link">
+    1.1. Linguagem de programação R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-rstudio" class="md-nav__link">
+    1.2. RStudio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-nosso-primeiro-projeto" class="md-nav__link">
+    1.3. Nosso primeiro projeto
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nosso-primeiro-script" class="md-nav__link">
+    1.4. Nosso primeiro script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-algumas-regras-de-boa-conduta" class="md-nav__link">
+    1.5. Algumas regras de boa conduta
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-nossas-primeiras-linhas-de-codigo" class="md-nav__link">
+    2. Nossas primeiras linhas de código
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Nossas primeiras linhas de código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-objetos-e-atribuicoes" class="md-nav__link">
+    2.1. Objetos e Atribuições
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-atribuindo-valores-a-variaveis-" class="md-nav__link">
+    2.2. Atribuindo valores à variáveis (&lt;-)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tipos-de-dados" class="md-nav__link">
+    2.3. Tipos de dados
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Tipos de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-variaveis-do-tipo-numerico" class="md-nav__link">
+    2.3.1. Variáveis do tipo numérico
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-lidando-com-variaveis-do-tipo-string-texto" class="md-nav__link">
+    2.3.2. Lidando com variáveis do tipo string (texto)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-lidando-com-variaveis-do-tipo-factor-variaveis-categoricas" class="md-nav__link">
+    2.3.3. Lidando com variáveis do tipo factor (variáveis categóricas)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-lidando-com-data-e-tempo" class="md-nav__link">
+    2.3.4. Lidando com data e tempo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-lidando-com-logicosbooleanos" class="md-nav__link">
+    2.3.5. Lidando com lógicos/booleanos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-valores-ausentes-ou-missing" class="md-nav__link">
+    2.3.6. Valores Ausentes ou Missing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exercicios-parte-1" class="md-nav__link">
+    3. Exercícios - Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Exercícios - Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-tipos-de-dados" class="md-nav__link">
+    3.1. Tipos de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-encontre-o-erro" class="md-nav__link">
+    3.2. Encontre o erro
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-estruturas-de-dados" class="md-nav__link">
+    4. Estruturas de dados
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Estruturas de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vetores" class="md-nav__link">
+    4.1. Vetores
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1. Vetores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-indexando-vetores" class="md-nav__link">
+    4.1.1. Indexando vetores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dataframes" class="md-nav__link">
+    4.2. Dataframes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. Dataframes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-indexando" class="md-nav__link">
+    4.3.1. Indexando
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-importando-dataframes-csv-excel-etc" class="md-nav__link">
+    4.3.2. Importando dataframes (csv, Excel, etc.)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exercicio-parte-2" class="md-nav__link">
+    5. Exercício - Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Exercício - Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dataframes" class="md-nav__link">
+    5.1. DataFrames
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-funcoes" class="md-nav__link">
+    5. Funções
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Funções">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-pacotes" class="md-nav__link">
+    5.1. Pacotes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-controladores-de-fluxo" class="md-nav__link">
+    6. Controladores de Fluxo
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Controladores de Fluxo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ifelse" class="md-nav__link">
+    6.1. if/else
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-for" class="md-nav__link">
+    6.2. for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-exercicios" class="md-nav__link">
+    7. Exercícios
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-1-tipos-de-dados" class="md-nav__link">
+    Exercício 1 - Tipos de dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-2-manipulando-variaveis" class="md-nav__link">
+    Exercício 2 - Manipulando variáveis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-3-estruturas-de-dados" class="md-nav__link">
+    Exercício 3 - Estruturas de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-4-controladores-de-fluxo" class="md-nav__link">
+    Exercício 4 - Controladores de Fluxo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-5-importacao-de-dados" class="md-nav__link">
+    Exercício 5 - Importação de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-6-desafio" class="md-nav__link">
+    Exercício 6 - Desafio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_estruturar/" class="md-nav__link">
+        Estruturar
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_transformar/" class="md-nav__link">
+        Transformando Dados
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_visualizacao/" class="md-nav__link">
+        Visualizacao
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lidando_com_bancodados_parte1/" class="md-nav__link">
+        Lidando com Banco de dados
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#leituras-recomendadas" class="md-nav__link">
+    Leituras recomendadas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-o-r-e-o-rstudio" class="md-nav__link">
+    1. O que é o R e o RStudio?
+  </a>
+  
+    <nav class="md-nav" aria-label="1. O que é o R e o RStudio?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-linguagem-de-programacao-r" class="md-nav__link">
+    1.1. Linguagem de programação R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-rstudio" class="md-nav__link">
+    1.2. RStudio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-nosso-primeiro-projeto" class="md-nav__link">
+    1.3. Nosso primeiro projeto
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-nosso-primeiro-script" class="md-nav__link">
+    1.4. Nosso primeiro script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-algumas-regras-de-boa-conduta" class="md-nav__link">
+    1.5. Algumas regras de boa conduta
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-nossas-primeiras-linhas-de-codigo" class="md-nav__link">
+    2. Nossas primeiras linhas de código
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Nossas primeiras linhas de código">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-objetos-e-atribuicoes" class="md-nav__link">
+    2.1. Objetos e Atribuições
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-atribuindo-valores-a-variaveis-" class="md-nav__link">
+    2.2. Atribuindo valores à variáveis (&lt;-)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-tipos-de-dados" class="md-nav__link">
+    2.3. Tipos de dados
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3. Tipos de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#231-variaveis-do-tipo-numerico" class="md-nav__link">
+    2.3.1. Variáveis do tipo numérico
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232-lidando-com-variaveis-do-tipo-string-texto" class="md-nav__link">
+    2.3.2. Lidando com variáveis do tipo string (texto)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#233-lidando-com-variaveis-do-tipo-factor-variaveis-categoricas" class="md-nav__link">
+    2.3.3. Lidando com variáveis do tipo factor (variáveis categóricas)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#234-lidando-com-data-e-tempo" class="md-nav__link">
+    2.3.4. Lidando com data e tempo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#235-lidando-com-logicosbooleanos" class="md-nav__link">
+    2.3.5. Lidando com lógicos/booleanos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#236-valores-ausentes-ou-missing" class="md-nav__link">
+    2.3.6. Valores Ausentes ou Missing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-exercicios-parte-1" class="md-nav__link">
+    3. Exercícios - Parte 1
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Exercícios - Parte 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-tipos-de-dados" class="md-nav__link">
+    3.1. Tipos de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-encontre-o-erro" class="md-nav__link">
+    3.2. Encontre o erro
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-estruturas-de-dados" class="md-nav__link">
+    4. Estruturas de dados
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Estruturas de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-vetores" class="md-nav__link">
+    4.1. Vetores
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1. Vetores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-indexando-vetores" class="md-nav__link">
+    4.1.1. Indexando vetores
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dataframes" class="md-nav__link">
+    4.2. Dataframes
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2. Dataframes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-indexando" class="md-nav__link">
+    4.3.1. Indexando
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-importando-dataframes-csv-excel-etc" class="md-nav__link">
+    4.3.2. Importando dataframes (csv, Excel, etc.)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exercicio-parte-2" class="md-nav__link">
+    5. Exercício - Parte 2
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Exercício - Parte 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dataframes" class="md-nav__link">
+    5.1. DataFrames
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-funcoes" class="md-nav__link">
+    5. Funções
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Funções">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-pacotes" class="md-nav__link">
+    5.1. Pacotes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-controladores-de-fluxo" class="md-nav__link">
+    6. Controladores de Fluxo
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Controladores de Fluxo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-ifelse" class="md-nav__link">
+    6.1. if/else
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-for" class="md-nav__link">
+    6.2. for
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-exercicios" class="md-nav__link">
+    7. Exercícios
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Exercícios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-1-tipos-de-dados" class="md-nav__link">
+    Exercício 1 - Tipos de dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-2-manipulando-variaveis" class="md-nav__link">
+    Exercício 2 - Manipulando variáveis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-3-estruturas-de-dados" class="md-nav__link">
+    Exercício 3 - Estruturas de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-4-controladores-de-fluxo" class="md-nav__link">
+    Exercício 4 - Controladores de Fluxo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-5-importacao-de-dados" class="md-nav__link">
+    Exercício 5 - Importação de Dados
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercicio-6-desafio" class="md-nav__link">
+    Exercício 6 - Desafio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/p4hUSP/material-2021/edit/master/docs/01_introducao.md" title="Editar esta página" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="introducao-ao-r">Introdução ao R</h1>
+<h2 id="leituras-recomendadas">Leituras recomendadas</h2>
+<div class="admonition highlight">
+<p class="admonition-title">Leituras Recomendadas</p>
+<ul>
+<li>
+<p><strong>Capítulos 1, 2 e 3 (Parte 1)</strong>. <em>Grolemund, Garret. Hands-On Programming with R</em> -    <a href="https://rstudio-education.github.io/hopr/r-objects.html">Livro</a></p>
+</li>
+<li>
+<p><strong>Capítulo 5 (Parte 2)</strong>. <em>Grolemund, Garret. Hands-On Programming with R</em> -  <a href="https://rstudio-education.github.io/hopr/r-objects.html">Livro</a></p>
+</li>
+<li>
+<p><strong>Capítulos 2, 3 e 4</strong>. <em>Aquino, Jakson. R para Cientistas Sociais</em> - <a href="http://www.uesc.br/editora/livrosdigitais_20140513/r_cientistas.pdf">Livro</a></p>
+</li>
+</ul>
+</div>
+<h2 id="1-o-que-e-o-r-e-o-rstudio">1. O que é o R e o RStudio?</h2>
+<h3 id="11-linguagem-de-programacao-r">1.1. Linguagem de programação R</h3>
+<p>O <strong>R</strong> é uma linguagem de programação que vem crescendo bastante nos
+últimos anos. Apesar de inicialmente ter como público estatísticos, ela
+é cada vez mais utilizada para análise de dados nas mais diferentes
+áreas. A flexibilidade trazido por uma inúmera quantidade de pacotes
+permite lidar não só com tabelas estilo Excel, mas também com texto,
+imagens, etc.</p>
+<p>Porém, podemos nos sentir intimidados quando vemos o <strong>R</strong> pela primeira
+vez. Quando baixamos o <strong>R</strong> pela primeira vez nos assustamos com a sua
+interface.</p>
+<p><img alt="" src="../imgs/r_console.png" /></p>
+<h3 id="12-rstudio">1.2. RStudio</h3>
+<p>Contudo, não se assuste. No geral, utilizamos o <strong>RStudio</strong> para criar
+os nossos <em>scripts</em> de R, que contêm o passo-a-passo das nossas
+análises. RStudio é conhecido como uma IDE (Ambiente de Desenvolvimento
+Integrado) e facilita a gestão de projetos escritos em R, com seções
+específicas para cada funcionalidade.</p>
+<p><img alt="" src="../imgs/rstudio_print.png" /></p>
+<p><strong>A - Console</strong>: Local na qual temos o console do R. No console, podemos
+executar os comandos que iremos ver logo a frente. Além disso, é o local
+no qual os resultados de nossos comandos irão aparecer.</p>
+<p><strong>B - File/Plots/Help</strong>: Nesta seção podemos ter acesso às pastas que
+estamos utilizando durante as nossas rotinas no R, além de visualizar os
+gráficos gerados a partir das análises e verificar a documentação de
+funções e pacotes, que explicaremos em breve.</p>
+<p><strong>C - Workspace</strong>: Os valores gerados no R, como por exemplo, variáveis
+e tabelas que você definiu irão aparecer aqui, sobretudo, na aba
+<em>Environment.</em> E o histórico de códigos rodados na aba <em>History.</em>
+Veremos nas próximas aulas que a aba <em>Connections</em> é útil caso estejamos
+conectados com alguma base de dados externa, como por exemplo, Access ou
+PostgreSQL.</p>
+<p><strong>D - Editor</strong>: Seção na qual iremos passar a maior parte do nosso
+tempo. Nela, escrevemos os nossos <em>scripts</em>. <em>scripts</em> são arquivos de
+texto que contêm o nosso código R.</p>
+<p>Não se preocupe caso tenha achado um pouco confuso, vamos escrever
+algumas linhas de código e você irá se familiarizar com o processo
+conforme tentar por você mesmo!</p>
+<h3 id="13-nosso-primeiro-projeto">1.3. Nosso primeiro projeto</h3>
+<p>Recomendamos você sempre começar um projeto criando um projeto (dãã).
+Isso é essencial e nos ajuda a evitar ter vários <em>scripts</em> espalhados
+pelo nosso computador.</p>
+<p>Clique em <code>File -&gt; New Project -&gt; New Directory -&gt; New Project</code></p>
+<p><img alt="" src="../imgs/r_create_project.png" /></p>
+<h3 id="14-nosso-primeiro-script">1.4. Nosso primeiro <em>script</em></h3>
+<p>No canto superior esquerdo, clique em <code>File →  Open file</code>. Repare que
+isso irá criar uma aba <code>Untitled1</code>. Vamos salvá-la como <code>Aula1.R</code>. Para
+isso, pressione <code>Ctrl + S</code> e digite <code>Aula1.R</code></p>
+<h3 id="15-algumas-regras-de-boa-conduta">1.5. Algumas regras de boa conduta</h3>
+<ol>
+<li>
+<p>Não escreva diretamente no console. Salve o seu código <strong>sempre</strong> em
+    um <em>script</em>. Assim conseguimos ter acesso a todas as decisões
+    tomadas durante uma análise e permitir com que uma outra pessoa
+    também chegue nos resultados que obtivermos.</p>
+</li>
+<li>
+<p><strong>Nunca</strong> sobreponha o banco de dados. Uma vez que você tem um
+    <em>script</em>, não é preciso salvar as alterações já que você será capaz
+    de reproduzir os resultados no futuro.</p>
+</li>
+<li>
+<p>Comente o seu código com <code>#</code>. Lembre-se que outras pessoas irão ler
+    o seu código e que elas não fazem ideia do que passava na sua cabeça
+    quando você tomou algumas decisões. Além disso, o seu eu do futuro
+    irá agradecer um código bem documentado caso seja necessário
+    revisitá-lo.</p>
+</li>
+</ol>
+<h2 id="2-nossas-primeiras-linhas-de-codigo">2. Nossas primeiras linhas de código</h2>
+<p>Uma das funcionalidades mais básicas do <strong>R</strong> é realização de operações
+matemáticas. Se estamos digitando os comandos em um <em>script</em>, basta
+colocarmos o cursor do mouse na linha do código e apertar <code>Ctrl + Enter</code>
+e o resultado sairá no Console, assim como já havíamos mencionado.</p>
+<div class="highlight"><pre><span></span><code>3 + 1 # Soma
+
+3 - 2 # Subtração
+
+4 * 2 # Multiplicação
+
+5 / 2 # Divisão
+</code></pre></div>
+<h3 id="21-objetos-e-atribuicoes">2.1. Objetos e Atribuições</h3>
+<div class="admonition cite">
+<p>"To understand computations in R, two slogans are helpful:</p>
+<p>• Everything that exists is an object.</p>
+<p>• Everything that happens is a function call."</p>
+<p>— John Chambers</p>
+</div>
+<p>Dados são guardados dentro de objetos.</p>
+<ul>
+<li>
+<p>Objetos possuem diferentes formas de <strong>estruturar</strong> os dados:</p>
+<ul>
+<li>
+<p>Vetores</p>
+</li>
+<li>
+<p>Listas</p>
+</li>
+<li>
+<p>DataFrames</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Objetos podem conter diferentes <strong>tipos</strong> de dados:</p>
+<ul>
+<li>
+<p>Números</p>
+</li>
+<li>
+<p>Strings</p>
+</li>
+<li>
+<p>Fatores</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-atribuindo-valores-a-variaveis-">2.2. Atribuindo valores à variáveis (<code>&lt;-</code>)</h3>
+<p>Quando fizemos as operações matemáticas, não salvamos os nossos
+resultados. Logo, caso quiséssemos acessar novamente, por exemplo, o
+resultado de <code>3 + 1</code>, seria necessário digitar novamente <code>3 + 1</code> e
+efetuar a operação. Contudo, é possível salvar os resultados em
+variáveis e, ao fazer referência a essas variáveis, obter outro
+resultado.</p>
+<div class="highlight"><pre><span></span><code>3 + 1
+
+a &lt;- 3 + 1
+
+c &lt;- a * 2
+
+# Qual o valor de C?
+
+b &lt;- c(&quot;Olá mundo!&quot;)
+
+b
+
+# Qual o valor de B?
+
+vetor &lt;- c(1, 2, 3, 4, 5, 6)
+
+vetor
+</code></pre></div>
+<h3 id="23-tipos-de-dados">2.3. Tipos de dados</h3>
+<p><center>
+<img alt="" src="../imgs/r-datatypes-vectors.png" />
+</center>
+<center>
+<em>Tipos de Dados no R (Fonte:
+<a href="https://www.wikitechy.com" class="uri">https://www.wikitechy.com</a>)</em>
+</center></p>
+<h4 id="231-variaveis-do-tipo-numerico">2.3.1. Variáveis do tipo numérico</h4>
+<p>De certa maneira, estamos muito acostumados com esse tipo de dados. Você
+consegue pensar em algum exemplo?</p>
+<ul>
+<li>
+<p>Os minutos passados entre o momento que você saiu de casa e chegou
+    nesta sala de aula.</p>
+</li>
+<li>
+<p>Renda mensal da sua família.</p>
+</li>
+<li>
+<p>Quantidade de livros que você possui.</p>
+</li>
+</ul>
+<p>Pras pessoas curiosas, tipos numéricos podem ser divididos em
+<strong>inteiros</strong> (<em>integers</em>) e <strong>reais</strong> (<em>float</em>). Diferentemente de
+outras linguagens de programação, você dificilmente terá que se
+preocupar com isso no R.</p>
+<div class="highlight"><pre><span></span><code>3 # numero inteiro
+
+55.4 # numero real
+</code></pre></div>
+<h4 id="232-lidando-com-variaveis-do-tipo-string-texto">2.3.2. Lidando com variáveis do tipo <code>string</code> (texto)</h4>
+<p>!!! note "Variável <code>char</code>no R" No R, não há diferença entre variável do
+tipo <code>char</code> e do tipo <code>string</code>. são conhecidos como variáveis do tipo
+<code>character</code>.</p>
+<p>Outro tipo de variável muito conhecida é o texto ou <em>string</em>. Para
+declaramos um texto no R podemos utilizar aspas simples (<code>''</code>) ou aspas
+duplas (<code>""</code>), mas lembre-se <strong>não</strong> podemos intercalar as aspas, como
+por exemplo, <code>'olá mundo"</code>. Se começar um texto com aspas simples
+termine com aspas simples.</p>
+<div class="highlight"><pre><span></span><code>&quot;Vargas&quot;
+
+&#39;Jânio Quadros&#39;
+
+&quot;1945&quot;
+</code></pre></div>
+<p>Perceba que devido ao fato de 1945 estar entre aspas, ele não é mais um
+dado do tipo número, mas sim texto e sim isso é totalmente diferente de
+escrever apenas <code>1945</code>.</p>
+<h4 id="233-lidando-com-variaveis-do-tipo-factor-variaveis-categoricas">2.3.3. Lidando com variáveis do tipo <code>factor</code> (variáveis categóricas)</h4>
+<p>Vamos supor que estamos trabalhando com dados de <em>survey</em> e em uma das
+questões temos a <em>escala likert</em>, em que as respostas vão do “Discordo
+totalmente” até o “Concordo totalmente” contabilizando um total de 6
+categorias de resposta. Ocorre que para que o <strong>R</strong> entenda este tipo de
+dado como algo categórico, precisamos transformá-los em fatores
+(<em>factors</em>).</p>
+<p>Para fazer essa transformação, utilizaremos uma função chamada
+<code>factor()</code> que recebe como parâmetro um vetor com o que queremos
+transformar em categorias.</p>
+<div class="highlight"><pre><span></span><code>factor(c(&quot;Discordo totalmente&quot;, &quot;Discordo parcialmente&quot;, &quot;Indiferente&quot;, &quot;Concordo parcialmente&quot;, &quot;Concordo totalmente&quot;))
+</code></pre></div>
+<p>Diferente de quando executamos um dado tipo texto, os dados categóricos
+apresentam os níveis das categorias (<code>levels</code>). Perceba que as nossas
+categorias não estão de acordo com o que a escala <em>likert</em> pressupõe e
+para arrumar este problema, precisamos definir os níveis através de um
+outro parâmetro da função <code>factor()</code> chamado <code>levels =</code>.</p>
+<div class="highlight"><pre><span></span><code>factor(c(&quot;Discordo totalmente&quot;, &quot;Discordo parcialmente&quot;, &quot;Indiferente&quot;, &quot;Concordo parcialmente&quot;, &quot;Concordo totalmente&quot;),
+       levels = c(&quot;Discordo totalmente&quot;, &quot;Discordo parcialmente&quot;, &quot;Indiferente&quot;, &quot;Concordo parcialmente&quot;, &quot;Concordo totalmente&quot;))
+</code></pre></div>
+<p>Pode parecer um pouco confuso agora, mas iremos esclarecer estes pontos
+nos próximos tópicos.</p>
+<h4 id="234-lidando-com-data-e-tempo">2.3.4. Lidando com data e tempo</h4>
+<p>Muitas vezes precisamos lidar com data, como por exemplo, filtrar nossa
+análise em um intervalo de tempo. Porém, números e textos não são
+suficientes para entender as regras impostas pelas datas, como por
+exemplo, “01/01/2019” é mais recente que “31/12/2018”.</p>
+<div class="highlight"><pre><span></span><code>Sys.Date()
+</code></pre></div>
+<p>Parece uma variável texto, não? Porém se aplicarmos a função <code>class()</code>,
+que serve para verificarmos o tipo de uma variável, podemos ver que se
+trata de uma variável do tipo <code>Date</code>. Nem sempre teremos que nos
+preocupar com isso, mas caso você esteja querendo <em>plotar</em> uma série
+temporal essa transformação é bem importante.</p>
+<div class="highlight"><pre><span></span><code>class(Sys.Date())
+</code></pre></div>
+<p>!!! note "Curiosidade" Caso você tenha ficado curiosa, por baixo a
+variável <code>Date</code> é do tipo numérico e, por convenção, nada mais é do que
+a quantidade de segundos passados desde 1 de Janeiro de 1970.</p>
+<h4 id="235-lidando-com-logicosbooleanos">2.3.5. Lidando com lógicos/booleanos</h4>
+<p>Valores booleanos são resultados de operações booleanas e podem ser
+definidos como <strong>verdadeiros</strong> ou <strong>falsos</strong>. Por convenção, trabalhamos
+com os termos em inglês. Portanto, <strong>TRUE</strong> ou <strong>FALSE</strong>.</p>
+<p>Por operações booleanas, podemos pensar em diferentes testes que tenham
+<strong>necessariamente</strong> uma resposta ou verdadeira ou falsa. Por exemplo, 3
+é maior do que 1? Verdadeiro! E 3 é menor do que 2? Falso!</p>
+<p>Vamos realizar essas duas operações no R.</p>
+<div class="highlight"><pre><span></span><code># 3 é maior do que 1?
+3 &gt; 1
+
+# 3 é maior do que 1?
+3 &lt; 2
+</code></pre></div>
+<p>Existem, obviamente, outras operações. É possível também testar a
+igualdade entre dois valores com <code>==</code>.</p>
+<div class="highlight"><pre><span></span><code># 2 é igual a 2?
+2 == 2
+</code></pre></div>
+<p>Também podemos testar se dois valores são diferentes.</p>
+<div class="highlight"><pre><span></span><code>#120 é diferente de 20?
+120 != 20
+</code></pre></div>
+<p>Outras variações utilizadas são o maior ou igual (<code>&gt;=</code>) e o menor ou
+igual (<code>&lt;=</code>). Além disso, também é possível realizar essas operações com
+textos.</p>
+<div class="highlight"><pre><span></span><code># &quot;FFLCH&quot; é igual a &quot;ICB&quot;?
+&quot;FFLCH&quot; == &quot;ICB&quot;
+</code></pre></div>
+<p>!!! question "Qual texto é maior?" Na sua opinião, qual é o resultado de
+<code>"Acre" &gt; "São Paulo"</code>?</p>
+<p>Na prática, podemos utilizar essas operações para filtrar o nosso banco
+de dados. Imagine, por exemplo, que você possui um banco de dados das
+eleições municipais realizadas no Brasil em 2020, mas que quisesse
+apenas o resultado do Rio de Janeiro. Mediante uma operação booleana,
+podemos fazer algo como <code>cidade == "Rio de Janeiro"</code> e selecionar apenas
+o resultado dessa cidade.</p>
+<h4 id="236-valores-ausentes-ou-missing">2.3.6. Valores Ausentes ou Missing</h4>
+<p>O que são <em>missing</em> e por que existe um valor especial para eles?
+<em>Missing</em> representam valores desconhecidos. Imagine que, durante uma
+pesquisa sobre preferência política, a pessoa entrevistada se recusa a
+responder a pergunta “Você votou na última eleição?”. O fato dela se
+recusar não significa que ela não tenha votada. Nós simplesmente não
+sabemos e precisamos representar isso nos nossos dados para tratarmos
+esses casos eventualmente.</p>
+<div class="admonition note">
+<p class="admonition-title">Tipos de <em>missing</em></p>
+<p>Existem dois tipos de valores missing, o <code>NA</code> (<em>not available</em>) e o <code>NaN</code> (<em>not a number</em>), ambos 
+tem sentidos semelhantes, porém o primeiro é mais genérico para cada tipo de dado. </p>
+</div>
+<p>Para sabermos se um certo dado é <em>missing</em>, utilizamos a função
+<code>is.na()</code>.</p>
+<div class="highlight"><pre><span></span><code>is.na(NA)
+
+is.na(99)
+</code></pre></div>
+<p>Por que esse código retorna <code>NA</code>?</p>
+<div class="highlight"><pre><span></span><code>NA == NA
+</code></pre></div>
+<h2 id="3-exercicios-parte-1">3. Exercícios - Parte 1</h2>
+<h3 id="31-tipos-de-dados">3.1. Tipos de Dados</h3>
+<p>Quais os tipos de cada variável apresentada abaixo?</p>
+<p>!!! warning "" Caso apareça “+” no seu console ao testar as afirmações,
+basta apertar “Esc”</p>
+<ol>
+<li>
+<p><code>33.5</code></p>
+</li>
+<li>
+<p><code>20</code></p>
+</li>
+<li>
+<p><code>"Olá mundo!"</code></p>
+</li>
+<li>
+<p><code>factor("oi", levels = c("oi", "tchau"))</code></p>
+</li>
+<li>
+<p><code>TRUE</code></p>
+</li>
+<li>
+<p><code>FALSE</code></p>
+</li>
+</ol>
+<h3 id="32-encontre-o-erro">3.2. Encontre o erro</h3>
+<p>Verifique se as expressões abaixo são válidas ou não. Caso não sejam,
+reescreva-as de maneira que sejam válidas.</p>
+<p>!!! warning "" Caso apareça “+” no seu console ao testar as afirmações,
+basta apertar “Esc”</p>
+<ol>
+<li>
+<p><code>22,2</code></p>
+</li>
+<li>
+<p><code>'O 'R' é uma linguagem legal"</code></p>
+</li>
+<li>
+<p><code>"O 'R é uma linguagem legal"</code></p>
+</li>
+<li>
+<p><code>"O 'R é uma linguagem legal'</code></p>
+</li>
+</ol>
+<h2 id="4-estruturas-de-dados">4. Estruturas de dados</h2>
+<p>As estruturas de dados são maneiras de organizar e guardar dados dentro
+da linguagem para que possamos trabalhar de forma mais eficiente. No
+nosso cotidiano utilizaremos três destas estruturas: <strong>vetores</strong> e
+<strong>dataframes</strong>.</p>
+<p><img alt="" src="../imgs/r_data_structures.png" /></p>
+<h3 id="41-vetores">4.1. Vetores</h3>
+<p>Um vetor atômico é a estrutura mais básica no R; é um vetor de dados
+homogêneo com apenas uma dimensão. Imagine o vetor como um trem cujos
+valores estão ordenados e são <strong>obrigatoriamente</strong> do mesmo tipo
+(<code>numeric</code>).</p>
+<p><br/></p>
+<p><center>
+<img alt="" src="../imgs/train-illustration.png" />
+</center>
+<center>
+<em>Ilustração de um trem</em>
+</center></p>
+<p><br/></p>
+<p>Que tal um exemplo? Imagine que você queira organizar em um vetor a
+quantidade de pessoas dentro de vagões de um trem. Nesse sentido, a
+quantidade de pessoas no primeira vagão é seguida da quantidade de
+pessoas no segundo e assim por diante.</p>
+<div class="highlight"><pre><span></span><code>c(120, 29, 191, 18, 39)
+</code></pre></div>
+<p>Quantas pessoas estão no segundo vagão? 29? Acertou!</p>
+<p>Perceba então que para construir um vetor basta colocarmos os valores
+dentro de <code>c()</code>.</p>
+<h4 id="411-indexando-vetores">4.1.1. Indexando vetores</h4>
+<p>!!! warning "" Se você tem experiência com programação, o R é diferentão
+dentro desse mundo. Todas as estruturas são indexadas a partir do valor
+<code>1</code>, ou seja, para acessar o primeiro valor de um vetor, você executará
+algo como <code>vetor[1]</code>.</p>
+<p>Podemos acessar os valores específicos de um vetor a partir da posição
+dele nessa estrutura. No exemplo anterior, você poderia ter pedido para
+o R lhe retornasse quem está na segunda posição. Para isso, basta
+utilizar <code>trem[2]</code> como no exemplo a seguir.</p>
+<div class="highlight"><pre><span></span><code>trem &lt;- c(120, 29, 191, 18, 39)
+
+trem[2]
+</code></pre></div>
+<p>Para indexarmos mais de um elemento podemos indexar de duas formas. Logo
+se quiséssemos o número de pessoas no terceiro e quarto vagão:</p>
+<div class="highlight"><pre><span></span><code>trem[c(3,4)]
+
+trem[3:4]
+</code></pre></div>
+<p>O que acontece se você utilizar <code>[3:5]</code>?</p>
+<div class="highlight"><pre><span></span><code>trem[3:5]
+</code></pre></div>
+<h3 id="42-dataframes">4.2. Dataframes</h3>
+<p>O <strong>dataframe</strong> é semelhante a uma planilha de Excel ou Google Sheets.
+Ela é uma representação feita dentro do R para estruturas que possuem
+linhas e colunas. As colunas, no geral, serão as nossas variáveis, as
+informações sobre uma determinada unidade observacional (pessoas,
+estados, países, etc.), enquanto cada linha representa uma observação.
+Por exemplo, caso fizéssemos um <strong>dataframe</strong> com informações sobre os
+países do mundo, cada linha seria um país e cada coluna uma informação
+sobre esse ele.</p>
+<div class="highlight"><pre><span></span><code>tabela &lt;- data.frame(ano = c(2014, 2014, 2015, 2015, 2016, 2016),
+                     pais = c(&#39;Brasil&#39;, &#39;China&#39;, &#39;Brasil&#39;, &#39;China&#39;, &#39;Brasil&#39;, &#39;China&#39;),
+                     pib = c(100,130, 110, 140, 160, 170),
+                     pop = c(3, 8, 4, 9, 6, 14))
+
+tabela
+</code></pre></div>
+<p>Diferentemente do Excel, não podemos selecionar uma célula e alterar um
+dado. No R, para manipular e visualizar uma tabela precisamos utilizar
+funções. Não se estresse caso nunca tenho ouvido falar delas. Pense
+apenas que elas realizam alguma <strong>ação</strong>.</p>
+<p>Repare nos resultados das funções a seguir:</p>
+<div class="highlight"><pre><span></span><code>View(tabela) # mostra o banco no console
+
+head (tabela) # mostra as seis primeiras linhas do banco no console
+
+str(tabela)# mostra a estrutura da tabela
+
+names(tabela) # mostra o nome das variáveis
+
+nrow(tabela) # nº de linhas
+
+ncol(tabela) #nº de colunas
+
+dim(tabela) # dimensões
+</code></pre></div>
+<h4 id="431-indexando">4.3.1. Indexando</h4>
+<p>Para indexar <strong>dataframes</strong>, você precisa levar em conta a
+característica bidimensional dessa estrutura de dados. Uma <code>tabela</code> será
+indexada com <code>tabela[linha, coluna]</code>.</p>
+<div class="highlight"><pre><span></span><code>tabela[1, 2] # Primeira linha, segunda coluna
+
+tabela[1,] # Primeira linha, todas as colunas
+
+tabela[,1] # Todas as linhas, primeira coluna
+
+tabela[1:3,] # Linhas de 1 até 3, todas as colunas
+
+tabela[,2:4] # todas as linhas, colunas de 2 até 4
+</code></pre></div>
+<p>Como <strong>dataframes</strong> possuem colunas e as colunas, nomes, podemos
+utilizar o nome das colunas para selecioná-las.</p>
+<div class="highlight"><pre><span></span><code>tabela[,&quot;pais&quot;] # Todas as linhas da coluna &quot;pais&quot;
+
+tabela[2,&quot;pais&quot;] # O valor da segunda linha e da coluna &quot;pais&quot;
+
+tabela[, c(&quot;pais&quot;, &quot;pib&quot;)] # Todas as linhas das colunas &quot;pais&quot; e &quot;pib&quot;
+</code></pre></div>
+<p>Por fim, também podemos indexar utilizando o operador <code>$</code> seguido do
+nome da coluna.</p>
+<div class="highlight"><pre><span></span><code>tabela$pib
+
+tabela$pib[1]
+</code></pre></div>
+<h4 id="432-importando-dataframes-csv-excel-etc">4.3.2. Importando dataframes (csv, Excel, etc.)</h4>
+<p>Uma das maneiras mais eficientes de se importar dados para o R é pelo
+uso dos seguintes pacotes:</p>
+<ol>
+<li>
+<p><code>readr</code> para a leitura de CSVs.</p>
+</li>
+<li>
+<p><code>readxl</code> para a leitura de planilhas de Excel.</p>
+</li>
+<li>
+<p><code>haven</code> para a leitura de arquivos.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Instalando pacotes do R</p>
+<p>O R não possui todos os pacotes previamente. Em geral, utilizaremos o comando <code>install.packages()</code> 
+para instalar pacotes no R. Execute o comando <code>install.packages(c('readr', 'readxl', 'haven'))</code>.
+Lembre-se de carregar o pacote no R com o comando <code>library()</code>. Por exemplo, <code>library(readr)</code>.</p>
+</div>
+<p>Você sabia que o TSE (Tribunal Superior Eleitoral) libera diversos dados
+sobre as eleições no site deles?</p>
+<p>Que tal tentar baixar o banco de candidatos? Para isso, baixe os
+arquivos:</p>
+<ul>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_virgula.csv">Candidatos -
+    CSV</a></p>
+</li>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_pontovigula.csv">Candidatos -
+    CSV2</a></p>
+</li>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_tab.csv">Candidatos -
+    TAB</a></p>
+</li>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_arroba.csv">Candidatos -
+    Arroba</a></p>
+</li>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_excel.xlsx">Candidatos -
+    Excel</a></p>
+</li>
+<li>
+<p><a href="https://github.com/p4hUSP/material-2021/raw/master/docs/data/candidatos_sp_stata.dta">Candidatos -
+    Stata</a></p>
+</li>
+</ul>
+<p>Às vezes, o navegador não irá fazer o download automaticamente
+(normalmente isso ocorre no Firefox) e lhe mostrará uma tela repleta de
+caracteres. Calma! Clique com o botão direito na tela e selecione a
+opção <strong>Save Page As…</strong>. Recomendamos que você salve os dados dentro de
+uma pasta chamada <strong>data</strong> ou <strong>dados</strong> para manter o projeto
+organizado.</p>
+<p>Para importar um CSV para o R, utilize a função <code>read_csv()</code> do pacote
+<code>readr</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title"> Fique atento com o lugar que você salvou os arquivos! </p>
+<p>Neste exemplo, os arquivos estão salvos dentro da pasta <strong>data</strong>.</p>
+</div>
+<p><br/></p>
+<div class="highlight"><pre><span></span><code>library(readr)
+
+banco_virgula &lt;- read_csv(&#39;data/candidatos_sp_virgula.csv&#39;)
+</code></pre></div>
+<p>Se tudo tiver dado certo, agora você terá um <code>banco_virgula</code> no seu
+ambiente de variáveis. Mas nem sempre um banco de dados é separado por
+vírgula e mesmo assim ele pode ter a extensão <code>.csv</code>.</p>
+<ul>
+<li>Bancos separados por ponto e vírgula <code>;</code>.</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco_pontovirgula &lt;- read_csv2(&#39;data/candidatos_sp_pontovirgula.csv&#39;)
+</code></pre></div>
+<ul>
+<li>Banco separados por tabs <code>\t</code>.</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco_tab &lt;- read_tsv(&#39;data/candidatos_sp_tab.csv&#39;)
+</code></pre></div>
+<ul>
+<li>Banco separados por <code>@</code> ou qualquer outro <code>caractere</code>.</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>banco_arroba &lt;- read_delim(&#39;data/candidatos_sp_arroba.csv&#39;, delim = &#39;@&#39;)
+</code></pre></div>
+<ul>
+<li>Banco Excel.</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>library(readxl)
+
+banco_excel &lt;- read_excel(&#39;data/candidatos_sp_excel.xlsx&#39;)
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"> Repare que o número de linhas do banco Excel é menor! </p>
+</div>
+<p><br/></p>
+<p>Por que isso aconteceu?</p>
+<ul>
+<li>Banco Excel - Abas</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>library(readxl)
+
+banco_excel_1 &lt;- read_excel(&#39;data/candidatos_sp_excel.xlsx&#39;, sheet = 1)
+
+banco_excel_1 &lt;- read_excel(&#39;data/candidatos_sp_excel.xlsx&#39;, sheet = 2)
+</code></pre></div>
+<ul>
+<li>Banco Stata</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>library(haven)
+
+banco_stata &lt;- read_stata(&#39;data/candidatos_sp_stata.dta&#39;)
+</code></pre></div>
+<h2 id="5-exercicio-parte-2">5. Exercício - Parte 2</h2>
+<h3 id="51-dataframes">5.1. DataFrames</h3>
+<ol>
+<li>Crie um dataframe com o “nome”, “idade” e “filme” preferido dos seus
+    colegas de turma.</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title"> Como criar um dataframe? </p>
+<p>Lembre-se que para criar um dataframe utilizamos a função <code>data.frame()</code> e que essa função recebe vetores 
+como parâmetros para cada coluna que desejamos criar. Por exemplo, se você quiser criar uma dataframe com
+uma lista de números basta executar <code>data.frame(lista_numeros = c(1,2,3,4,5,6,7))</code></p>
+</div>
+<ol>
+<li>
+<p>No R temos, bancos para fins didáticos. Para utilizá-los basta usar
+    a função data. Para esse exercícios utilizaremos o banco mtcars.
+    Execute <code>data(mtcars)</code>. Repare que agora você pode acessar o banco
+    <code>mtcars</code> da mesma maneira que fizemos anteriormente com outros
+    dataframes.</p>
+<ul>
+<li>
+<p>Visualize o banco. Do que se trata?</p>
+</li>
+<li>
+<p>Quais são suas variáveis?</p>
+</li>
+<li>
+<p>E suas dimensões?</p>
+</li>
+<li>
+<p>Selecione as 10 primeiras observações</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-funcoes">5. Funções</h2>
+<p>Como você deve ter notado mencionamos algumas vezes a palavra função
+durante o texto. Mas o que é isso? Podemos pensar cada função como uma
+<strong>ação</strong>. Por exemplo, imagine você possa controlar a sua vida por meio
+de <strong>funções</strong>. Se as coisas funcionam assim, provavelmente teríamos uma
+função <code>levantar()</code>, <code>beber_aguar()</code> e assim por diante. No R, o
+princípio é o mesmo e precisamos utilizar funções para executar
+quaisquer comandos que precisamos que sejam operados. Por exemplo,
+quando você executou <code>read_csv()</code>, você chamou um código que abre o
+arquivo especificado e estrutura cada linha dentro de um dataframe.</p>
+<p>Mas como uma função sabe sobre onde ela precisa operar? Como
+<code>read_csv()</code> sabia que precisava abrir aquele arquivo? Para isso,
+utilizamos <strong>parâmetros</strong>. Parâmetros alteram o comportamento das nossas
+funções e nos permitem especificar, por exemplo, um arquivo para a
+<code>read_csv()</code> escrevendo <code>read_csv('arquivo.csv')</code>.</p>
+<p>Vamos ver isso na prática com outra função bastante importante, a
+<code>mean()</code>.</p>
+<div class="admonition question">
+<p class="admonition-title"> Como aprender a utilizar funções? </p>
+<p>Obviamente, você pode utilizar o Google, mas muitas vezes não é necessário sair do RStudio. 
+Se você quiser, utilize o comando <code>?mean</code> e tente ler a documentação e os exemplos.
+Pacotes instalados pelo CRAN necessariamente são acompanhados por uma documentação que explica
+o que as suas funções fazem.</p>
+</div>
+<p>Vamos tentar rodar um exemplo?</p>
+<div class="highlight"><pre><span></span><code>x &lt;- c(1,2,3)
+xm &lt;- mean(x)
+
+xm
+</code></pre></div>
+<p>A função <code>mean()</code> calcula a média de qualquer vetor numérico para a
+gente e podemos utilizar para ter uma noção dos nossos dados durante uma
+análise.</p>
+<h3 id="51-pacotes">5.1. Pacotes</h3>
+<p>Segundo a definição do livro R Packages, escrito por Hadley Wickham, um
+pacote é uma unidade fundamental de compartilhamento de códigos, dados,
+documentação e testes. Em outras palavras, os pacotes são coleções de
+códigos (funções) e dados desenvolvidos pela comunidade.</p>
+<p>Estes pacotes ficam localizados no que chamamos de repositório. O
+principal repositório recebe o nome de <strong>C</strong>omprehensive <strong>R</strong>
+<strong>A</strong>rchive <strong>N</strong>etwork, o também chamado, CRAN. Mas existem outros
+também, como o Github, no qual a forma de obter os pacotes muda. Para
+instalar um pacote, utilize o comando <code>install.packages()</code> em que o
+argumento principal é o nome do pacote que queremos instalar.</p>
+<p>Uma peculiaridade desta função é que por padrão ela instala os pacotes
+que estão no CRAN, como por exemplo, vamos instalar um pacote chamado
+“dplyr”</p>
+<div class="highlight"><pre><span></span><code>install.packages(&quot;dplyr&quot;)
+</code></pre></div>
+<p>Após instalarmos o pacote, devemos habilitá-lo com uma função chamada
+<code>library()</code></p>
+<div class="highlight"><pre><span></span><code>library(dplyr)
+</code></pre></div>
+<p>Caso o pacote não esteja no CRAN, mas sim no Github, devemos instalar o
+pacote com o auxilio de uma função chamada <code>install_github()</code> do pacote
+<code>devtools</code>.</p>
+<div class="highlight"><pre><span></span><code>install.packages(&quot;devtools&quot;)
+
+library(devtools)
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title"> Pacotes no GitHub </p>
+<p>Caso o seu pacote não esteja liberado no CRAN ou caso deseje ter acesso à versão de 
+desenvolvimento, você irá precisar utilizar a função <code>install_github()</code> do pacote <code>devtools</code>
+que recebe como parâmetro <code>&lt;dono-do-pacote&gt;/&lt;nome-do-pacote&gt;</code>. Por exemplo, <code>install_github("abjur/abjutils")</code>.
+Não se esqueça de habilitar o <code>devtools</code> com a função <code>library(devtools)</code>.</p>
+</div>
+<h2 id="6-controladores-de-fluxo">6. Controladores de Fluxo</h2>
+<p>É muito comum estabelecermos uma condição para tomar uma decisão, como
+por exemplo, ‘Porcentagem de votos maior que 50% pode significar
+vitória, caso contrário, derrota’.</p>
+<p>Para que possamos fazer isso, utilizaremos o <code>if/else</code> e o <code>for</code>!</p>
+<h3 id="61-ifelse">6.1. if/else</h3>
+<p>A estrutura do if/else é a seguinte:</p>
+<div class="highlight"><pre><span></span><code>if(&lt;condicao&gt;){
+  &lt;comando1&gt;
+  &lt;comando2&gt;
+  &lt;etc&gt;
+}else{
+  &lt;comando3&gt;
+  &lt;comando4&gt;
+  &lt;etc&gt;
+}
+</code></pre></div>
+<p>Podemos interpretá-la da seguinte maneira: Se a condição for verdadeira,
+execute os comandos 1 e 2, caso contrário, execute os comandos 3 e 4.</p>
+<h3 id="62-for">6.2. for</h3>
+<div class="highlight"><pre><span></span><code>for (i in x){
+  &lt;comando1&gt;
+  &lt;comando2&gt;
+}
+</code></pre></div>
+<p>Nós lemos o <code>for</code> acima da seguinte maneira: <strong>Para cada valor “i”
+presente na sequência “x”, realize tais comandos. Ou seja, para cada
+linha da nossa tabela, some um ao percentual de votos recebidos.</strong></p>
+<p>Vamos criar o seguinte <code>dataframe</code>:</p>
+<ul>
+<li>
+<p><code>ano</code>: ano da observação.</p>
+</li>
+<li>
+<p><code>pais</code>: país da observação.</p>
+</li>
+<li>
+<p><code>pip</code>: Produto Interno Bruto do país.</p>
+</li>
+<li>
+<p><code>pop</code>: População do país.</p>
+</li>
+</ul>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>tabela &lt;- data.frame(ano = c(2014, 2014, 2015, 2015, 2016, 2016),
+                     pais = c(&#39;Brasil&#39;, &#39;China&#39;, &#39;Brasil&#39;, &#39;China&#39;, &#39;Brasil&#39;, &#39;China&#39;),
+                     pib = c(100,130, 110, 140, 160, 170),
+                     pop = c(3, 8, 4, 9, 6, 14))
+</code></pre></div>
+<p>Nosso objetivo:</p>
+<blockquote>
+<p>Criar uma terceira coluna com o <em>PIB per capta</em> com um <code>for</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>for(i in 1:nrow(tabela)){
+  print(tabela$pib[i])
+}
+</code></pre></div>
+<p>Vamos entender algumas coisas aqui,</p>
+<ul>
+<li>
+<p><code>nrow(tabela)</code> é uma função que retorna o número de linhas de uma
+    tabela, ou seja, seu resultado é um número.</p>
+</li>
+<li>
+<p>Quando temos <code>1:nrow(tabela)</code>, estamos criando um vetor com uma
+    sequência de 1 até o número de linhas da nossa tabela, no caso, 6.
+    Isso significa que nosso <code>for</code> vai percorrer as treze linhas da
+    tabela.</p>
+</li>
+<li>
+<p>Uma vez que o <code>i</code> assumirá os valores de 1 até 6, podemos indexar o
+    vetor <code>tabela$pip[i]</code> com o <code>[i]</code> para obter o número do PIB
+    correspondente a linha <code>i</code>. Dessa maneira podemos dividir
+    <code>tabela$pip[i]</code> pela <code>tabela$pop[i]</code> e obter a _renda per capta.</p>
+</li>
+</ul>
+<p>Vamos agora voltar ao nosso objetivo principal:</p>
+<div class="highlight"><pre><span></span><code>tabela$pib_capta &lt;- NA # Criando uma coluna vazia
+
+for(i in 1:nrow(tabela)){
+  tabela$pib_capta[i] &lt;- tabela$pib[i] / tabela$pop[i]
+}
+
+print(tabela)
+</code></pre></div>
+<p>Por fim, nós podemos misturar o <code>for</code> com o <code>if</code> para obter um
+comportamento customizável dentro do nosso <em>loop</em>.</p>
+<p>Por exemplo, vamos criar uma classificação de PIB <em>per capta</em> entre alto
+e baixo. Para isso, iremos utilizar o 20 como o discriminador entre
+essas duas classes. Nesse sentido, se <code>pib_capta</code> for maior do que 20
+devemos classificar</p>
+<div class="highlight"><pre><span></span><code>tabela$pip_capta_class &lt;- NA # Criando uma coluna vazia
+
+for(i in 1:nrow(tabela)){
+  if(tabela$pib_capta[i] &gt; 20){
+    tabela$pip_capta_class[i] &lt;- &#39;Alto&#39;
+  } else {
+    tabela$pip_capta_class[i] &lt;- &#39;Baixo&#39;
+  }
+}
+
+print(tabela)
+</code></pre></div>
+<div class="admonition highlight">
+<p class="admonition-title"> <strong>PARABÉNS!!!</strong> :tada: :tada: :tada: </p>
+<p>Enfim, após esse breve resumos de conceitos básicos de programação você será capaz de interagir com
+pacotes com uma vasta variedade de pacotes, além de conseguir desenvolver as próprias soluções
+quando for necessário.</p>
+</div>
+<h2 id="7-exercicios">7. Exercícios</h2>
+<h3 id="exercicio-1-tipos-de-dados">Exercício 1 - Tipos de dados</h3>
+<p>Execute os códigos abaixo e verifique se são dados válidos em R. Caso
+verdadeiro, informe o tipo de dado:</p>
+<p>Obs: Caso apareça “+” no seu console ao testar as afirmações, basta
+apertar “Esc”</p>
+<ol>
+<li>
+<p><code>33,5</code></p>
+</li>
+<li>
+<p><code>"Olá mundo"</code></p>
+</li>
+<li>
+<p><code>"O 'R' é uma linguagem legal"</code></p>
+</li>
+<li>
+<p><code>"O 'R é uma linguagem legal"</code></p>
+</li>
+<li>
+<p><code>"O 'R é uma linguagem legal'</code></p>
+</li>
+<li>
+<p><code>400e + 10</code></p>
+</li>
+<li>
+<p><code>factor("oi", levels = c("oi", "tchau"))</code></p>
+</li>
+<li>
+<p><code>true</code></p>
+</li>
+<li>
+<p><code>False</code></p>
+</li>
+</ol>
+<h3 id="exercicio-2-manipulando-variaveis">Exercício 2 - Manipulando variáveis</h3>
+<ol>
+<li>Altere o valor de <code>v_numero</code> para 42</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>v_numero &lt;- 42.5
+</code></pre></div>
+<ol>
+<li>Altere o valor de <code>v_caractere</code> para “universo”.</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>v_caractere &lt;- &quot;algum texto&quot;`
+</code></pre></div>
+<ol>
+<li>Altere o valor de <code>v_logical</code> para FALSE</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>`v_logical &lt;- TRUE`
+</code></pre></div>
+<h3 id="exercicio-3-estruturas-de-dados">Exercício 3 - Estruturas de Dados</h3>
+<ol>
+<li>
+<p>Crie dois vetores:</p>
+<ul>
+<li>
+<p>O primeiro (<code>nome</code>) deve conter o nome de pelo menos 5 colegas
+    que estão sentandos ao seu redor.</p>
+</li>
+<li>
+<p>O segundo (<code>altura</code>) deve conter a altura desses colegas.</p>
+</li>
+</ul>
+</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>vetor_nome &lt;- c()
+vetor_altura &lt;- c()
+</code></pre></div>
+<ol>
+<li>
+<p>Acesse o primeiro nome do <code>vetor_nome</code>. Lembre-se que você precisa
+    dos <code>[]</code>.</p>
+</li>
+<li>
+<p>Acesse os primeiros três valores de altura no <code>vetor_altura</code>.</p>
+</li>
+<li>
+<p>Faça isso apenas utilizando <code>[]</code> e <code>:</code></p>
+</li>
+<li>
+<p>Faça isso apenas utilizando <code>[]</code> e <code>c()</code></p>
+</li>
+<li>
+<p>Crie um <code>dataframe</code> a partir de <code>vetor_nome</code> e <code>vetor_altura</code>.</p>
+</li>
+</ol>
+<!-- -->
+
+<div class="highlight"><pre><span></span><code>tabela_colegas &lt;- data.frame(nome = &lt;completar&gt;,
+                             altura = &lt;completar&gt;)
+</code></pre></div>
+<ol>
+<li>
+<p>Usando a <strong>indexação</strong>, obtenha:</p>
+<ul>
+<li>
+<p>O vetor <code>nome</code> dentro do dataframe <code>tabelas_colegas</code></p>
+</li>
+<li>
+<p>O vetor <code>altura</code> dentro do dataframe <code>tabelas_colegas</code></p>
+</li>
+<li>
+<p>Obtenha a primeira observação da sua tabela (primeira linha)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Utilizando funções obtenha:</p>
+<ul>
+<li>
+<p>A média de altura dos seus colegas</p>
+</li>
+<li>
+<p>Uma tabela (<code>table()</code>) dos nomes dos seus colegas</p>
+</li>
+<li>
+<p>O desvio padrão da altura (<code>sd()</code>)</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="exercicio-4-controladores-de-fluxo">Exercício 4 - Controladores de Fluxo</h3>
+<ol>
+<li>
+<p>Imprima todas as alturas de <code>tabelas_colegas</code> com <code>for</code> e <code>print()</code>.</p>
+</li>
+<li>
+<p>Crie uma classificação para a altura dos seus colegas com <code>for</code> e
+    <code>if</code>. Não se preocupe com o valor utilizado. Contudo, case deseje,
+    você pode dividi-los pela <strong>mediana</strong> ou pela <strong>média</strong>.</p>
+</li>
+</ol>
+<h3 id="exercicio-5-importacao-de-dados">Exercício 5 - Importação de Dados</h3>
+<ol>
+<li>Escolha um dos bancos abaixo ou qualquer outro de seu interesse.
+    Baixe o banco, utilize as funções para explorar as variáveis, retire
+    algum resumo de uma variável (média, contagem, etc.).</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title"> Relembrando as funções </p>
+<p>Você pode utilizar <code>View()</code>, <code>head()</code>, <code>str()</code>, <code>names()</code>, entre outras para ter uma ideia geral do banco de dados.
+Para extrair estatísticas, você pode utilizar <code>mean()</code>, <code>sd()</code>, <code>median()</code>, etc.</p>
+<p>Lembre-se que o Google é o seu melhor amigo! Pesquisa outros comandos que sejam do seu interesse!</p>
+</div>
+<p><center></p>
+<table>
+<thead>
+<tr class="header">
+<th>Banco</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Banco Eleições</td>
+<td><a href="http://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1/repositorio-de-dados-eleitorais">Download</a></td>
+</tr>
+<tr class="even">
+<td>Preço Médio de Combustíveis no Brasil</td>
+<td><a href="https://www.kaggle.com/matheusfreitag/gas-prices-in-brazil">Download</a></td>
+</tr>
+<tr class="odd">
+<td>Banco de Pokemon</td>
+<td><a href="https://www.kaggle.com/rounakbanik/pokemon">Download</a></td>
+</tr>
+<tr class="even">
+<td>Vagas de Emprego em Nova Iorque</td>
+<td><a href="https://www.kaggle.com/new-york-city/new-york-city-current-job-postings">Download</a></td>
+</tr>
+</tbody>
+</table>
+
+<p></center></p>
+<h3 id="exercicio-6-desafio">Exercício 6 - Desafio</h3>
+<p>Com o banco de dados do exercício anterior tente levantar algumas
+hipóteses sobre as relações de variáveis. Por exemplo, “eu acho que X
+causa Y”. Anote todas essas hipóteses.</p>
+<p>Uma vez feito isso, tente:</p>
+<ol>
+<li>
+<p>Criar um gráfico que ressalte a relação entre essas variáveis.</p>
+</li>
+<li>
+<p>Procure rodar um teste estatístico que ponha à prova a sua hipótese
+    (Teste t, ANOVA, regressão linear, regressão logística, etc.).</p>
+</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title"> Por onde começar? </p>
+<p>Existe um pacote de visualização de dados muito famoso para o R chamado <code>ggplot2</code>. 
+Quanto ao teste estatístico, o R possuí todos os testes citados implementados, ou seja, você não 
+precisa baixar um pacote para aplicá-los. Tente procurar na <em>internet</em>. Existem referências tanto
+em <a href="https://paternogbc.github.io/guia_ggplot2/grafico-de-barras.html">português</a> quanto em
+<a href="https://r4ds.had.co.nz/data-visualisation.html">inglês</a>.</p>
+</div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Anterior: Material" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Material
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../02_estruturar/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Estruturar" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              Estruturar
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Programação para Humanidades
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/p4husp" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/p4husp" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://instagram.com/p4husp" target="_blank" rel="noopener" title="instagram.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://facebook.com/p4husp" target="_blank" rel="noopener" title="facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "search.config.lang": "pt", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Buscar", "search.result.placeholder": "Digite para iniciar a busca", "search.result.none": "Nenhum resultado encontrado", "search.result.one": "1 resultado encontrado", "search.result.other": "# resultados encontrados", "search.result.more.one": "Mais 1 nesta p\u00e1gina", "search.result.more.other": "Mais # nesta p\u00e1gina", "search.result.term.missing": "Ausente", "select.version.title": "Selecione a vers\u00e3o"}, "search": "../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56a63758.min.js"></script>
+      
+    
+  </body>
+</html>
