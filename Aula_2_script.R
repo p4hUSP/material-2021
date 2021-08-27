@@ -72,21 +72,6 @@ mutate(atletas_eventos, Medalha = case_when(Medalha == "Gold"~"Ouro",
                                           TRUE ~ Medalha))
 View(atletas_eventos)
 
-
-#mudando o "case"
-
-#do maiúsculo para o minúsculo
-atletas_eventos <-
-mutate(atletas_eventos, CON=tolower(CON))
-
-View(atletas_eventos)
-
-#do minúsculo para o maiúsculo
-atletas_eventos <-
-  mutate(atletas_eventos, CON=toupper(CON))
-
-View(atletas_eventos)
-
 #count()
 
 count(atletas_eventos, Idade)
@@ -102,7 +87,12 @@ atle_2<-
   group_by(atletas_eventos, Sexo)
 
 #sumarizando o número de homens e de mulheres
+
 summarise(atle_2, Quantidade=n())
+
+#soma do total de atletas por ano
+
+summarise(count(distinct(group_by(atletas_eventos,Ano), Nome),Nome),total_atletas_ano = sum(n))
 
 #sumarizando a altura media de homens e mulheres
 
@@ -116,19 +106,6 @@ summarise(atle_2, maximo_idade = max(Idade, na.rm=T))
 
 summarise(atle_2, minimo_idade = min(Idade, na.rm=T))
 
-#separate()
-
-atletas_eventos <-
-  separate(atletas_eventos, Name, c("Name","Surname"), " ", remove = F)
-
-atletas_eventos
-
-#unite()
-
-atletas_eventos <-
-  unite(atletas_eventos, "Name", Name,Surname, sep = " ")
-
-atletas_eventos
 #importância do %>% e porque você deveria usa-lo 
 #sem o %>%
 rename(count(mutate(select(filter(atletas_eventos, Altura >= 175, Time == "Brazil", Sexo == "F", Medalha == "Ouro"),-CON,-ID,-Evento),CATEGORIA = ifelse(Idade >= 60, "IDOSO","ADULTO")),CATEGORIA),QUANTIDADE = n)
